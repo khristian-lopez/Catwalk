@@ -1,0 +1,35 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "rebuilding a legacy online retail app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tech-guys-47/project-catwalk.git"
+  },
+  "author": "tech-guys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tech-guys-47/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/tech-guys-47/project-catwalk#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "axios": "^0.24.0",
+    "babel-loader": "^8.2.3",
+    "bootstrap": "^5.1.3",
+    "enzyme": "^3.11.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "redux": "^4.1.1",
+    "webpack": "^5.60.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
