@@ -4,7 +4,7 @@
   "description": "rebuilding a legacy online retail app",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -w",
+    "react-dev": "webpack --mode development -w",
     "start": "nodemon server/index.js",
     "test": "jest"
   },
