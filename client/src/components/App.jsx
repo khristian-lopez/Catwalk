@@ -1,9 +1,20 @@
 import React from 'react';
+import Overview from './overview/overview.jsx';
+import Qa from './qa/qa.jsx';
+import Ratings from './ratings/ratings.jsx';
+import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
 
 
 const App = () => (
-  <h1>we them techGuys!</h1>
+  <div>
+    <h1>we them techGuys!</h1>
+    <Overview />
+    <RelatedProducts />
+    <Qa />
+    <Ratings />
+  </div>
+
 )
 
 export default App;
