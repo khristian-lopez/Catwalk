@@ -2,7 +2,7 @@ import React from 'react';
 import Overview from './overview/overview.jsx';
 import Qa from './qa/qa.jsx';
 import Ratings from './ratings/ratings.jsx';
-import RelatedProducts from './relatedProducts/relatedProducts.jsx';
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 
 
 
