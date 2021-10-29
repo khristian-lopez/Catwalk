@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StarRatings from '../StarRatings.jsx';
 
 const ProductInfo = () => (
   <div className='prod-info'>
@@ -6,7 +7,7 @@ const ProductInfo = () => (
     <h3> Product Name </h3>
     <span> $123 </span>
     <br/>
-    <span> &#9733;&#9733;&#9733;&#9733;&#9734; </span>
+    <StarRatings />
   </div>
 )
 
