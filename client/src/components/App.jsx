@@ -4,8 +4,6 @@ import Qa from './qa/qa.jsx';
 import RatingsAndReviews from './ratings/RatingsAndReviews.jsx';
 import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
-
-
 const App = () => (
   <div>
     <h1>we them techGuys!</h1>
@@ -16,5 +14,4 @@ const App = () => (
   </div>
 
 )
-
 export default App;

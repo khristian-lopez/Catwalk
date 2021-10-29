@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default class ReviewButtons extends React.Component {
-    render() {
-        return (
-            <div>
-                <button>MORE REVIEWS</button>
-                <button>ADD A REVIEW +</button>
-            </div>
-        )
-    }
+const ReviewButtons = () => {
+    return (
+        <div>
+            <button>MORE REVIEWS</button>
+            <button>ADD A REVIEW +</button>
+        </div>
+    )
 }
 
+export default ReviewButtons;
