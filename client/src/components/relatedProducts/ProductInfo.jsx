@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const ProductInfo = () => (
   <div className='prod-info'>
-    <h5> Category </h5>
-    <h3> Product Name </h3>
-    <span> $123 </span>
+    <span style={{ fontSize: '12px'}}> Category </span> <br/>
+    <span style={{ fontWeight: 'bold'}}> Product Name </span> <br/>
+    <span style={{ fontSize: '12px'}}> $123 </span>
     <br/>
     <span> &#9733;&#9733;&#9733;&#9733;&#9734; </span>
   </div>
