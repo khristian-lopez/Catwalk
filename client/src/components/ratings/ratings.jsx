@@ -1,7 +1,12 @@
 import React from 'react';
 
-const Ratings = () => (
-  <div> Ratings </div>
-)
+class Ratings extends React.Component {
+  render() {
+    return (
+      <div className="ratings-container">Ratings
+      </div>
+    )
+  }
+}
 
 export default Ratings;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Overview from './overview/overview.jsx';
 import Qa from './qa/qa.jsx';
-import Ratings from './ratings/ratings.jsx';
+import RatingsAndReviews from './ratings/RatingsAndReviews.jsx';
 import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
 
@@ -12,7 +12,7 @@ const App = () => (
     <Overview />
     <RelatedProducts />
     <Qa />
-    <Ratings />
+    <RatingsAndReviews />
   </div>
 
 )
