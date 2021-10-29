@@ -1,7 +1,7 @@
 import React from 'react';
 import Overview from './overview/overview.jsx';
 import Qa from './qa/qa.jsx';
-import RatingsAndReviews from './ratings/RatingsAndReviews.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
 const App = () => (

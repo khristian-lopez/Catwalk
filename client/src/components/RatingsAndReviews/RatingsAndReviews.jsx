@@ -1,7 +1,7 @@
 import React from 'react';
-import Ratings from './Ratings.jsx';
-import ReviewsList from './ReviewsList.jsx';
-import ReviewButtons from './ReviewButtons.jsx';
+import Ratings from './Ratings/Ratings.jsx';
+import ReviewsList from './Reviews/ReviewsList.jsx';
+import ReviewButtons from './Reviews/ReviewButtons.jsx';
 
 class RatingsAndReviews extends React.Component {
     render() {
