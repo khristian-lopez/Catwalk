@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import StarRatings from '../StarRatings.jsx';
 
 const ProductInfo = () => (
   <div className='prod-info'>
@@ -6,7 +7,7 @@ const ProductInfo = () => (
     <span style={{ fontWeight: 'bold'}}> Product Name </span> <br/>
     <span style={{ fontSize: '12px'}}> $123 </span>
     <br/>
-    <span> &#9733;&#9733;&#9733;&#9733;&#9734; </span>
+    <StarRatings />
   </div>
 )
 
