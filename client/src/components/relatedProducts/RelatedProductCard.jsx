@@ -4,7 +4,9 @@ import ProductInfo from './ProductInfo.jsx';
 
 const RelatedProductCard = () => (
   <div className="card rel-prod-card">
-    <ActionButton />
+    <span>
+      <ActionButton />
+    </span>
     <ProductInfo />
   </div>
 )
