@@ -5,7 +5,7 @@ import SortBy from './SortBy.jsx';
 class ReviewsList extends React.Component {
     render() {
         return (
-            <div className="ReviewsList-container">Reviews
+            <div className="ReviewsList-container">Reviews ----
                 <SortBy />
                 <Review />
             </div>

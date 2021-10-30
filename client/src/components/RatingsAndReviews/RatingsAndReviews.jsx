@@ -1,5 +1,5 @@
 import React from 'react';
-import Ratings from './Ratings/Ratings.jsx';
+import Ratings from './Ratings/RatingsBar.jsx';
 import ReviewsList from './Reviews/ReviewsList.jsx';
 import ReviewButtons from './Reviews/ReviewButtons.jsx';
 

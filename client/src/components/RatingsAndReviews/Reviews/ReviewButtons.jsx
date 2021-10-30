@@ -5,7 +5,7 @@ class ReviewButtons extends React.Component {
     state = {
         showForm: false
     }
-    
+    // TODO: work on "write a review" & add other implementations with it
     toggleForm = () => {
         return (
             <div>
