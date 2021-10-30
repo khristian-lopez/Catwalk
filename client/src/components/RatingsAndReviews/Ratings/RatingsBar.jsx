@@ -8,14 +8,14 @@ const RatingsBar = ({totalRate, starRating}) => {
     width: `${percentage}%`,
     backgroundColor: 'green'
   }
-  const bar = {
+  const unfilledBars = {
     height: 10,
     width: '80%',
     backgroundColor: 'gray'
   }
   return (
     <div className="ratingsBar">Ratings ----
-      <div id="bar" style={bar}>
+      <div id="unfilledBars" style={unfilledBars}>
         <div id="filled-bars" style={filledBars}></div>
       </div>
     </div>

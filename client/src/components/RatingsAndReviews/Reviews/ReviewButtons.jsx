@@ -1,29 +1,28 @@
 import React from 'react';
+import NewForm from './NewForm.jsx';
 
 class ReviewButtons extends React.Component {
-    
-    state = {
-        showForm: false
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            showForm: false
+        }
+        this.hideForm = this.hideForm.bind(this)
     }
-    // TODO: work on "write a review" & add other implementations with it
-    toggleForm = () => {
-        return (
-            <div>
-                <form className="toggleForm">
-                    <label>Write your review:
-                        <input type="text"></input>
-                    </label>
-                </form>
-            </div>
-        )
+    hideForm() {
+        this.setState({
+            showForm: false
+        })
     }
     render() {
         const {showForm} = this.state;
+
         return (
-            <div>
+            <div className="new-review">
                 <button>MORE REVIEWS</button>
-                <button onClick={ () => this.setState({showForm: !showForm})}>ADD A REVIEW +</button>
-                {showForm ? this.toggleForm() : null}
+                <button onClick={ () => this.setState({ showForm: !showForm })}>ADD A REVIEW +</button>
+                { showForm ? <NewForm hideForm={this.hideForm}/> : null}
             </div>
         )
     }

@@ -1,13 +1,28 @@
 import React from 'react';
-import Review from './Review.jsx';
+import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
+import StarRatings from '../../StarRatings.jsx';
+import data from '../dummyReviews.js';
 
 class ReviewsList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            reviews: data.results
+
+        }
+    }
     render() {
+        const {reviews} = this.state;
+        console.log(reviews)
         return (
-            <div className="ReviewsList-container">Reviews ----
+            <div className="reviewsList">Reviews ----
+                <StarRatings />
                 <SortBy />
-                <Review />
+               { reviews.map((review, i) => 
+               <ReviewTile review={review} key={i} />  
+               )}
             </div>
         )
     }
