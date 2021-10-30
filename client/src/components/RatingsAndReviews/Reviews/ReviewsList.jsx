@@ -1,7 +1,6 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
-import StarRatings from '../../StarRatings.jsx';
 import data from '../dummyReviews.js';
 
 class ReviewsList extends React.Component {
@@ -17,14 +16,13 @@ class ReviewsList extends React.Component {
         const {reviews} = this.state;
         console.log(reviews)
         return (
-            <div className="reviewsList">Reviews ----
-                <StarRatings />
+            <div className="reviewsList">
                 <SortBy />
                { reviews.map((review, i) => 
                <ReviewTile review={review} key={i} />  
                )}
             </div>
-        )
+        )  
     }
 }
 
