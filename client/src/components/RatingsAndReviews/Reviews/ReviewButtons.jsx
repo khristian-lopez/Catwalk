@@ -29,9 +29,4 @@ class ReviewButtons extends React.Component {
     }
 }
 
-
-
-{/* <button onClick={ () => this.setState({showForm: true})}>ADD A REVIEW +</button>
-                {this.state.showForm ? this.toggleForm() : null} */}
-
 export default ReviewButtons;
