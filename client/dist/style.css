@@ -2,6 +2,20 @@
   box-sizing: border-box;
 }
 
+/*
+==================================================
+OVERVIEW
+==================================================
+*/
+
+
+
+/*
+==================================================
+RELATED PRODUCTS
+==================================================
+*/
+
 .rel-products-list, .outfit-list {
   display: flex;
   width: 80%;
@@ -12,7 +26,6 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
   width: 200px;
   height: 300px;
   margin: 0 10px;
@@ -22,7 +35,10 @@
 }
 
 .prod-info {
+  max-height: 100px;
+  position: absolute;
   padding: 10px 5px;
+  bottom: 10px;
 }
 
 .action-button {
@@ -30,3 +46,26 @@
   top: 5px;
   right: 5px;
 }
+
+.prod-info .product-name {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/*
+==================================================
+Q&A
+==================================================
+*/
+
+
+
+/*
+==================================================
+RATINGS & REVIEWS
+==================================================
+*/
