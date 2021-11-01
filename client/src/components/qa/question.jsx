@@ -9,7 +9,7 @@ const Question = (props) => (
     <div>{props.question.question_body}</div>
     <div>Helpful?</div>
     <div>Yes</div>
-    <div>({props.question.question_helpfulness})</div>
+    <div>({props.question.question_helpfulness}) |</div>
     <div>Add Answer</div>
    </div>
    <AnswerList />
