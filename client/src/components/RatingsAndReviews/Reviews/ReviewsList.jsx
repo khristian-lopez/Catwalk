@@ -9,14 +9,14 @@ class ReviewsList extends React.Component {
 
         this.state = {
             reviews: data.results
-
         }
     }
     render() {
         const {reviews} = this.state;
-        console.log(reviews)
+        //console.log(reviews)
         return (
             <div className="reviewsList">
+                <div>{reviews.length} reviews, </div>
                 <SortBy />
                { reviews.map((review, i) => 
                <ReviewTile review={review} key={i} />  

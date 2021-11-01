@@ -1,5 +1,5 @@
 import React from 'react';
-import NewForm from './NewForm.jsx';
+import ReviewForm from './ReviewForm.jsx';
 
 class ReviewButtons extends React.Component {
     constructor(props) {
@@ -8,21 +8,22 @@ class ReviewButtons extends React.Component {
         this.state = {
             showForm: false
         }
-        this.hideForm = this.hideForm.bind(this)
+        this.showModal = this.showModal.bind(this)
+        this.hideModal = this.hideModal.bind(this)
     }
-    hideForm() {
-        this.setState({
-            showForm: false
-        })
+    showModal() {
+        this.setState({ showForm: true })
+    }
+    hideModal() {
+        this.setState({ showForm: false })
     }
     render() {
         const {showForm} = this.state;
-
         return (
             <div className="new-review">
                 <button>MORE REVIEWS</button>
-                <button onClick={ () => this.setState({ showForm: !showForm })}>ADD A REVIEW +</button>
-                { showForm ? <NewForm hideForm={this.hideForm}/> : null}
+                <button type="button" onClick={this.showModal}>ADD A REVIEW +</button>
+                { showForm ? <ReviewForm show={showForm} hideModal={this.hideModal} /> : null}
             </div>
         )
     }

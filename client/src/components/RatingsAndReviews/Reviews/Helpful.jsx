@@ -1,11 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const Helpful = () => (
+const Helpful = props => (
     <div>
         <div>Helpful?
-            <a href="#" onClick={ () => console.log('you clicked yes')}>Yes</a>
-            <a>  | </a>
-            <a href="#" onClick={ () => console.log('you clicked no')}> No</a>
+            <a href="#" onClick={ () => console.log('you clicked yes')}>Yes</a> ({props.helpfulness})
         </div>
     </div>
 )
