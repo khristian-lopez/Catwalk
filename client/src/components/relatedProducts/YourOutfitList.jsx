@@ -4,7 +4,7 @@ import RelatedProductCard from './RelatedProductCard.jsx';
 
 const YourOutfitList = () => (
   <div className="outfit-list">
-    <RelatedProductCard />
+    <RelatedProductCard card={ 'outfit' }/>
     <AddOutfitCard />
   </div>
 )

@@ -56,6 +56,12 @@ RELATED PRODUCTS
   -webkit-box-orient: vertical;
 }
 
+.add-outfit-card {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 /*
 ==================================================
 Q&A
