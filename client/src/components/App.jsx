@@ -8,7 +8,7 @@ import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 
 const App = () => (
   <div>
-    <h1>we them techGuys!</h1>
+    <h1>Project Catwalk</h1>
     <Overview />
     <RelatedProducts />
     <Qa />
