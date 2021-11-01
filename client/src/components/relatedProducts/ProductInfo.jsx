@@ -3,9 +3,9 @@ import StarRatings from '../StarRatings.jsx';
 
 const ProductInfo = () => (
   <div className='prod-info'>
-    <h5> Category </h5>
-    <h3> Product Name </h3>
-    <span> $123 </span>
+    <span style={{ fontSize: '12px'}}> Category </span> <br/>
+    <span title="Expanded Product Name with Extra Text That Cannot Fit" className='product-name'> Expanded Product Name with Extra Text That Cannot Fit </span>
+    <span style={{ fontSize: '12px'}}> $123 </span>
     <br/>
     <StarRatings />
   </div>

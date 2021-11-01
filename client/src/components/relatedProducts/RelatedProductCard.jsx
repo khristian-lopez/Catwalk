@@ -4,7 +4,10 @@ import ProductInfo from './ProductInfo.jsx';
 
 const RelatedProductCard = () => (
   <div className="card rel-prod-card">
-    <ActionButton />
+    <img src="assets/product-image-placeholder-300x300.jpeg" style={{ width:'100%' }} />
+    <span>
+      <ActionButton />
+    </span>
     <ProductInfo />
   </div>
 )

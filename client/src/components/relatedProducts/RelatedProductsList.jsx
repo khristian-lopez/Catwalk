@@ -4,6 +4,8 @@ import RelatedProductCard from './RelatedProductCard.jsx';
 const RelatedProductsList = () => (
   <div className="rel-products-list">
     <RelatedProductCard />
+    <RelatedProductCard />
+    <RelatedProductCard />
   </div>
 )
 
