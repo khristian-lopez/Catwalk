@@ -62,8 +62,62 @@ Q&A
 ==================================================
 */
 
+.qa-Main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px
+}
 
+.qa-Search {
+  border: solid;
+  display: flex;
+  flex-direction: column;
+}
 
+.qa-Answerer {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.qa-Question {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.qa-QuestionList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.qa-AnswerList {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.qa-Answers {
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.qa-Answerer {
+  font-size: 75%
+}
+
+.qa-Questions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 /*
 ==================================================
 RATINGS & REVIEWS
