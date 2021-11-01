@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import AnswerList from './answerlist.jsx'
 //Question
@@ -9,9 +10,11 @@ const Question = (props) => (
     <div>Helpful?</div>
     <div>Yes</div>
     <div>({props.question.question_helpfulness})</div>
+    <div>Add Answer</div>
    </div>
    <AnswerList />
    </div>
 )
+
 
 export default Question

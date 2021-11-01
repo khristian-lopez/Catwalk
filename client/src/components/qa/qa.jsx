@@ -4,7 +4,7 @@ import Search from './questionsearch.jsx'
 
 const Qa = () => (
   <div className='qa-Main'>
-    QUESTIONS AND ANSWERS
+    <div>Questions and Answers</div>
     <Search />
     <QuestionList/>
   </div>
