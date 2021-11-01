@@ -70,6 +70,16 @@ Q&A
   gap: 15px
 }
 
+.qa-Search {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .qa-Answerer {
   display: flex;
   flex-direction: row;

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Search = (props) => (
-  <div className='qa-Search'>
+  <div >
   <form>
-    <input type='text' placeholder='Have a question? Search for answers...'></input>
+    <input className='qa-Search' type='text' placeholder='Have a question? Search for answers...'></input>
   </form>
   </div>
 )
