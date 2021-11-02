@@ -76,7 +76,7 @@ RELATED PRODUCTS
   transform: translateY(-50%);
 }
 
-.card {
+.cards {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -84,7 +84,7 @@ RELATED PRODUCTS
   height: 300px;
   margin: 0 15px;
   border: 1px solid black;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
 }
 
@@ -93,6 +93,7 @@ RELATED PRODUCTS
   position: absolute;
   padding: 10px 5px;
   bottom: 10px;
+  line-height: normal;
 }
 
 .action-button {
