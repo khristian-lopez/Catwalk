@@ -1,10 +1,8 @@
 import React from 'react';
 import Overview from './overview/overview.jsx';
 import Qa from './qa/qa.jsx';
-import Ratings from './ratings/ratings.jsx';
-import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
-
-
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
+import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
 const App = () => (
   <div>
@@ -14,7 +12,7 @@ const App = () => (
     </div>
     <RelatedProducts />
     <Qa />
-    <Ratings />
+    <RatingsAndReviews />
   </div>
 
 )
