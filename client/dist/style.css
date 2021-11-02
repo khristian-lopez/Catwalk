@@ -30,7 +30,22 @@ OVERVIEW
   outline-color: black;
   min-height: 300px;
 }
+.ov-styles {
+  /* display: flex; */
+  outline-style: solid;
+  outline-color: black;
+  /* align-items: flex-end; */
+}
+.ov-style-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 250px;
 
+}
+.ov-add-to-cart {
+  outline-style: solid;
+  outline-color: black;
+}
 
 /*
 ==================================================
