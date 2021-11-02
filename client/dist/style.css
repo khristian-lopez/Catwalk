@@ -46,6 +46,9 @@ OVERVIEW
   outline-style: solid;
   outline-color: black;
 }
+.ov-textarea {
+  resize: none;
+}
 
 /*
 ==================================================
