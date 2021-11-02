@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import StarRatings from '../StarRatings.jsx';
 import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button';
 
 const StyleInfo = () => (
   <Col className='col'>
@@ -21,7 +22,7 @@ const StyleInfo = () => (
       {/* <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid/> */}
     </Container>
     <Container className="ov-main">
-      add to cart
+    <Button variant="primary" size="sm">add to cart</Button>{' '}
 
     </Container>
 
