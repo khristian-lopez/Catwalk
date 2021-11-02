@@ -1,13 +1,7 @@
 import React from 'react';
 
 class Characteristics extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            checked: false
-        }
-    }
-   
+
     render() {
         return (
             <table className="review-chars">
@@ -21,7 +15,6 @@ class Characteristics extends React.Component {
                         <th>5</th>
                     </tr>
                 </thead>
-    
                 <tbody>
                     <tr>
                         <td><label />Size</td>

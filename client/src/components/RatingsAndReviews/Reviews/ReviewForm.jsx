@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Characteristics from './characteristics/characteristics.jsx';
 
+
+// eslint-disable-next-line react/prop-types
 const ReviewForm = ({hideModal}) => {
+    const [characterCount, setCharacterCount] = useState(0)
+    const min = 50
+    const Minimum = () => (min - characterCount > 0) ? <p>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
     // const showHideClassName = show ? "modal display-block" : "modal display-none"
     return (
         <div /*className={showHideClassName}*/>
@@ -25,11 +30,13 @@ const ReviewForm = ({hideModal}) => {
                     </div>
                     <div className="review-body">Review:
                         <br></br>
-                        <textarea 
-                            type="text" rows="4"
+                        <textarea
+                            onChange={e => setCharacterCount(e.target.value.length)}
+                            type="text" rows="5"
                             placeholder="Why did you like the product or not?"
                             minLength="50" maxLength="1000" required
-                        />
+                            />
+                        <Minimum />
                     </div>
                     <div className="reviewer-name">username:
                         <br></br>
