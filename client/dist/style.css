@@ -17,9 +17,23 @@ RELATED PRODUCTS
 */
 
 .rel-products-list, .outfit-list {
-  display: flex;
-  width: 80%;
-  justify-content: flex-start;
+  position: relative;
+  display: block;
+  width: 900px;
+}
+
+.buttonNext___2mOCa {
+  right: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.buttonBack___1mlaL {
+  left: 4px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .card {
@@ -28,7 +42,7 @@ RELATED PRODUCTS
   flex-direction: column;
   width: 200px;
   height: 300px;
-  margin: 0 10px;
+  margin: 0 15px;
   border: 1px solid black;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -54,6 +68,12 @@ RELATED PRODUCTS
   display: -webkit-inline-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.add-outfit-card {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /*
