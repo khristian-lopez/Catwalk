@@ -6,8 +6,10 @@ import RelatedProducts from './relatedProducts/relatedProducts.jsx';
 
 const App = () => (
   <div>
-    <h1>we them techGuys!</h1>
-    <Overview />
+    <h1>Project Catwalk</h1>
+    <div>
+      <Overview />
+    </div>
     <RelatedProducts />
     <Qa />
     <RatingsAndReviews />
