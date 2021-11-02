@@ -9,7 +9,7 @@ import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 const App = () => (
   <div>
     <h1>Project Catwalk</h1>
-    <div className="bootstrap-iso">
+    <div>
       <Overview />
     </div>
     <RelatedProducts />

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import RowOne from './RowOne.jsx';
 import Col from 'react-bootstrap/Col'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Overview = () => (
   <Container fluid="sm" className="ov-main">
