@@ -1,13 +1,15 @@
 import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import ProductInfo from './ProductInfo.jsx';
+import SocialLinks from './SocialLinks.jsx';
 
 
 const RowTwo = () => (
 
   <Row className="ov-main-row2">
-    <Col className='col' xs={7}>product overview</Col>
-    <Col className='col'>social links</Col>
+    <ProductInfo />
+    <SocialLinks />
   </Row>
 )
 
