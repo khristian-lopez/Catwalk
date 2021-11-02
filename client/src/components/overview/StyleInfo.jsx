@@ -7,7 +7,7 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 
 const StyleInfo = () => (
-  <Col className='col'>
+  <Col className='col1'>
     purchase style options
     <div>
       <StarRatings /> Read all XX reviews
@@ -19,7 +19,7 @@ const StyleInfo = () => (
     </div>
     <Container className="ov-main">
       style slector/thumbnails
-      {/* <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid/> */}
+      <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid/>
     </Container>
     <Container className="ov-main">
     <Button variant="primary" size="sm">add to cart</Button>{' '}
