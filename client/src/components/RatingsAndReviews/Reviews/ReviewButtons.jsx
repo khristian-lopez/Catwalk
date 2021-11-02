@@ -21,7 +21,7 @@ class ReviewButtons extends React.Component {
         const {showForm} = this.state;
         return (
             <div className="new-review">
-                <button>MORE REVIEWS</button>
+                {/* <button>MORE REVIEWS</button> */}
                 <button type="button" onClick={this.showModal}>ADD A REVIEW +</button>
                 { showForm ? <ReviewForm show={showForm} hideModal={this.hideModal} /> : null}
             </div>
