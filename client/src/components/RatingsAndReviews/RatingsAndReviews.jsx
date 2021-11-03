@@ -1,5 +1,5 @@
 import React from 'react';
-import RatingsBreakdown from './Ratings/RatingsBreakdown.jsx';
+import Ratings from './Ratings/Ratings.jsx';
 import ReviewsList from './Reviews/ReviewsList.jsx';
 import ReviewButtons from './Reviews/ReviewButtons.jsx';
 
@@ -16,7 +16,7 @@ class RatingsAndReviews extends React.Component {
         return (
             <div>
                 <h5>RATINGS & REVIEWS</h5>
-                <RatingsBreakdown />
+                <Ratings />
                 <ReviewsList />
                 <ReviewButtons />
             </div>
