@@ -149,6 +149,11 @@ RELATED PRODUCTS
   display: none;
 }
 
+#related {
+  margin: 0 auto;
+  width: 1320px;
+}
+
 /*
 ==================================================
 Q&A
