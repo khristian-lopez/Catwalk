@@ -10,7 +10,7 @@ const ProductInfo = () => (
     <Container className="ov-product-info">
       <Form >
           <Form.Group >
-              <Form.Label>Product Overview</Form.Label>
+              <Form.Label><h5>Product Overview</h5></Form.Label>
               <Form.Control className="ov-textarea" as="textarea" rows={6} plaintext readOnly defaultValue="This is an example description of the product selected"/>
           </Form.Group>
       </Form>
