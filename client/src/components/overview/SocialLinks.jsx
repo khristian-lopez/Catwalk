@@ -7,24 +7,26 @@ import {FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon,T
 const SocialLinks = () => (
   <Col >social Links
     <br />
-    <TwitterShareButton
-      url={"https://github.com/tech-guys-47/project-catwalk"}
-      quote={"techGuy's project Catwalk is amazing!"}
-      hashtag="#techGuy's">
-       <TwitterIcon size={36} round={true} />
-    </TwitterShareButton>
-    <FacebookShareButton
-      url={"https://github.com/tech-guys-47/project-catwalk"}
-      quote={"techGuy's project Catwalk is amazing!"}
-      hashtag="#techGuy's">
-       <FacebookIcon size={36} round={true} />
-    </FacebookShareButton>
-    <PinterestShareButton
-      url={"https://github.com/tech-guys-47/project-catwalk"}
-      quote={"techGuy's project Catwalk is amazing!"}
-      hashtag="#techGuy's">
-       <PinterestIcon size={36} round={true} />
-    </PinterestShareButton>
+    <Container className="ov-social-links">
+      <TwitterShareButton
+        url={"https://github.com/tech-guys-47/project-catwalk"}
+        quote={"techGuy's project Catwalk is amazing!"}
+        hashtag="#techGuy's">
+        <TwitterIcon size={36} round={true} />
+      </TwitterShareButton>
+      <FacebookShareButton
+        url={"https://github.com/tech-guys-47/project-catwalk"}
+        quote={"techGuy's project Catwalk is amazing!"}
+        hashtag="#techGuy's">
+        <FacebookIcon size={36} round={true} />
+      </FacebookShareButton>
+      <PinterestShareButton
+        url={"https://github.com/tech-guys-47/project-catwalk"}
+        quote={"techGuy's project Catwalk is amazing!"}
+        hashtag="#techGuy's">
+        <PinterestIcon size={36} round={true} />
+      </PinterestShareButton>
+    </Container>
 
   </Col>
 );

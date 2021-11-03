@@ -11,7 +11,7 @@ import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
 
 const StyleInfo = () => (
-  <Col className="test">
+  <Col className="ov-styles">
     <Stack >
       {/* specific product info */}
       <div>
@@ -25,7 +25,7 @@ const StyleInfo = () => (
     </Stack>
     <Stack>
       {/* container for styles thumbnails */}
-      <div className="ov-styles">
+      <div className="ov-styles-thumbnails">
         Style &gt; Selected Style <br />
         <div className="ov-style-thumbnails">
           <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
