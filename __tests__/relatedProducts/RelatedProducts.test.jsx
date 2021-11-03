@@ -13,7 +13,7 @@ import '@testing-library/jest-dom';
 import RelatedProducts from '../../client/src/components/RelatedProducts/RelatedProducts.jsx';
 
 describe('related products module', () => {
-  test('renders two horizontal lists', () => {
+  test('renders a related products list and an outfit list', () => {
     render(<RelatedProducts />);
 
     const ancestor = screen.getByTestId('related-products');
