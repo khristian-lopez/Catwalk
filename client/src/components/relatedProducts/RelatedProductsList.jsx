@@ -49,20 +49,21 @@ const RelatedProductsList = (props) => {
       totalSlides={products.length}
       visibleSlides={4}
     >
-    {/* TODO: make totalSlides dynamic */}
-      <Slider>
-        {/* <Slide index={0}><RelatedProductCard card={'related'}/></Slide>
-        <Slide index={1}><RelatedProductCard card={'related'}/></Slide>
-        <Slide index={2}><RelatedProductCard card={'related'}/></Slide>
-        <Slide index={3}><RelatedProductCard card={'related'}/></Slide>
-        <Slide index={4}><RelatedProductCard card={'related'}/></Slide>
-        <Slide index={5}><RelatedProductCard card={'related'}/></Slide> */}
-        {products.map((product, i) => (
-          <RelatedProductCard key={product.id} product={product} index={i}/>
-        ))}
-      </Slider>
-      <ButtonBack>{'<'}</ButtonBack>
-      <ButtonNext>{'>'}</ButtonNext>
+      <div data-testid='related-prod-list'>
+        <Slider>
+          {/* <Slide index={0}><RelatedProductCard card={'related'}/></Slide>
+          <Slide index={1}><RelatedProductCard card={'related'}/></Slide>
+          <Slide index={2}><RelatedProductCard card={'related'}/></Slide>
+          <Slide index={3}><RelatedProductCard card={'related'}/></Slide>
+          <Slide index={4}><RelatedProductCard card={'related'}/></Slide>
+          <Slide index={5}><RelatedProductCard card={'related'}/></Slide> */}
+          {products.map((product, i) => (
+            <RelatedProductCard key={product.id} product={product} index={i}/>
+          ))}
+        </Slider>
+        <ButtonBack>{'<'}</ButtonBack>
+        <ButtonNext>{'>'}</ButtonNext>
+      </div>
     </CarouselProvider>
   )
 }
