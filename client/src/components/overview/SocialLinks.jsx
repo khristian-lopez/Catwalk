@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import {FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon,TwitterShareButton, TwitterIcon} from 'react-share';
 
 const SocialLinks = () => (
-  <Col className='col'>social Links
+  <Col >social Links
     <br />
     <TwitterShareButton
       url={"https://github.com/tech-guys-47/project-catwalk"}
