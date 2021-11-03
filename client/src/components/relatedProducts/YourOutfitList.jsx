@@ -13,10 +13,10 @@ const YourOutfitList = () => (
   >
   {/* TODO: make totalSlides dynamic */}
     <Slider>
-      <Slide index={0}>
+      {/* <Slide index={0}>
         <RelatedProductCard card={'outfit'}/>
-      </Slide>
-      <Slide index={1}>
+      </Slide> */}
+      <Slide index={0}>
         <AddOutfitCard />
       </Slide>
     </Slider>
