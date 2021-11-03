@@ -137,6 +137,10 @@ RELATED PRODUCTS
   text-align: center;
 }
 
+.carousel button:disabled {
+  display: none;
+}
+
 /*
 ==================================================
 Q&A
