@@ -11,17 +11,18 @@ const YourOutfitList = () => (
   totalSlides={2}
   visibleSlides={4}
   >
-  {/* TODO: make totalSlides dynamic */}
-    <Slider>
-      <Slide index={0}>
-        <RelatedProductCard card={'outfit'}/>
-      </Slide>
-      <Slide index={1}>
-        <AddOutfitCard />
-      </Slide>
-    </Slider>
-    <ButtonBack>{'<'}</ButtonBack>
-    <ButtonNext>{'>'}</ButtonNext>
+    <div data-testid='outfit'>
+      <Slider>
+        {/* <Slide index={0}>
+          <RelatedProductCard card={'outfit'}/>
+        </Slide> */}
+        <Slide index={0}>
+          <AddOutfitCard />
+        </Slide>
+      </Slider>
+      <ButtonBack>{'<'}</ButtonBack>
+      <ButtonNext>{'>'}</ButtonNext>
+    </div>
   </CarouselProvider>
 )
 

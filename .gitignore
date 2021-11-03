@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 client/dist/bundle.js
 config.js
+coverage
 
 # Logs
 logs
