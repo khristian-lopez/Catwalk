@@ -46,7 +46,7 @@ const dummyReviews = {
           "recommend": true,
           "response": "Glad you're enjoying the product!",
           "body": "Best glasses purchase this year. I definitely recommend buy these because they are spot on.",
-          "date": "2019-06-23T00:00:00.000Z",
+          "date": "2021-11-01T00:00:00.000Z",
           "reviewer_name": "coosenguyen",
           "helpfulness": 10,
           "photos": [],
