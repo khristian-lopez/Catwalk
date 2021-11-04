@@ -3,12 +3,40 @@ const axios = require('axios');
 const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`
 
 module.exports = {
-  getAll: () => {
-
+  getAll: (req, res) => {
+    let config = {
+      headers: {
+        'Authorization': TOKEN
+      }
+    }
+    axios.get(`${API_URL}/products/`, config)
+      .then(results => {
+        console.log('all products successfully obtained')
+          res.status(200).send(results.data)
+      })
+        .catch(err => {
+          console.error('unable to obtain desired product')
+          res.status(400).send(err)
+      })
   },
 
-  getOne: () => {
-
+  getOne: (req, res) => {
+    let productId = req.params.product_id;
+    let config = {
+      headers: {
+        'Authorization': TOKEN
+      }
+    }
+    //retrieve all product level information for a specific product id
+    axios.get(`${API_URL}/products/${productId}`, config)
+      .then(results => {
+        console.log('product successfully obtained')
+        res.status(200).send(results.data)
+      })
+      .catch(err => {
+        console.error('unable to obtain desired product')
+        res.status(400).send(err)
+      })
   },
 
   getRelatedProductIds: (req, res) => {
