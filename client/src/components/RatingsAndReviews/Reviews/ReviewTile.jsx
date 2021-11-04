@@ -16,11 +16,11 @@ const ReviewTile = props => {
                     <ReviewsRating rating={props.review.rating}/>
                 </Col>
                 <Col xs={4}>
-                    <span id="rev-user">
-                        <p>{props.review['reviewer_name']} 
+                    <div id="rev-user">
+                        <span>{props.review['reviewer_name']} 
                         {props.review.verified ? <p style={{fontSize: "10px"}}> Verified Purchaser &#10003;</p> : null}
-                        </p>
-                    </span>
+                        </span>
+                    </div>
                 </Col>
                 <Col xs={2}>
                     <p id="rev-date" style={{fontSize: "15px"}}>{formattedDate}</p>
@@ -30,10 +30,10 @@ const ReviewTile = props => {
             <div id="rev-body" style={{fontSize: "13px"}}>{props.review.body}</div>
             {!props.review.recommend ? null : <p id="rev-rec">I recommend this product<span>&#10003;</span></p>}
             {props.review.response ? 
-            <p 
+            <div 
                 id="rev-response" style={{fontWeight: "600"}}>Response from seller:
                 <p id="seller-response">{props.review.response}</p>
-            </p> 
+            </div> 
             : null}
             <Helpful helpfulness={props.review.helpfulness} />
         </div>

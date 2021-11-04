@@ -288,5 +288,6 @@ div.review-Tile {
 }
 
 .ratingsbar {
-  justify-content: center;
+  margin: 4px;
+  padding: 3px;
 }

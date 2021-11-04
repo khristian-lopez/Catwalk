@@ -1,18 +1,26 @@
 import React from 'react';
 
 const RatingsBar = () => {
-    
+
     return (
-        <div className="ratingsbar">
-            <div className="ratingsbar-unfilled">
+        <div className="ratingsbar" >
+            <div 
+                className="ratingsbar-gray"
+                style={{
+                    
+                    height: "20",
+                    width: "80%",
+                    backgroundColor: "rgb(220,220,220)",
+                    
+                }}
+            >
                 <div 
-                    className="ratingsbar-filled"
+                    className="ratingsbar-green"
                     style={{
-                        margin: "10px",
                         padding: "5px",
-                        height: "10px",
-                        width: "100%",
-                        backgroundColor: "rgb(220,220,220)"
+                        height: "100%",
+                        width: "30%",
+                        backgroundColor: "green",
                     }}
                 >
                 </div>

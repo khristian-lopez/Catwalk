@@ -29,14 +29,13 @@ const Ratings = () => {
         2: 0,
         1: 0
     }
-    
     const stars = results.map(review => {
         starCount[review.rating] += 1;
         
         return starCount;
     }, stars)
-    // console.log(starCount)
-    // TODO: fix ratings bar
+    //console.log(starCount)
+
     return (
         <div>
             <Row>
@@ -54,42 +53,42 @@ const Ratings = () => {
                 <div className="bar-container">
                         <Row>
                             <Col s={1}>
-                            <div id="5-star">5 Stars</div>
+                                <div id="5-star">5 Stars</div>
                             </Col>
                             <Col xs={9}>
-                            <RatingsBar />
+                                <RatingsBar star={starCount[5]}/>
                             </Col>
                         </Row>   
                         <Row>    
-                        <Col s={1}>
-                            <div id="4-star">4 Stars</div>
+                            <Col s={1}>
+                                <div id="4-star">4 Stars</div>
                             </Col>
                             <Col xs={9}>
-                            <RatingsBar />
+                                <RatingsBar star={starCount[4]}/>
                             </Col>  
                         </Row>
                         <Row>       
-                        <Col s={1}>
-                            <div id="3-star">3 Stars</div>
+                            <Col s={1}>
+                                <div id="3-star">3 Stars</div>
                             </Col>
                             <Col xs={9}>
-                            <RatingsBar />
+                                <RatingsBar star={starCount[3]}/>
                             </Col>
                         </Row>    
                         <Row>    
-                        <Col s={1}>
-                            <div id="2-star">2 Stars</div>
+                            <Col s={1}>
+                                <div id="2-star">2 Stars</div>
                             </Col>
                             <Col xs={9}>
-                            <RatingsBar />
+                                <RatingsBar star={starCount[2]}/>
                             </Col>
                         </Row>                   
                         <Row>    
-                        <Col s={1}>
-                            <div id="1-star">1 Stars</div>
+                            <Col s={1}>
+                                <div id="1-star">1 Stars</div>
                             </Col>
                             <Col xs={9}>
-                            <RatingsBar />
+                                <RatingsBar star={starCount[1]}/>
                             </Col>
                         </Row>
                 </div>
