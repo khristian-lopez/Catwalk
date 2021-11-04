@@ -7,12 +7,16 @@ import Col from 'react-bootstrap/Col'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Overview = () => (
-  <Container fluid="md" className="ov-main">
-    <div >
+  <Container md className="ov-main">
+    <Row>
       <h1>Overview</h1>
-    </div>
-    <RowOne />
-    <RowTwo />
+    </Row>
+    <Row>
+      <RowOne />
+    </Row>
+    <Row>
+      <RowTwo />
+    </Row>
   </Container>
 )
 

@@ -32,14 +32,14 @@ const exampleProducts = [
 ]
 
 const RelatedProductsList = (props) => {
-  const [products, setProducts] = useState(exampleProducts);
-  const currentProductId = 1;
-
-  // useEffect(() => {
-  //   axios.get(`/products/${currentProductId}/related`)
-  //     .then(data => setProducts(data))
-  //     .catch(err => console.error(err));
-  // }, []);
+  const [products, setProducts] = useState([]);
+  const currentProductId = 42372;
+  // TODO: add spinner to list
+  useEffect(() => {
+    axios.get(`/products/${currentProductId}/related`)
+      .then(results => setProducts(results.data))
+      .catch(err => console.error(err));
+  }, []);
 
   return (
     <CarouselProvider
@@ -51,12 +51,6 @@ const RelatedProductsList = (props) => {
     >
       <div data-testid='related-prod-list'>
         <Slider>
-          {/* <Slide index={0}><RelatedProductCard card={'related'}/></Slide>
-          <Slide index={1}><RelatedProductCard card={'related'}/></Slide>
-          <Slide index={2}><RelatedProductCard card={'related'}/></Slide>
-          <Slide index={3}><RelatedProductCard card={'related'}/></Slide>
-          <Slide index={4}><RelatedProductCard card={'related'}/></Slide>
-          <Slide index={5}><RelatedProductCard card={'related'}/></Slide> */}
           {products.map((product, i) => (
             <RelatedProductCard key={product.id} product={product} index={i}/>
           ))}

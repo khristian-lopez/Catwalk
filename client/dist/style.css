@@ -9,45 +9,53 @@ OVERVIEW
 */
 
 .ov-main {
-  outline-style: solid;
+  outline-style:groove;
   outline-color: black;
 }
 .ov-main-row1 {
   outline-style: solid;
-  outline-color: black;
 }
 .ov-main-row2 {
   outline-style: solid;
-  outline-color: black;
 }
 .col1 {
   outline-style: solid;
-  outline-color: black;
   min-height: 600px;
 }
 .col2 {
   outline-style: solid;
-  outline-color: black;
-  min-height: 300px;
+  min-height: 200px;
 }
 .ov-styles {
-  /* display: flex; */
-  outline-style: solid;
-  outline-color: black;
-  /* align-items: flex-end; */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
-.ov-style-thumbnails {
+.ov-styles-thumbnails {
   display: flex;
   flex-wrap: wrap;
-  max-width: 250px;
+  /* max-width: 250px; */
+  outline-style: solid;
 
 }
 .ov-add-to-cart {
-  outline-style: solid;
-  outline-color: black;
+  /* outline-style: solid; */
+  align-items: center;
+  max-height: 75px;
 }
 .ov-textarea {
   resize: none;
+}
+
+.ov-product-info {
+  text-align: center;
+}
+.ov-social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  /* border: 3px solid green; */
 }
 
 /*
@@ -139,6 +147,11 @@ RELATED PRODUCTS
 
 .carousel button:disabled {
   display: none;
+}
+
+#related {
+  margin: 0 auto;
+  width: 1320px;
 }
 
 /*

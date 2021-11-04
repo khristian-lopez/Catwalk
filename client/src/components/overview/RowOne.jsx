@@ -8,10 +8,12 @@ import ImageGallery from './ImageGallery.jsx'
 
 const RowOne = () => (
 
-  <Row className="ov-main-row1">
-    <ImageGallery />
-    <StyleInfo />
-  </Row>
+  <Container>
+    <Row className="ov-main-row1">
+      <ImageGallery />
+      <StyleInfo />
+    </Row>
+  </Container>
 )
 
 export default RowOne;
