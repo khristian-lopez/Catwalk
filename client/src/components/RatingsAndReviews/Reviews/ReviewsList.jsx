@@ -2,6 +2,9 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
 import data from '../dummyReviews.js';
+import ReviewButton from './ReviewButtons.jsx';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 class ReviewsList extends React.Component {
     constructor(props) {
@@ -21,10 +24,21 @@ class ReviewsList extends React.Component {
         const {reviews, tiles} = this.state;
         if (reviews.length > 0) {
             return (
-                <div className="reviewsList">
-                    <SortBy review={reviews}/>
-                   { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
-                   { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+                <div>
+                    <div className="reviewsList">
+                        <SortBy review={reviews}/>
+                    { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+                    </div>
+                    <div className="reviews-btn">
+                        <Row xs="auto">
+                            <Col>
+                                { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+                            </Col>
+                            <Col>
+                                <ReviewButton />
+                            </Col>
+                        </Row>
+                    </div>
                 </div>
             )  
         } else {

@@ -2,18 +2,26 @@ import React from 'react';
 import data from '../dummyReviews.js';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
 import RatingsBar from './RatingsBar.jsx';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const Ratings = () => {
     let results = data.results
     let ratings = []
+    let recommend = [];
     let total = 0
     for (let i = 0; i < results.length; i++) {
         let rating = results[i]['rating']
+        let recc = results[i]['recommend']
         ratings.push(rating)
+        recommend.push(recc);
         total += rating
     }
+    const recommendCount = recommend.filter(Boolean).length
+    const avgRecommend = Math.round(recommendCount / recommend.length * 100) 
+    
     const avgRating = total / ratings.length
-
+    // TODO: implement something to make the bar rating
     let starCount = {
         5: 0,
         4: 0,
@@ -27,39 +35,68 @@ const Ratings = () => {
         
         return starCount;
     }, stars)
-    console.log(starCount)
+    // console.log(starCount)
     // TODO: fix ratings bar
     return (
         <div>
-            <div className="average-rating" style={{ fontSize: 40 }}>{avgRating}</div>
-            <ReviewsRating rating={avgRating} />
+            <Row>
+                <Col xs={2}>
+                    <div className="average-rating" style={{ fontSize: 70 }}>{avgRating}</div>
+                </Col>
+                <Col xs={4}>
+                    <ReviewsRating rating={avgRating} />
+                </Col>
+                <div id="recommend">{avgRecommend}% of reviews recommend this product
+                </div> 
+            </Row>
             <br></br>
-            <div className="bar-container">
-                    <div>5 Stars</div>
-                    <RatingsBar count={starCount[5]}/> 
-                    <div>4 Stars</div>
-                    <RatingsBar count={starCount[4]}/>                  
-                    <div>3 Stars</div>
-                    <RatingsBar count={starCount[3]}/>                    
-                    <div>2 Stars</div>
-                    <RatingsBar count={starCount[2]}/>                    
-                    <div>1 Stars</div>
-                    <RatingsBar count={starCount[1]}/>
-            </div>
+            <Row>
+                <div className="bar-container">
+                        <Row>
+                            <Col s={1}>
+                            <div id="5-star">5 Stars</div>
+                            </Col>
+                            <Col xs={9}>
+                            <RatingsBar />
+                            </Col>
+                        </Row>   
+                        <Row>    
+                        <Col s={1}>
+                            <div id="4-star">4 Stars</div>
+                            </Col>
+                            <Col xs={9}>
+                            <RatingsBar />
+                            </Col>  
+                        </Row>
+                        <Row>       
+                        <Col s={1}>
+                            <div id="3-star">3 Stars</div>
+                            </Col>
+                            <Col xs={9}>
+                            <RatingsBar />
+                            </Col>
+                        </Row>    
+                        <Row>    
+                        <Col s={1}>
+                            <div id="2-star">2 Stars</div>
+                            </Col>
+                            <Col xs={9}>
+                            <RatingsBar />
+                            </Col>
+                        </Row>                   
+                        <Row>    
+                        <Col s={1}>
+                            <div id="1-star">1 Stars</div>
+                            </Col>
+                            <Col xs={9}>
+                            <RatingsBar />
+                            </Col>
+                        </Row>
+                </div>
+            </Row>
             
         </div>
     )
 }
 
 export default Ratings;
-
-{/* <div>5 Stars</div>
-                    <progress max="100" value="0" /> 
-                    <div>4 Stars</div>
-                    <progress max="100" value="0" />                  
-                    <div>3 Stars</div>
-                    <progress max="100" value="0" />                    
-                    <div>2 Stars</div>
-                    <progress max="100" value="0" />                    
-                    <div>1 Stars</div>
-                    <progress max="100" value="0" /> */}
