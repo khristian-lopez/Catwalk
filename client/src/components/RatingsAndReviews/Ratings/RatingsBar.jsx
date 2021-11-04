@@ -1,7 +1,7 @@
 import React from 'react';
 
-const RatingsBar = ({count}) => {
-    let percent = (count * 100) / 10;
+const RatingsBar = (props) => {
+    let percent = (props.count * 100) / 10;
     return (
         <div className="ratingsbar">
             <div className="ratingsbar-unfilled">

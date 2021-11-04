@@ -22,7 +22,6 @@ class ReviewsList extends React.Component {
         if (reviews.length > 0) {
             return (
                 <div className="reviewsList">
-                    <div>{reviews.length} reviews, </div>
                     <SortBy review={reviews}/>
                    { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
                    { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }

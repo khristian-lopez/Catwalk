@@ -19,7 +19,7 @@ class SortBy extends React.Component {
         
         return (
             <div className="sort-dropdown">
-                <label>sorted by
+                <label>{this.state.reviews.length} reviews, sorted by 
                     <select value={this.state.value} onChange={this.handleChange}>
                         <option value="relevance">Relevance</option>
                         <option value="newest">Newest</option>
