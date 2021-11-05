@@ -63,6 +63,24 @@ module.exports = {
 },
 
   postQuestion: (req, res) => {
+    var product_id = req.params.product_id
+
+    var question = {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      product_id: req.body.product_id
+    }
+
+    axios.post(`${API_URL}/qa/questions?product_id=${product_id}`, question, config)
+    .then(() => {
+      console.log('Successfully posted question.')
+      res.status(201).send()
+    })
+    .catch(err => {
+      console.error('Unsuccessfully posted question.')
+      res.status(400).send(err)
+    })
   },
 
   postAnswer: (req, res) => {
