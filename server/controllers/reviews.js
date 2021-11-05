@@ -3,7 +3,7 @@ const axios = require('axios');
 const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`;
 
 module.exports = {
-  getAll: (req, res) => {
+  getAll: () => {
     let config = {
       headers: {
         'authorization': TOKEN
@@ -14,8 +14,16 @@ module.exports = {
         console.log('')
       })
   },
-
-  getOne: () => {
-
+  // return a list of reviews for specific product id
+  getOne: (req, res) => {
+    let config = {
+      headers: {
+        'authorization': TOKEN
+      }
+    }
+    axios.get(`${API_URL}/reviews/`, config)
+      .then(results => {
+        console.log('')
+      })
   }
 }
