@@ -6,7 +6,7 @@ import StyleInfo from './StyleInfo.jsx'
 import ImageGallery from './ImageGallery.jsx'
 
 
-const RowOne = () => (
+const RowOne = (props) => (
 
   <Container>
     <Row className="ov-main-row1">
