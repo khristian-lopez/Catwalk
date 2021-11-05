@@ -41,6 +41,27 @@ module.exports = {
       console.error(`Unable to retrieve all answers for question ${question_id}`)
       res.status(400).send(err)
     })
-  }
+  },
+
+  markHelpful: (req, res) => {
+    let config = {
+      headers: {
+        'Authorization': TOKEN
+      }
+    }
+
+  var answer_id = req.params.answer_id
+  console.log(answer_id)
+
+  axios.put(`${API_URL}/qa/answers/${answer_id}/helpful`, {}, config)
+  .then(() => {
+    console.log('Successfully marked answer as helpful.')
+    res.status(204).send()
+  })
+  .catch(err => {
+    console.error('Unsuccessfully marked answer as helpful.')
+    res.status(400).send(err)
+  })
+}
 }
 
