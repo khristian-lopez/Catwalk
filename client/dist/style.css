@@ -166,15 +166,10 @@ Q&A
   gap: 15px
 }
 
-/* .qa-Search {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-} */
+.qa-MainTitle {
+  font-weight: bold;
+}
+
 
 .qa-Answerer {
   display: flex;
@@ -212,12 +207,6 @@ Q&A
 .qa-Answerer {
   font-size: 75%
 }
-
-/* .qa-Questions {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-} */
 
 .qa-QuestionHelpful {
   display: flex;

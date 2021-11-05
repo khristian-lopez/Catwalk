@@ -11,7 +11,7 @@ import QuestionList from './questionlist.jsx'
 const Qa = (props) => (
   <Container fluid="md" className = 'qa-Main'>
   <Row>
-    <Col>Questions and Answers</Col>
+    <Col className='qa-MainTitle'>QUESTIONS AND ANSWERS</Col>
   </Row>
   <Row>
     <Search />

@@ -9,7 +9,7 @@ const Answer = (props) => (
     <div className='qa-Answer'>{props.answer.body}</div>
     <div className='qa-Answerer'>
       <div>by {props.answer.answerer_name},</div>
-      <div>{props.answer.date} |</div>
+      <div>{props.answer.date } |</div>
       <div>Helpful?</div>
       <div>Yes</div>
       <div>({props.answer.helpfulness}) |</div>
