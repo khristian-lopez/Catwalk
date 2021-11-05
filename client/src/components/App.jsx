@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: 42366
+      currentProductId: 42366
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
@@ -17,7 +17,7 @@ class App extends React.Component {
 
   handleChangeProduct(productId) {
     this.setState({
-      currentProduct: productId
+      currentProductId: productId
     });
   }
 
