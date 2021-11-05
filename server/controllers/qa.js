@@ -102,6 +102,32 @@ module.exports = {
       console.error('Unsuccessfully posted answer.')
       res.status(400).send(err)
     })
+  },
+
+  reportQuestion: (req, res) => {
+    var question_id = req.params.question_id
+    axios.put(`${API_URL}/qa/questions/${question_id}/report`, {}, config)
+    .then(() => {
+      console.log('Successfully reported question.')
+      res.status(204).send()
+    })
+    .catch(err => {
+      console.error('Unsuccessfully reported question.')
+      res.status(400).send(err)
+    })
+  },
+
+  reportAnswer: (req, res) => {
+    var answer_id = req.params.answer_id
+    axios.put(`${API_URL}/qa/answers/${answer_id}/report`, {}, config)
+    .then(() => {
+      console.log('Successfully reported answer.')
+      res.status(204).send()
+    })
+    .catch(err => {
+      console.error('Unsuccessfully reported answer.')
+      res.status(400).send(err)
+    })
   }
 }
 
