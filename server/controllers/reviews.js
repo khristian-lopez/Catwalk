@@ -1,29 +1,30 @@
 const TOKEN = require('../../config.js').TOKEN;
 const axios = require('axios');
-const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`;
+const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`
 
 module.exports = {
   getAll: () => {
-    let config = {
-      headers: {
-        'authorization': TOKEN
-      }
-    }
-    axios.get(`${API_URL}/reviews/`, config)
-      .then(results => {
-        console.log('')
-      })
+
   },
-  // return a list of reviews for specific product id
-  getOne: (req, res) => {
+
+  getOne: () => {
+
+  },
+  
+  getReviewMetadata: (req, res) => {
+    let productId = req.params.product_id;
+
     let config = {
       headers: {
-        'authorization': TOKEN
+        'Authorization': TOKEN
       }
     }
-    axios.get(`${API_URL}/reviews/`, config)
-      .then(results => {
-        console.log('')
+
+    axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
+      .then(results => res.status(200).send(results.data))
+      .catch(err => {
+        console.log('failed to retrieve metadata: ', err)
+        res.status(401).send(err);
       })
   }
 }

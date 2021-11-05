@@ -242,7 +242,7 @@ RATINGS & REVIEWS
   border-bottom: 1px solid #494949;
 }
 
-.widget-ratings {
+.reviews-container .widget-ratings {
   padding: 4px;
   margin: 4px;
 }
