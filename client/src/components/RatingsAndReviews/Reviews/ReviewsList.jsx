@@ -5,6 +5,7 @@ import data from '../dummyReviews.js';
 import ReviewButton from './ReviewButtons.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios';
 
 class ReviewsList extends React.Component {
     constructor(props) {
@@ -16,6 +17,8 @@ class ReviewsList extends React.Component {
         }
         this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
     }
+    // fetch API reviews
+    
     renderReviewsTiles() {
         // eslint-disable-next-line react/no-direct-mutation-state
         this.setState({ tiles: this.state.tiles += 2 })
