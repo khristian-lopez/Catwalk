@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +11,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
 
-const StyleInfo = () => {
+const StyleInfo = (props) => {
 
   const [size, changeSize] = useState('Select a Size');
   const [quantity, changeQuantity] = useState('Quantity');
@@ -22,9 +23,9 @@ const StyleInfo = () => {
           <StarRatings />  <br /> Read all XX reviews
         </div>
         <div>
-          <label>Category</label>
-          <h3>Product Name</h3>
-          <label>Price</label>
+          <label>{props.productInfo.category}</label>
+          <h3>{props.productInfo.name}</h3>
+          <label>{props.productInfo.default_price}</label>
         </div>
       </Stack>
       <Stack>

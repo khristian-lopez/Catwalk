@@ -35,7 +35,7 @@ class Overview extends React.Component {
           <h1>Overview</h1>
         </Row>
         <Row>
-          <RowOne />
+          <RowOne productInfo={this.state.productInfo}/>
         </Row>
         <Row>
           <RowTwo productInfo={this.state.productInfo}/>
