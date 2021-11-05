@@ -11,8 +11,8 @@ const RowTwo = (props) => (
 
   <Container>
     <Row className="ov-main-row2">
-      <ProductInfo currentProduct={props.currentProduct}/>
-      <SocialLinks />
+      <ProductInfo productInfo={props.productInfo}/>
+      <SocialLinks productInfo={props.productInfo}/>
     </Row>
   </Container>
 )
