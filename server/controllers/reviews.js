@@ -12,14 +12,14 @@ module.exports = {
   // return list of reviews for specific product
   getOne: (req, res) => {
     let productId = req.params.product_id;
-
+    
     axios.get(`${API_URL}/reviews/?product_id=${productId}`, config)
       .then(results => {
         console.log(`Successfully retrieved all reviews for product id: ${productId}`)
         res.status(200).send(results.data)
       })
       .catch(err => {
-        console.log('Cannot retrieve reviews')
+        console.error('Cannot retrieve reviews')
         res.status(400).send(err)
       })
   },
@@ -33,10 +33,33 @@ module.exports = {
         console.log('failed to retrieve metadata: ')
         res.status(401).send(err);
       })
-  }
+  },
 
   // TODO: Add a review for given product
+  addReview: (req, res) => {
+    let productId = req.params.product_id;
+
+    let body = {
+      rating: req.body.rating, 
+      summary: req.body.summary,
+      body: req.body.body,
+      recommend: req.body.recommend,
+      name: req.body.name,
+      email: req.body.email,
+      photos: req.body.photos,
+      characteristics: req.body.characteristics
+    }
+    // * still need to test * 
+    axios.post(`${API_URL}/reviews/?product_id=${productId}`, body, config)
+      .then(() => {
+        console.log('Successfully added review!')
+        res.status(201).send()
+      })
+      .catch(err => {
+        console.error('Unable to add review..')
+        res.status(400).send(err)
+      })
+  },
   // TODO: Updates a review to show it was found helpful
-  // TODO: Updates a review to show it was reported
-  
+  // TODO: Updates a review to show it was reported 
 }
