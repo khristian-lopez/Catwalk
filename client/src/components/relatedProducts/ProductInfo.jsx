@@ -6,7 +6,7 @@ const ProductInfo = ({ product }) => (
   <div className='prod-info'>
     <span className='prod-category' > {product.category} </span> <br/>
     <span className='product-name' title="Expanded Product Name with Extra Text That Cannot Fit"> {product.name} </span> <br/>
-    <span className='prod-price' > {'$' + product.default_price} </span>
+    <span className='prod-price' > {'$' + product.defaultStyle.original_price} </span>
     <br/>
     <span className='prod-rating'> <StarRatings rating={product.avgRating}/> </span>
   </div>

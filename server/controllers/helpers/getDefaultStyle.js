@@ -11,6 +11,11 @@ module.exports = (productId) => {
 
   return axios.get(`${API_URL}/products/${productId}/styles`, config)
     .then(results => {
+      for (var style of results.data.results) {
+        if (style['default?']) {
+          return style;
+        }
+      }
       return results.data.results[0];
     })
     .catch(err => {
