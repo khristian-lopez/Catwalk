@@ -9,10 +9,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductId: 42366
+      currentProductId: 42366,
+      reviewMetadata: []
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(`reviews/meta/${this.state.currentProductId}`)
+      .then(results => this.setState({ reviewMetadata: results.data }))
+      .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
 
   handleChangeProduct(productId) {
@@ -26,11 +33,11 @@ class App extends React.Component {
       <div>
         <h1>Project Catwalk</h1>
         <div>
-          <Overview currentProduct={this.state.currentProduct}/>
+          <Overview currentProduct={this.state.currentProductId}/>
         </div>
-        <RelatedProducts currentProduct={this.state.currentProduct}/>
-        <Qa currentProduct={this.state.currentProduct}/>
-        <RatingsAndReviews currentProduct={this.state.currentProduct}/>
+        <RelatedProducts currentProduct={this.state.currentProductId}/>
+        <Qa currentProduct={this.state.currentProductId}/>
+        <RatingsAndReviews currentProduct={this.state.currentProductId}/>
       </div>
     )
   }
