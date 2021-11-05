@@ -1,3 +1,4 @@
+const getAverageRating = require('./helpers/getAverageRating.js');
 const TOKEN = require('../../config.js').TOKEN;
 const axios = require('axios');
 const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`
@@ -30,7 +31,7 @@ module.exports = {
     //retrieve all product level information for a specific product id
     axios.get(`${API_URL}/products/${productId}`, config)
       .then(results => {
-        console.log('product successfully obtained')
+        console.log('product successfully obtained: ', results.data)
         res.status(200).send(results.data)
       })
       .catch(err => {
@@ -78,7 +79,11 @@ module.exports = {
           // to retrieve product data
           results.data.map(id => {
             return axios.get(`${API_URL}/products/${id}`, config)
-              .then(results => results.data)
+              .then(results => {
+                let product = results.data;
+
+                return product;
+              })
               .catch(err => console.log('failed to retrieve a product: ', err));
           })
         )
