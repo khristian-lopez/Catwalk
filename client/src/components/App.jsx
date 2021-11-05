@@ -17,17 +17,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getReviewMetadata();
+    this.getReviewMetadata(this.state.reviewMetadata.product_id || 42366 );
   }
 
-  getReviewMetadata() {
-    axios.get(`reviews/meta/${this.state.reviewMetadata.product_id}`)
+  getReviewMetadata(productId) {
+    axios.get(`reviews/meta/${productId}`)
       .then(results => this.setState({ reviewMetadata: results.data }))
       .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
 
   handleChangeProduct(productId) {
-    this.getReviewMetadata();
+    this.getReviewMetadata(productId);
   }
 
   render () {
