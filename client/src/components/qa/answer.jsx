@@ -3,6 +3,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 const Answer = (props) => (
   <div>
@@ -11,8 +12,9 @@ const Answer = (props) => (
       <div>by {props.answer.answerer_name},</div>
       <div>{props.answer.date } |</div>
       <div>Helpful?</div>
-      <div>Yes</div>
+      <div onClick={() => console.log('Clicked')}>Yes</div>
       <div>({props.answer.helpfulness}) |</div>
+      <div onClick={() => console.log('Clicked')}>No |</div>
       <div>Report</div>
     </div>
   </div>

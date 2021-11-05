@@ -3,6 +3,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 import AnswerList from './answerlist.jsx'
 
@@ -22,7 +23,7 @@ const Question = (props) => (
   <Container fluid='md'>
     <Row>
     <Col className='qa-Question'>Q: {props.question.question_body}</Col>
-    <Col className='qa-QuestionHelpful'>Helpful? Yes ({props.question.question_helpfulness}) | Add Answer</Col>
+    <Col className='qa-QuestionHelpful'>Helpful? Yes ({props.question.question_helpfulness}) | No | Add Answer</Col>
     </Row>
     <Row>
       <AnswerList question_id={props.question.question_id}/>
