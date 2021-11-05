@@ -2,15 +2,16 @@ const TOKEN = require('../../config.js').TOKEN;
 const axios = require('axios');
 const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`
 
+let config = {
+  headers: {
+    'Authorization': TOKEN
+  }
+}
+
 module.exports = {
   // return list of reviews for specific product
   getOne: (req, res) => {
     let productId = req.params.product_id;
-    let config = {
-      headers: {
-        'Authorization': TOKEN
-      }
-    }
 
     axios.get(`${API_URL}/reviews/?product_id=${productId}`, config)
       .then(results => {
@@ -25,12 +26,6 @@ module.exports = {
   // return review metadata for a given product
   getReviewMetadata: (req, res) => {
     let productId = req.params.product_id;
-
-    let config = {
-      headers: {
-        'Authorization': TOKEN
-      }
-    }
 
     axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
       .then(results => res.status(200).send(results.data))
