@@ -31,9 +31,9 @@ const exampleProducts = [
   },
 ]
 
-const RelatedProductsList = (props) => {
+const RelatedProductsList = ({ currentProduct, handleChangeProduct }) => {
   const [products, setProducts] = useState([]);
-  const currentProductId = 42372;
+  const currentProductId = currentProduct.product_id;
   // TODO: add spinner to list
   useEffect(() => {
     axios.get(`/products/${currentProductId}/related`)
@@ -52,7 +52,12 @@ const RelatedProductsList = (props) => {
       <div data-testid='related-prod-list'>
         <Slider>
           {products.map((product, i) => (
-            <RelatedProductCard key={product.id} product={product} index={i}/>
+            <RelatedProductCard
+              key={product.id}
+              product={product}
+              index={i}
+              handleChangeProduct={handleChangeProduct}
+            />
           ))}
         </Slider>
         <ButtonBack>{'<'}</ButtonBack>
@@ -62,8 +67,9 @@ const RelatedProductsList = (props) => {
   )
 }
 
-// RelatedProductsList.propTypes = {
-//   products: PropTypes.array.isRequired
-// };
+RelatedProductsList.propTypes = {
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
+};
 
 export default RelatedProductsList;

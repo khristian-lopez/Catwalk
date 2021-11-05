@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import AddOutfitCard from './AddOutfitCard.jsx';
 import RelatedProductCard from './RelatedProductCard.jsx';
@@ -25,5 +26,10 @@ const YourOutfitList = () => (
     </div>
   </CarouselProvider>
 )
+
+YourOutfitList.propTypes = {
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
+};
 
 export default YourOutfitList;

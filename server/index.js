@@ -22,7 +22,10 @@ app.use('/interactions', interactionsRouter);
 // app.get('/', (req, res) => {
 //   res.send('hello world');
 // })
-
+// app.get('/products/:product_id', (req, res) => {
+//   res.sendFile('../client/dist/index.html', { root: __dirname });
+// });
+// app.use('/products/:product_id', express.static(__dirname + '/../client/dist'));
 
 app.listen(port, (err) => {
   if (err) {

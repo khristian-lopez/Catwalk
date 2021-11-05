@@ -9,7 +9,7 @@ const RelatedProductCard = (props) => {
 
   return (
     <Slide index={props.index}>
-      <div className="cards rel-prod-card">
+      <div className="cards rel-prod-card" onClick={(() => props.handleChangeProduct(props.product.id))}>
         <img src="assets/product-image-placeholder-300x300.jpeg" style={{ width:'100%' }} />
         <span>
           <ActionButton card={ 'related' }/>
@@ -21,8 +21,9 @@ const RelatedProductCard = (props) => {
 }
 
 RelatedProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  product: PropTypes.object,
+  index: PropTypes.number,
+  handleChangeProduct: PropTypes.func
 };
 
 export default RelatedProductCard;
