@@ -11,7 +11,7 @@ const RatingsAndReviews = () => {
             <Container className="rr-container" fluid="md">
                 <Row>
                     <Col xs={4}>
-                        <h5>RATINGS & REVIEWS</h5>
+                        <h5 id="rr-header">RATINGS & REVIEWS</h5>
                         <div className="ratings-container">
                             <Ratings />
                         </div>

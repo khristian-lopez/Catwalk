@@ -226,6 +226,9 @@ RATINGS & REVIEWS
 ==================================================
 */
 
+.rr-container {
+  padding-bottom: 50px;
+}
 .reviews-container {
   padding: 5px;
   margin: 5px;
@@ -247,22 +250,18 @@ div.review-Tile {
 #rev-user {
   text-align: right;
 }
-
 #rev-date {
   text-align: right;
 }
-
 #rev-summary, #rev-body {
   padding: 4px;
   margin: 4px;
 }
-
 #review-helpful {
   padding: 4px;
   margin: 4px;
   font-size: small;
 }
-
 #rev-response {
   padding: 4px;
   margin: 4px;
@@ -270,24 +269,58 @@ div.review-Tile {
   background-color: rgb(245,245,245);
   font-size:  15px;
 }
-
 #rev-rec {
   padding: 4px;
   margin: 4px;
   font-size: 13px;
 }
-
 .reviews-btn {
   padding: 4px;
   margin: 4px;
+}
+
+#rr-header {
+  margin: 10px;
+  padding: 5px;
 }
 
 .ratings-container {
   margin: 10px;
   padding: 5px;
 }
-
 .ratingsbar {
   margin: 4px;
   padding: 3px;
+}
+
+.modalContainer {
+  margin: 10px;
+  padding: 10px;
+}
+
+#review-x-btn {
+  float: right;
+}
+
+.form-input {
+  margin: 5px;
+  padding: 5px;
+}
+
+#review-submit-btn {
+  margin: 10px;
+  padding: 10px;
+}
+
+#rating-options, .char-options, #option-choice, .review-recc, .review-overall {
+  margin: 5px;
+  padding: 5px;
+}
+#review-choices, .review-rate {
+  margin: 5px;
+  padding: 5px;
+}
+#recc-answer, #recc-yes, #recc-no {
+  margin: 5px;
+  padding: 5px;
 }

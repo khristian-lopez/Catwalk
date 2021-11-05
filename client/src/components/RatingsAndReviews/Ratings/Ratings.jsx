@@ -34,66 +34,41 @@ const Ratings = () => {
         
         return starCount;
     }, stars)
-    //console.log(starCount)
 
     return (
         <div>
             <Row>
                 <Col xs={2}>
-                    <div className="average-rating" style={{ fontSize: 70 }}>{avgRating}</div>
+                    <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>{avgRating}</div>
                 </Col>
-                <Col xs={4}>
-                    <ReviewsRating rating={avgRating} />
-                </Col>
-                <div id="recommend">{avgRecommend}% of reviews recommend this product
-                </div> 
+                <Col xs={4}><ReviewsRating rating={avgRating} /></Col>
+                <div id="recommend" style={{ fontSize: "15px" }}>{avgRecommend}% of reviews recommend this product</div> 
             </Row>
             <br></br>
             <Row>
                 <div className="bar-container">
                         <Row>
-                            <Col s={1}>
-                                <div id="5-star">5 Stars</div>
-                            </Col>
-                            <Col xs={9}>
-                                <RatingsBar star={starCount[5]}/>
-                            </Col>
+                            <Col s={1}><div id="5-star">5 Stars</div></Col>
+                            <Col xs={9}><RatingsBar star={starCount[5] / results.length}/></Col>
                         </Row>   
                         <Row>    
-                            <Col s={1}>
-                                <div id="4-star">4 Stars</div>
-                            </Col>
-                            <Col xs={9}>
-                                <RatingsBar star={starCount[4]}/>
-                            </Col>  
+                            <Col s={1}><div id="4-star">4 Stars</div></Col>
+                            <Col xs={9}><RatingsBar star={starCount[4] / results.length}/></Col>  
                         </Row>
                         <Row>       
-                            <Col s={1}>
-                                <div id="3-star">3 Stars</div>
-                            </Col>
-                            <Col xs={9}>
-                                <RatingsBar star={starCount[3]}/>
-                            </Col>
+                            <Col s={1}><div id="3-star">3 Stars</div></Col>
+                            <Col xs={9}><RatingsBar star={starCount[3] / results.length}/></Col>
                         </Row>    
                         <Row>    
-                            <Col s={1}>
-                                <div id="2-star">2 Stars</div>
-                            </Col>
-                            <Col xs={9}>
-                                <RatingsBar star={starCount[2]}/>
-                            </Col>
+                            <Col s={1}><div id="2-star">2 Stars</div></Col>
+                            <Col xs={9}><RatingsBar star={starCount[2] / results.length}/></Col>
                         </Row>                   
                         <Row>    
-                            <Col s={1}>
-                                <div id="1-star">1 Stars</div>
-                            </Col>
-                            <Col xs={9}>
-                                <RatingsBar star={starCount[1]}/>
-                            </Col>
+                            <Col s={1}><div id="1-star">1 Stars</div></Col>
+                            <Col xs={9}><RatingsBar star={starCount[1] / results.length}/></Col>
                         </Row>
                 </div>
-            </Row>
-            
+            </Row>           
         </div>
     )
 }
