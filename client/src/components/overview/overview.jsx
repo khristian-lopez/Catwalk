@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Overview = () => (
-  <Container md className="ov-main">
+  <Container fluid="md" className="ov-main">
     <Row>
       <h1>Overview</h1>
     </Row>
