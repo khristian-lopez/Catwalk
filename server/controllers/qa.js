@@ -49,7 +49,7 @@ module.exports = {
   })
 },
 
-markQuestionAsHelpful: (req, res) => {
+  markQuestionAsHelpful: (req, res) => {
   var question_id = req.params.question_id
   axios.put(`${API_URL}/qa/questions/${question_id}/helpful`, {}, config)
   .then(() => {
@@ -60,6 +60,30 @@ markQuestionAsHelpful: (req, res) => {
     console.error('Unsuccessfully marked question as helpful.')
     res.status(400).send(err)
   })
-}
+},
+
+  postQuestion: (req, res) => {
+  },
+
+  postAnswer: (req, res) => {
+    var question_id = req.params.question_id
+
+    var answer = {
+      body: req.body.body,
+      name: req.body.name,
+      email: req.body.email,
+      photos: req.body.photos
+    }
+
+    axios.post(`${API_URL}/qa/questions/${question_id}/answers`, answer, config)
+    .then(() => {
+      console.log('Successfully posted answer.')
+      res.status(201).send()
+    })
+    .catch(err => {
+      console.error('Unsuccessfully posted answer.')
+      res.status(400).send(err)
+    })
+  }
 }
 
