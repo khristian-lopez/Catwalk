@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -10,11 +10,20 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
-
+import axios from 'axios';
 const StyleInfo = (props) => {
 
-  const [size, changeSize] = useState('Select a Size');
-  const [quantity, changeQuantity] = useState('Quantity');
+  const [size, changeSize] = useState(() => { return 'Select a Size'});
+  const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
+  const [styles, changeStyles] = useState([]);
+
+  useEffect(() => {
+    console.log(props.productInfo.id)
+    axios.get(`/products/${props.productInfo.id}/styles`)
+      .then(results => changeStyles(results.data))
+      .catch(err => console.error(err))
+  }, [props.productInfo])
+
   return (
     <Col className="ov-styles">
       <Stack >
@@ -33,13 +42,17 @@ const StyleInfo = (props) => {
         <div className="ov-styles-thumbnails">
           Style &gt; Selected Style <br />
           <div className="ov-style-thumbnails">
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
+            {styles.map((style, index) => {
+              // console.log(style.photos[0])
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index}/>
+            })}
+            {/* <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
             <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
             <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
             <br />
             <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
             <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
+            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/> */}
 
           </div>
         </div>

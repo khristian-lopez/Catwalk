@@ -7,8 +7,6 @@ import Carousel from 'react-bootstrap/Carousel'
 const ImageGallery = () => (
   <Col className='col1' xs={8}>
     <Container>
-    image gallery <br />
-    image thumbnails
     <Carousel variant="dark">
       <Carousel.Item>
         <img
