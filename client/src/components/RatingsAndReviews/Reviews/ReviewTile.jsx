@@ -30,10 +30,10 @@ const ReviewTile = props => {
             <div id="rev-body" style={{fontSize: "13px"}}>{props.review.body}</div>
             {!props.review.recommend ? null : <p id="rev-rec">I recommend this product<span>&#10003;</span></p>}
             {props.review.response ? 
-            <div 
-                id="rev-response" style={{fontWeight: "600"}}>Response from seller:
-                <p id="seller-response" style={{fontSize: "13px"}}>{props.review.response}</p>
-            </div> 
+                <div 
+                    id="rev-response" style={{fontWeight: "600"}}>Response from seller:
+                    <p id="seller-response" style={{fontSize: "13px"}}>{props.review.response}</p>
+                </div> 
             : null}
             <Helpful helpfulness={props.review.helpfulness} />
         </div>

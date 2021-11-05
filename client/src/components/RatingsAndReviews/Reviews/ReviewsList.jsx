@@ -25,9 +25,11 @@ class ReviewsList extends React.Component {
         if (reviews.length > 0) {
             return (
                 <div>
-                    <div className="reviewsList">
+                    <div className="reviewsList" >
                         <SortBy review={reviews}/>
-                    { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+                    <div className="reviewTiles" >
+                        { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+                    </div>
                     </div>
                     <div className="reviews-btn">
                         <Row xs="auto">
