@@ -14,7 +14,7 @@ module.exports = {
 
     axios.get(`${API_URL}/reviews/?product_id=${productId}`, config)
       .then(results => {
-        console.log('Successfully retrieved all reviews')
+        console.log(`Successfully retrieved all reviews for product id: ${productId}`)
         res.status(200).send(results.data)
       })
       .catch(err => {
@@ -22,7 +22,7 @@ module.exports = {
         res.status(400).send(err)
       })
   },
-
+  // return review metadata for a given product
   getReviewMetadata: (req, res) => {
     let productId = req.params.product_id;
 
@@ -39,4 +39,9 @@ module.exports = {
         res.status(401).send(err);
       })
   }
+
+  // TODO: Add a review for given product
+  // TODO: Updates a review to show it was found helpful
+  // TODO: Updates a review to show it was reported
+  
 }

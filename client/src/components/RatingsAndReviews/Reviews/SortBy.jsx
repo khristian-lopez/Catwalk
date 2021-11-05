@@ -14,7 +14,7 @@ class SortBy extends React.Component {
     handleChange(e) {
         this.setState({ value: e.target.value })
     }
-    
+    // TODO: implement sortBy function to sort review based on option chosen (newest, helpful)
     render() {
         
         return (
