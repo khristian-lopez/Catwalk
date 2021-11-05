@@ -81,8 +81,13 @@ module.exports = {
             return axios.get(`${API_URL}/products/${id}`, config)
               .then(results => {
                 let product = results.data;
-
-                return product;
+                return getAverageRating(product.id)
+                  .then(avgRating => {
+                    console.log(avgRating);
+                    product['avgRating'] = avgRating || null;
+                    console.log(product);
+                    return product;
+                  })
               })
               .catch(err => console.log('failed to retrieve a product: ', err));
           })

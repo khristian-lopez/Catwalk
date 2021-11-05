@@ -10,18 +10,19 @@ module.exports = (productId) => {
     }
   }
 
-  axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
+  return axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
       .then(results => {
         let ratings = results.data.ratings;
         let ratingsCount = 0;
         let ratingsSum = 0;
         for (var rating in ratings) {
           ratingsCount += Number(ratings[rating]);
-          ratingsSum += rating * ratings[rating];
+          ratingsSum += Number(rating) * Number(ratings[rating]);
         }
-        return Math.round((ratingsSum / ratingsCount) * 10) / 10;
+        let avgRating = Math.round((ratingsSum / ratingsCount) * 10) / 10;
+        return avgRating;
       })
       .catch(err => {
-        console.log('failed to retrieve metadata: ', err)
+        console.log('failed to retrieve metadata in helper')
       });
 }

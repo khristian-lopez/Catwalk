@@ -8,7 +8,7 @@ const ProductInfo = ({ product }) => (
     <span className='product-name' title="Expanded Product Name with Extra Text That Cannot Fit"> {product.name} </span> <br/>
     <span className='prod-price' > {'$' + product.default_price} </span>
     <br/>
-    <span className='prod-rating'> <StarRatings /> </span>
+    <span className='prod-rating'> <StarRatings rating={product.avgRating}/> </span>
   </div>
 )
 
