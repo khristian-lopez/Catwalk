@@ -1,4 +1,5 @@
 const getAverageRating = require('./helpers/getAverageRating.js');
+const getDefaultStyle = require('./helpers/getDefaultStyle.js');
 const TOKEN = require('../../config.js').TOKEN;
 const axios = require('axios');
 const API_URL = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax`
@@ -81,12 +82,16 @@ module.exports = {
             return axios.get(`${API_URL}/products/${id}`, config)
               .then(results => {
                 let product = results.data;
+                // retrieve average ratings and add as prop to product
                 return getAverageRating(product.id)
                   .then(avgRating => {
-                    console.log(avgRating);
                     product['avgRating'] = avgRating || null;
-                    console.log(product);
-                    return product;
+                    // retrieve default style and add as prop to product
+                    return getDefaultStyle(product.id)
+                      .then(defaultStyle => {
+                        product['defaultStyle'] = defaultStyle;
+                        return product;
+                      })
                   })
               })
               .catch(err => console.log('failed to retrieve a product: ', err));
