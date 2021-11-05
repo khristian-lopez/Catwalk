@@ -39,6 +39,25 @@ module.exports = {
       })
   },
 
+  getProductStyles: (req, res) => {
+    let productId = req.params.product_id;
+    let config = {
+      headers: {
+        'Authorization': TOKEN
+      }
+    }
+    //retrieve styles for specific product id
+    axios.get(`${API_URL}/products/${productId}/styles`, config)
+      .then(results => {
+        console.log('styles successfully obtained')
+          res.status(200).send(results.data.results)
+        })
+        .catch(err => {
+          console.error('unable to obtain product styles')
+          res.status(400).send(err)
+        })
+  },
+
   getRelatedProductIds: (req, res) => {
 
     let productId = req.params.product_id;
