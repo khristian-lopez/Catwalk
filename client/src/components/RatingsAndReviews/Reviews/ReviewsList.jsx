@@ -2,27 +2,52 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
 import data from '../dummyReviews.js';
+import ReviewButton from './ReviewButtons.jsx';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 class ReviewsList extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            reviews: data.results
+            reviews: data.results,
+            tiles: 2
         }
+        this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
+    }
+    renderReviewsTiles() {
+        // eslint-disable-next-line react/no-direct-mutation-state
+        this.setState({ tiles: this.state.tiles += 2 })
     }
     render() {
-        const {reviews} = this.state;
-        //console.log(reviews)
-        return (
-            <div className="reviewsList">
-                <div>{reviews.length} reviews, </div>
-                <SortBy />
-               { reviews.map((review, i) => 
-               <ReviewTile review={review} key={i} />  
-               )}
-            </div>
-        )  
+        const {reviews, tiles} = this.state;
+        if (reviews.length > 0) {
+            return (
+                <div>
+                    <div className="reviewsList" >
+                        <SortBy review={reviews}/>
+                    <div className="reviewTiles" >
+                        { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+                    </div>
+                    </div>
+                    <div className="reviews-btn">
+                        <Row xs="auto">
+                            <Col>
+                                { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+                            </Col>
+                            <Col>
+                                <ReviewButton />
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            )  
+        } else {
+            return (
+                <div>No reviews for this product</div>
+            )
+        }
     }
 }
 
