@@ -238,10 +238,6 @@ RATINGS & REVIEWS
   margin: 4px;
 }
 
-.reviewTiles {
-  
-  overflow-y: auto;
-}
 .review-Tile {
   border-bottom: 1px solid #494949;
 }
