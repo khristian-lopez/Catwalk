@@ -3,13 +3,13 @@ import axios from 'axios';
 import Overview from './overview/overview.jsx';
 import Qa from './qa/qa.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
-import RelatedProducts from './relatedProducts/relatedProducts.jsx';
+import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42366 }
+      reviewMetadata: { product_id: 42368 }
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);

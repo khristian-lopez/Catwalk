@@ -154,6 +154,12 @@ RELATED PRODUCTS
   width: 1320px;
 }
 
+.preview {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
 /*
 ==================================================
 Q&A
@@ -161,22 +167,15 @@ Q&A
 */
 
 .qa-Main {
-  margin-top: 50px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   gap: 15px
 }
 
-.qa-Search {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.qa-MainTitle {
+  font-weight: bold;
 }
+
 
 .qa-Answerer {
   display: flex;
@@ -215,10 +214,10 @@ Q&A
   font-size: 75%
 }
 
-.qa-Questions {
+.qa-QuestionHelpful {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  justify-content: flex-end;
+  font-size: 75%
 }
 /*
 ==================================================
