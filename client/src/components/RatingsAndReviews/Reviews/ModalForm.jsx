@@ -8,7 +8,8 @@ const ModalForm = ({closeModal}) => {
     const [radioValue, radioInputProps] = useRadioBtns("option")
 
     const min = 50
-    const Minimum = () => (min - characterCount > 0) ? <p>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
+    const Minimum = () => 
+        (min - characterCount > 0) ? <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
 
     function useRadioBtns(name) {
         const [value, setState] = useState(null);
@@ -66,14 +67,15 @@ const ModalForm = ({closeModal}) => {
                     <div className="reviewer-email">email:
                         <br></br>
                         <input type="email" size="30" placeholder="Ex: jackson11@email.com" maxLength="60" required/>
-                        <p>For authentication reasons, you will not be emailed</p>
+                        <p style={{ fontSize: "10px" }}>For authentication reasons, you will not be emailed</p>
                     </div>
                 </div>
-                <button id="review-submit-btn" type="submit" onClick={e => {
-                    e.preventDefault()
-                    closeModal(false)
-                    }
-                }
+                <button id="review-submit-btn" type="submit" 
+                        onClick={e => {
+                            e.preventDefault()
+                            closeModal(false)
+                            }
+                        }
                 >Submit your review!</button>
             </form>
         </div>
