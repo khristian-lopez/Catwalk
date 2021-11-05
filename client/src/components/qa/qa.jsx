@@ -1,13 +1,25 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import QuestionList from './questionlist.jsx'
-import Search from './questionsearch.jsx'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
-const Qa = () => (
-  <div className='qa-Main'>
-    <div>Questions and Answers</div>
+import Search from './questionsearch.jsx'
+import QuestionList from './questionlist.jsx'
+
+
+const Qa = (props) => (
+  <Container fluid="md" className = 'qa-Main'>
+  <Row>
+    <Col className='qa-MainTitle'>QUESTIONS AND ANSWERS</Col>
+  </Row>
+  <Row>
     <Search />
-    <QuestionList/>
-  </div>
+  </Row>
+  <Row>
+    <QuestionList currentProductId={props.currentProduct.product_id}/>
+  </Row>
+</Container>
 )
 
 export default Qa;

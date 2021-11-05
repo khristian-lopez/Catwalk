@@ -31,9 +31,9 @@ const exampleProducts = [
   },
 ]
 
-const RelatedProductsList = (props) => {
+const RelatedProductsList = ({ currentProduct }) => {
   const [products, setProducts] = useState([]);
-  const currentProductId = 42372;
+  const currentProductId = currentProduct.product_id;
   // TODO: add spinner to list
   useEffect(() => {
     axios.get(`/products/${currentProductId}/related`)
@@ -62,8 +62,8 @@ const RelatedProductsList = (props) => {
   )
 }
 
-// RelatedProductsList.propTypes = {
-//   products: PropTypes.array.isRequired
-// };
+RelatedProductsList.propTypes = {
+  currentProduct: PropTypes.object
+};
 
 export default RelatedProductsList;

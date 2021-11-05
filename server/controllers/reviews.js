@@ -35,7 +35,7 @@ module.exports = {
     axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
       .then(results => res.status(200).send(results.data))
       .catch(err => {
-        console.log('failed to retrieve metadata: ', err)
+        console.log('failed to retrieve metadata: ')
         res.status(401).send(err);
       })
   }
