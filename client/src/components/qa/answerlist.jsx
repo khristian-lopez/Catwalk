@@ -8,10 +8,10 @@ const AnswerList = (props) => {
 
 const [answers, setAnswers] = useState([]);
 const [maxAnswers, setMaxAnswers] = useState(2);
-const currentProductId = props.question_id;
+const currentQuestionId = props.question_id;
 
 useEffect(() => {
-  axios.get(`/qa/questions/${currentProductId}/answers`)
+  axios.get(`/qa/questions/${currentQuestionId}/answers`)
     .then(results => setAnswers(results.data.results.slice(0, maxAnswers)))
     .catch(err => console.error(err));
 }, []);
