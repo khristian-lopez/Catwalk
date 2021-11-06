@@ -11,21 +11,20 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
 import axios from 'axios';
-const StyleInfo = (props) => {
+const StyleInfo = ({ productInfo, styleInfo }) => {
 
   const [size, changeSize] = useState(() => { return 'Select a Size'});
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
-  const [styles, changeProduct] = useState([]);
-  const [currentStyle, changeStyle] = useState()
+  const [styleThumbnails, changeThumbnails] = useState([]);
+  // const [currentStyle, changeStyle] = useState()
 
   useEffect(() => {
-    console.log(props.productInfo.id)
-    axios.get(`/products/${props.productInfo.id}/styles`)
+    axios.get(`/products/${productInfo.id}/styles`)
       .then(results => {
-        changeProduct(results.data)
+        changeThumbnails(results.data)
       })
       .catch(err => console.error(err))
-  }, [props.productInfo])
+  }, [productInfo])
 
   return (
     <Col className="ov-styles">
@@ -35,9 +34,9 @@ const StyleInfo = (props) => {
           <StarRatings />  <br /> Read all XX reviews
         </div>
         <div>
-          <label>{props.productInfo.category}</label>
-          <h3>{props.productInfo.name}</h3>
-          <label>{props.productInfo.default_price}</label>
+          <label>{productInfo.category}</label>
+          <h3>{productInfo.name}</h3>
+          <label>{productInfo.default_price}</label>
         </div>
       </Stack>
       <Stack>
@@ -45,7 +44,7 @@ const StyleInfo = (props) => {
         <div className="ov-styles-thumbnails">
           Style &gt; Selected Style <br />
           <div className="ov-style-thumbnails">
-            {styles.map((style, index) => {
+            {styleThumbnails.map((style, index) => {
               // console.log(style.photos[0])
               return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index}/>
             })}

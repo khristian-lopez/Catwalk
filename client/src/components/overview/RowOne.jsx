@@ -7,12 +7,12 @@ import StyleInfo from './StyleInfo.jsx'
 import MyGallery from './MyGallery.jsx'
 
 
-const RowOne = ({ productInfo }) => (
+const RowOne = ({ productInfo, styleInfo }) => (
 
   <Container>
     <Row className="ov-main-row1">
-      <MyGallery productInfo={productInfo}/>
-      <StyleInfo productInfo={productInfo}/>
+      <MyGallery styleInfo={styleInfo}/>
+      <StyleInfo productInfo={productInfo} styleInfo={styleInfo}/>
     </Row>
   </Container>
 )

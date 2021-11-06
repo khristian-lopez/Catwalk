@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviewMetadata: { product_id: 42370 },
-      currentStyle: null
+      currentStyle: 253646
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
@@ -37,7 +37,7 @@ class App extends React.Component {
     return (
       <div>
         <Container><h1>Project Catwalk</h1></Container>
-        <Overview currentProduct={this.state.reviewMetadata} currentStyle={this.currentStyle}/>
+        <Overview currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle}/>
         <RelatedProducts currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa currentProduct={this.state.reviewMetadata}/>
         <RatingsAndReviews currentProduct={this.state.reviewMetadata}/>

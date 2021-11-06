@@ -6,14 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 
-const ProductInfo = (props) => {
+const ProductInfo = ({ productInfo }) => {
   return (
     <Col className='col2' xs={7}>
       <Container className="ov-product-info">
         <Form >
             <Form.Group >
                 <Form.Label><h5>Product Overview</h5></Form.Label>
-                <Form.Control className="ov-textarea" as="textarea" rows={6} plaintext readOnly defaultValue={props.productInfo.description}/>
+                <Form.Control className="ov-textarea" as="textarea" rows={6} plaintext readOnly defaultValue={productInfo.description}/>
             </Form.Group>
         </Form>
       </Container>
