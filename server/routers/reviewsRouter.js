@@ -3,7 +3,7 @@ const controller = require('../controllers/reviews.js')
 
 router.get('/:product_id', controller.getOne);
 router.get('/meta/:product_id', controller.getReviewMetadata);
-router.post('/', controller.addReview);
+router.post('/:product_id', controller.addReview);
 router.put('/:reviews_id/helpful');
 router.put('/:reviews_id/report');
 

@@ -14,9 +14,9 @@ module.exports = {
     let productId = req.params.product_id;
     
     axios.get(`${API_URL}/reviews/?product_id=${productId}`, config)
-      .then(results => {
+      .then(result => {
         console.log(`Successfully retrieved all reviews for product id: ${productId}`)
-        res.status(200).send(results.data)
+        res.status(200).send(result.data)
       })
       .catch(err => {
         console.error('Cannot retrieve reviews')
@@ -40,6 +40,7 @@ module.exports = {
     let productId = req.params.product_id;
 
     let body = {
+      productId: req.body.product_id,
       rating: req.body.rating, 
       summary: req.body.summary,
       body: req.body.body,
@@ -50,16 +51,32 @@ module.exports = {
       characteristics: req.body.characteristics
     }
     // * still need to test * 
-    axios.post(`${API_URL}/reviews/?product_id=${productId}`, body, config)
-      .then(() => {
+    axios.post(`${API_URL}/reviews/?product_id=${productId}`, JSON.stringify(body), config)
+      .then(res => {
         console.log('Successfully added review!')
-        res.status(201).send()
+        res.status(201).send(res.data)
       })
       .catch(err => {
         console.error('Unable to add review..')
         res.status(400).send(err)
       })
+    // let options = {
+    //   method: 'POST',
+    //   url: `${API_URL}/reviews/?product_id=${productId}`,
+    //   data: body,
+    //   head: config
+    // }
+    // axios(options)
+    //   .then(data => {
+    //     console.log('Successfully posted review!!')
+    //     res.status(201).send(data)
+    //   })
+    //   .catch(err => {
+    //     console.log('Unable to post review..')
+    //     res.status(500).send(err)
+    //   })
   },
+  
   // TODO: Updates a review to show it was found helpful
   markHelpful: (req, res) => {
     let review_id = req.params.review_id;
