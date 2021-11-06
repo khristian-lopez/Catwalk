@@ -8,26 +8,26 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 const RatingsAndReviews = ({currentProduct}) => {
-    let id = currentProduct.product_id
-    //console.log(currentProduct.product_id)
-    const [data, setData] = useState([])
-    const [metadata, setMetadata] = useState([])
+    // let id = currentProduct.product_id
+    // console.log(currentProduct.product_id)
+    // const [data, setData] = useState([])
+    // const [metadata, setMetadata] = useState([])
 
-    useEffect(() => {
-        grabData();
-        grabMetadata();
-    }, [id])
+    // useEffect(() => {
+    //     grabData();
+    //     grabMetadata();
+    // }, [id])
     
-    const grabData = () => {
-        axios.get(`/reviews/${id}`)
-            .then(res => setData(res.data.results))
-            .catch(err => console.log(err))
-    }
-    const grabMetadata = () => {
-        axios.get(`/reviews/meta/${id}`)
-            .then(res => setMetadata(res.data.characteristics))
-            .catch(err => console.log(err))
-    }
+    // const grabData = () => {
+    //     axios.get(`/reviews/${id}`)
+    //         .then(res => setData(res.data.results))
+    //         .catch(err => console.log(err))
+    // }
+    // const grabMetadata = () => {
+    //     axios.get(`/reviews/meta/${id}`)
+    //         .then(res => setMetadata(res.data.characteristics))
+    //         .catch(err => console.log(err))
+    // }
     // console.log('data', data)
     // console.log('metadata', metadata)
     return (
@@ -37,9 +37,10 @@ const RatingsAndReviews = ({currentProduct}) => {
                     <Col xs={4}>
                         <h5 id="rr-header">RATINGS & REVIEWS</h5>
                         <div className="ratings-container">
-                            <Ratings 
-                                metadata={metadata}
-                                data={data}
+                            <Ratings
+                                currentProduct={currentProduct}
+                                // metadata={metadata}
+                                // data={data}
                             />
                         </div>
                     </Col>
@@ -47,8 +48,8 @@ const RatingsAndReviews = ({currentProduct}) => {
                         <div className="reviews-container">
                             <ReviewsList 
                                 currentProduct={currentProduct}
-                                metadata={metadata}
-                                data={data}                        
+                                // metadata={metadata}
+                                // data={data}                        
                             />
                         </div>
                     </Col>

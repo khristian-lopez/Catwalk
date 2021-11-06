@@ -11,11 +11,11 @@ let config = {
 module.exports = {
   // return list of reviews for specific product
   getOne: (req, res) => {
-    let productId = req.params.product_id;
+    let id = req.params.product_id;
     
-    axios.get(`${API_URL}/reviews/?product_id=${productId}`, config)
+    axios.get(`${API_URL}/reviews/?product_id=${id}`, config)
       .then(result => {
-        console.log(`Successfully retrieved all reviews for product id: ${productId}`)
+        console.log(`Successfully retrieved all reviews for product id: ${id}`)
         res.status(200).send(result.data)
       })
       .catch(err => {
@@ -25,9 +25,9 @@ module.exports = {
   },
   // return review metadata for a given product
   getReviewMetadata: (req, res) => {
-    let productId = req.params.product_id;
+    let id = req.params.product_id;
 
-    axios.get(`${API_URL}/reviews/meta?product_id=${productId}`, config)
+    axios.get(`${API_URL}/reviews/meta?product_id=${id}`, config)
       .then(results => res.status(200).send(results.data))
       .catch(err => {
         console.log('failed to retrieve metadata: ')
@@ -37,7 +37,7 @@ module.exports = {
 
   // TODO: Add a review for given product
   addReview: (req, res) => {
-    let productId = req.params.product_id;
+    let id = req.params.product_id;
 
     let body = {
       product_id: req.body.product_id,
@@ -50,8 +50,8 @@ module.exports = {
       photos: req.body.photos,
       characteristics: req.body.characteristics
     }
-    // * still need to test * 
-    axios.post(`${API_URL}/reviews/?product_id=${productId}`, body, config)
+  
+    axios.post(`${API_URL}/reviews/?product_id=${id}`, body, config)
       .then(() => {
         console.log('Successfully added review!')
         res.status(201).send()
@@ -60,21 +60,6 @@ module.exports = {
         console.log('Unable to add review..')
         res.status(400).send(err)
       })
-    // let options = {
-    //   method: 'POST',
-    //   url: `${API_URL}/reviews/?product_id=${productId}`,
-    //   data: body,
-    //   head: config
-    // }
-    // axios(options)
-    //   .then(data => {
-    //     console.log('Successfully posted review!!')
-    //     res.status(201).send(data)
-    //   })
-    //   .catch(err => {
-    //     console.log('Unable to post review..')
-    //     res.status(500).send(err)
-    //   })
   },
   
   // TODO: Updates a review to show it was found helpful

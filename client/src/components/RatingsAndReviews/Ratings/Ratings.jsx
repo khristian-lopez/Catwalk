@@ -1,69 +1,79 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import data from '../dummyReviews.js';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
+import AverageRating from './AverageRating.jsx';
 import RatingsBar from './RatingsBar.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios';
 
-const Ratings = ({data, metadata}) => {
-    let results = 5;
-    let recCount = 0;
-    let rateCount = 0;
-    let starCount = {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0
+class Ratings extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            reviews: [],
+            metadata: []
+        }
+        this.getReviews = this.getReviews.bind(this)
+        this.getMetadata = this.getMetadata.bind(this)
     }
-    
-    data.map((option) => {
-        recCount += option.recommend;
-        rateCount += option.rating;
-
-        starCount[option.rating] += 1;
-    })
-    console.log(data)
-    
+    componentDidMount() {
+        this.getReviews()
+        this.getMetadata()
+    }
+    getReviews() {
+        axios.get(`/reviews/${this.props.currentProduct.product_id}`)
+            .then(res => this.setState({ reviews: res.data.results }))
+            .catch(err => console.error('Cannot retrieve reviews for product', err))
+    }
+    getMetadata() {
+        axios.get(`/reviews/meta/${this.props.currentProduct.product_id}`)
+            .then(res => this.setState({ metadata: res.data }))
+            .catch(err => console.error('Cannot retrieve metadata for product', err))
+    }
+    render() {
+        const {reviews, metadata} = this.state;
+        //console.log(reviews)
         return (
             <div>
-                <Row>
-                    <Col xs={2}>
-                        <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>5</div>
-                    </Col>
-                    <Col xs={4}><ReviewsRating  /></Col>
-                    <div id="recommend" style={{ fontSize: "15px" }}>100% of reviews recommend this product</div> 
-                </Row>
-                <br></br>
-                <Row>
-                    <div className="bar-container">
-                            <Row>
-                                <Col s={1}><div id="5-star">5 Stars</div></Col>
-                                <Col xs={9}><RatingsBar star={starCount[5] / results.length}/></Col>
-                            </Row>   
-                            <Row>    
-                                <Col s={1}><div id="4-star">4 Stars</div></Col>
-                                <Col xs={9}><RatingsBar star={starCount[4] / results.length}/></Col>  
-                            </Row>
-                            <Row>       
-                                <Col s={1}><div id="3-star">3 Stars</div></Col>
-                                <Col xs={9}><RatingsBar star={starCount[3] / results.length}/></Col>
-                            </Row>    
-                            <Row>    
-                                <Col s={1}><div id="2-star">2 Stars</div></Col>
-                                <Col xs={9}><RatingsBar star={starCount[2] / results.length}/></Col>
-                            </Row>                   
-                            <Row>    
-                                <Col s={1}><div id="1-star">1 Stars</div></Col>
-                                <Col xs={9}><RatingsBar star={starCount[1] / results.length}/></Col>
-                            </Row>
+            <Row>
+                <Col xs={2}>
+                    <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>
+                        <AverageRating reviews={reviews}/>
                     </div>
-                </Row>           
-            </div>
+                </Col>
+                <Col xs={4}><ReviewsRating  /></Col>
+                <div id="recommend" style={{ fontSize: "15px" }}>AVG % of reviews recommend this product</div> 
+            </Row>
+            <br></br>
+            <Row>
+                <div className="bar-container">
+                        <Row>
+                            <Col s={1}><div id="5-star">5 Stars</div></Col>
+                            <Col xs={9}><RatingsBar /></Col>
+                        </Row>   
+                        <Row>    
+                            <Col s={1}><div id="4-star">4 Stars</div></Col>
+                            <Col xs={9}><RatingsBar /></Col>  
+                        </Row>
+                        <Row>       
+                            <Col s={1}><div id="3-star">3 Stars</div></Col>
+                            <Col xs={9}><RatingsBar /></Col>
+                        </Row>    
+                        <Row>    
+                            <Col s={1}><div id="2-star">2 Stars</div></Col>
+                            <Col xs={9}><RatingsBar /></Col>
+                        </Row>                   
+                        <Row>    
+                            <Col s={1}><div id="1-star">1 Stars</div></Col>
+                            <Col xs={9}><RatingsBar /></Col>
+                        </Row>
+                </div>
+            </Row>           
+        </div>
         )
-
-    //}
+    }
 }
 
 Ratings.propTypes = {
@@ -107,40 +117,40 @@ export default Ratings;
 //     }, stars)
 
 //     return (
-//         <div>
-//             <Row>
-//                 <Col xs={2}>
-//                     <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>{avgRating}</div>
-//                 </Col>
-//                 <Col xs={4}><ReviewsRating rating={avgRating} /></Col>
-//                 <div id="recommend" style={{ fontSize: "15px" }}>{avgRecommend}% of reviews recommend this product</div> 
-//             </Row>
-//             <br></br>
-//             <Row>
-//                 <div className="bar-container">
-//                         <Row>
-//                             <Col s={1}><div id="5-star">5 Stars</div></Col>
-//                             <Col xs={9}><RatingsBar star={starCount[5] / results.length}/></Col>
-//                         </Row>   
-//                         <Row>    
-//                             <Col s={1}><div id="4-star">4 Stars</div></Col>
-//                             <Col xs={9}><RatingsBar star={starCount[4] / results.length}/></Col>  
-//                         </Row>
-//                         <Row>       
-//                             <Col s={1}><div id="3-star">3 Stars</div></Col>
-//                             <Col xs={9}><RatingsBar star={starCount[3] / results.length}/></Col>
-//                         </Row>    
-//                         <Row>    
-//                             <Col s={1}><div id="2-star">2 Stars</div></Col>
-//                             <Col xs={9}><RatingsBar star={starCount[2] / results.length}/></Col>
-//                         </Row>                   
-//                         <Row>    
-//                             <Col s={1}><div id="1-star">1 Stars</div></Col>
-//                             <Col xs={9}><RatingsBar star={starCount[1] / results.length}/></Col>
-//                         </Row>
-//                 </div>
-//             </Row>           
-//         </div>
+        // <div>
+        //     <Row>
+        //         <Col xs={2}>
+        //             <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>{avgRating}</div>
+        //         </Col>
+        //         <Col xs={4}><ReviewsRating rating={avgRating} /></Col>
+        //         <div id="recommend" style={{ fontSize: "15px" }}>{avgRecommend}% of reviews recommend this product</div> 
+        //     </Row>
+        //     <br></br>
+        //     <Row>
+        //         <div className="bar-container">
+        //                 <Row>
+        //                     <Col s={1}><div id="5-star">5 Stars</div></Col>
+        //                     <Col xs={9}><RatingsBar star={starCount[5] / results.length}/></Col>
+        //                 </Row>   
+        //                 <Row>    
+        //                     <Col s={1}><div id="4-star">4 Stars</div></Col>
+        //                     <Col xs={9}><RatingsBar star={starCount[4] / results.length}/></Col>  
+        //                 </Row>
+        //                 <Row>       
+        //                     <Col s={1}><div id="3-star">3 Stars</div></Col>
+        //                     <Col xs={9}><RatingsBar star={starCount[3] / results.length}/></Col>
+        //                 </Row>    
+        //                 <Row>    
+        //                     <Col s={1}><div id="2-star">2 Stars</div></Col>
+        //                     <Col xs={9}><RatingsBar star={starCount[2] / results.length}/></Col>
+        //                 </Row>                   
+        //                 <Row>    
+        //                     <Col s={1}><div id="1-star">1 Stars</div></Col>
+        //                     <Col xs={9}><RatingsBar star={starCount[1] / results.length}/></Col>
+        //                 </Row>
+        //         </div>
+        //     </Row>           
+        // </div>
 //     )
 // }
 
