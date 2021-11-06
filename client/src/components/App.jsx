@@ -39,7 +39,7 @@ class App extends React.Component {
         </div>
         <RelatedProducts currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa currentProduct={this.state.reviewMetadata}/>
-        <RatingsAndReviews currentProduct={this.state.reviewMetadata} />
+        <RatingsAndReviews currentProduct={this.state.reviewMetadata.product_id} />
       </div>
     )
   }

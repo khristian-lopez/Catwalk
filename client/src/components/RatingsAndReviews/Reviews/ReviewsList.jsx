@@ -19,7 +19,7 @@ class ReviewsList extends React.Component {
     }
     // fetch API reviews
     componentDidMount() {
-        axios.get(`/reviews/${this.props.currentProduct.product_id}`)
+        axios.get(`/reviews/${this.props.currentProduct}`)
             .then(results => this.setState({ reviews: results.data.results}))
             .catch(err => console.error('Cannot retrieve reviews for product', err))
     }
@@ -60,7 +60,7 @@ class ReviewsList extends React.Component {
 }
 
 ReviewsList.propTypes = {
-    currentProduct: PropTypes.object,
+    currentProduct: PropTypes.number.isRequired,
     reviews: PropTypes.object
 }
 
