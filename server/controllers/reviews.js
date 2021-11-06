@@ -40,7 +40,7 @@ module.exports = {
     let productId = req.params.product_id;
 
     let body = {
-      productId: req.body.product_id,
+      product_id: req.body.product_id,
       rating: req.body.rating, 
       summary: req.body.summary,
       body: req.body.body,
@@ -51,13 +51,13 @@ module.exports = {
       characteristics: req.body.characteristics
     }
     // * still need to test * 
-    axios.post(`${API_URL}/reviews/?product_id=${productId}`, JSON.stringify(body), config)
-      .then(res => {
+    axios.post(`${API_URL}/reviews/?product_id=${productId}`, body, config)
+      .then(() => {
         console.log('Successfully added review!')
-        res.status(201).send(res.data)
+        res.status(201).send()
       })
       .catch(err => {
-        console.error('Unable to add review..')
+        console.log('Unable to add review..')
         res.status(400).send(err)
       })
     // let options = {

@@ -42,7 +42,7 @@ class ReviewsList extends React.Component {
                     <div className="reviews-btn">
                         <Row xs="auto">
                             <Col>
-                                { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+                                { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
                             </Col>
                             <Col>
                                 <ReviewButton />

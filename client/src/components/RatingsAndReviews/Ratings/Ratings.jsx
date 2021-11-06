@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import data from '../dummyReviews.js';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
@@ -6,50 +6,34 @@ import RatingsBar from './RatingsBar.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const Ratings = ({metadata}) => {
-    let meta = metadata
-    console.log("INSIDE RATINGS RN: ", meta)
-    let results = data.results
-    let ratings = [];
-    let recommend = [];
-    let total = 0;
-
-
-    for (let i = 0; i < results.length; i++) {
-        let rating = results[i]['rating']
-        let recc = results[i]['recommend']
-        ratings.push(rating)
-        recommend.push(recc);
-        total += rating
-    }
-    const recommendCount = recommend.filter(Boolean).length
-    const avgRecommend = Math.round(recommendCount / recommend.length * 100) 
-    
-    const avgRating = total / ratings.length
-
+const Ratings = ({data, metadata}) => {
+    let results = 5;
+    let recCount = 0;
+    let rateCount = 0;
     let starCount = {
-        5: 0,
-        4: 0,
-        3: 0,
+        1: 0,
         2: 0,
-        1: 0
+        3: 0,
+        4: 0,
+        5: 0
     }
+    
+    data.map((option) => {
+        recCount += option.recommend;
+        rateCount += option.rating;
 
-    const stars = results.map(review => {
-        starCount[review.rating] += 1;
-        
-        return starCount;
-    }, stars)
-
-    // if (Object.keys(metadata).length !== 0) {
+        starCount[option.rating] += 1;
+    })
+    console.log(data)
+    
         return (
             <div>
                 <Row>
                     <Col xs={2}>
-                        <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>{avgRating}</div>
+                        <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>5</div>
                     </Col>
-                    <Col xs={4}><ReviewsRating rating={avgRating} /></Col>
-                    <div id="recommend" style={{ fontSize: "15px" }}>{avgRecommend}% of reviews recommend this product</div> 
+                    <Col xs={4}><ReviewsRating  /></Col>
+                    <div id="recommend" style={{ fontSize: "15px" }}>100% of reviews recommend this product</div> 
                 </Row>
                 <br></br>
                 <Row>
