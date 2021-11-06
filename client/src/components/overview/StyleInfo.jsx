@@ -15,12 +15,13 @@ const StyleInfo = (props) => {
 
   const [size, changeSize] = useState(() => { return 'Select a Size'});
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
-  const [styles, changeStyles] = useState([]);
+  const [styles, changeProduct] = useState([]);
+  const [currentStyle, changeStyle] = useState()
 
   useEffect(() => {
     console.log(props.productInfo.id)
     axios.get(`/products/${props.productInfo.id}/styles`)
-      .then(results => changeStyles(results.data))
+      .then(results => changeProduct(results.data))
       .catch(err => console.error(err))
   }, [props.productInfo])
 
