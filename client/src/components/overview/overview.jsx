@@ -47,17 +47,44 @@ class Overview extends React.Component {
 
 export default Overview;
 
+/*
+// const Overview = ({ currentProduct, currentStyle }) => (
+    //create a useState that obtains current product info
+    //cost [productInfo, changeProductInfo]  = useState([])
+    create a useState that obtains current style info
+    const [styleInfo, changeStyleInfo] = useState([])
 
-// const Overview = (props) => (
+    //create a useEffect to retreive the product info for currentProduct
+    //useEffect(() => {
+      axios.get(`/products/${currentProduct}`)
+      .then(results => changeProductInfo(results.data))
+      .catch(err => console.error('Not able to obtain product info', err))
+    }, [currentProduct.product_id])
+
+    create a useEffect to retreive the style info the is selected
+    useEffect(() => {
+      axios.get(`/products/${currentProduct}/styles`)
+      .then(results => {
+        for (var style in results.data) {
+          if (style.style_id === currentStyle) {
+            changeStyleInfo([style])
+          }
+        }
+      .catch(err => console.error('Not able to obtain product info', err))
+    }, [currentProduct.product_id, currentStyle])
+    //needs to be able to change style when product is changed (to default style) and change when a different product is chosen.
+
+
 //   <Container fluid="md" className="ov-main">
 //     <Row>
 //       <h1>Overview</h1>
 //     </Row>
 //     <Row>
-//       <RowOne currentProduct={props}/>
+//       <RowOne productInfo={productInfo} styleInfo={styleInfo}/>
 //     </Row>
 //     <Row>
-//       <RowTwo currentProduct={props.currentProduct}/>
+//       <RowTwo productInfo={productInfo}/>
 //     </Row>
 //   </Container>
 // )
+*/

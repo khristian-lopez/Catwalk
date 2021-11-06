@@ -21,7 +21,9 @@ const StyleInfo = (props) => {
   useEffect(() => {
     console.log(props.productInfo.id)
     axios.get(`/products/${props.productInfo.id}/styles`)
-      .then(results => changeProduct(results.data))
+      .then(results => {
+        changeProduct(results.data)
+      })
       .catch(err => console.error(err))
   }, [props.productInfo])
 

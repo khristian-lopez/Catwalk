@@ -22,7 +22,9 @@ const MyGallery = () => {
     },
   ];
   return (
-    <ImageGallery items={images} thumbnailPosition="left"/>
+    <Col className='col1' xs={8}>
+      <ImageGallery items={images} thumbnailPosition="left" className="image-gallery-slide"/>
+    </Col>
   );
 };
 
