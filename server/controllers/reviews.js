@@ -61,5 +61,17 @@ module.exports = {
       })
   },
   // TODO: Updates a review to show it was found helpful
+  markHelpful: (req, res) => {
+    let review_id = req.params.review_id;
+    axios.put(`${API_URL}/${review_id}/helpful`, null, config)
+      .then(({data}) => {
+        console.log('Successfully marked review as helpful!')
+        res.status(204).send(data)
+      })
+      .catch(err => {
+        console.error('Cannot mark review as helpful...')
+        res.status(500).send(err)
+      })
+  }
   // TODO: Updates a review to show it was reported 
 }

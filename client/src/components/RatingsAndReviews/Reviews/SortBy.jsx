@@ -1,24 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
+
 
 const SortBy = props => {
-    
+    const [sortList, setSortList] = getSortList("relevance")
+    // TODO: check functionality
+    function getSortList() {
+        const [value, setState] = useState(null)
+        const handleChange = e => { setState(e.target.value) }
+        const inputProps = {
+            onChange: handleChange
+        }
+        return [value, inputProps]
+    }
     return (
         <div className="sort-dropdown">
-            <label> {props.review} review(s), sorted by 
-                <select >
-                    <option name="relevance">Relevance</option>
-                    <option name="newest">Newest</option>
-                    <option name="helpful">Helpful</option>
+            <label> {props.review.length} review(s), sorted by 
+                <select {...setSortList}>
+                    <option value={sortList === "relevance"}>Relevance</option>
+                    <option value={sortList === "newest"}>Newest</option>
+                    <option value={sortList === "helpful"}>Helpful</option>
                 </select>
             </label>
         </div>
     )
 }
 
-SortBy.propTypes = {
-    review: PropTypes.number
-}
 
 export default SortBy;
 
