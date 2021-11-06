@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Carousel from 'react-bootstrap/Carousel'
 
-const ImageGallery = () => (
+const MyGallery = () => (
   <Col className='col1' xs={8}>
     <Container>
     <Carousel variant="dark">
@@ -48,4 +48,4 @@ const ImageGallery = () => (
   </Col>
 );
 
-export default ImageGallery;
+export default MyGallery;

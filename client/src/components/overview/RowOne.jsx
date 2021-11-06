@@ -4,14 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import StyleInfo from './StyleInfo.jsx'
-import ImageGallery from './ImageGallery.jsx'
+import MyGallery from './MyGallery.jsx'
 
 
 const RowOne = (props) => (
 
   <Container>
     <Row className="ov-main-row1">
-      <ImageGallery productInfo={props.productInfo}/>
+      <MyGallery productInfo={props.productInfo}/>
       <StyleInfo productInfo={props.productInfo}/>
     </Row>
   </Container>
