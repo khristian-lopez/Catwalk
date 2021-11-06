@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
 import AverageRating from './AverageRating.jsx';
+import AverageRec from './AverageRec.jsx';
 import RatingsBar from './RatingsBar.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -34,17 +35,19 @@ class Ratings extends React.Component {
     }
     render() {
         const {reviews, metadata} = this.state;
-        //console.log(reviews)
+        console.log(reviews)
         return (
             <div>
             <Row>
                 <Col xs={2}>
                     <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>
-                        <AverageRating reviews={reviews}/>
+                        <AverageRating reviews={reviews} />
                     </div>
                 </Col>
                 <Col xs={4}><ReviewsRating  /></Col>
-                <div id="recommend" style={{ fontSize: "15px" }}>AVG % of reviews recommend this product</div> 
+                <div id="recommend" style={{ fontSize: "13px" }}>
+                    <AverageRec reviews={reviews} />
+                </div> 
             </Row>
             <br></br>
             <Row>
