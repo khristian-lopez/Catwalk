@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
-import data from '../dummyReviews.js';
 import ReviewButton from './ReviewButtons.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -12,13 +12,18 @@ class ReviewsList extends React.Component {
         super(props)
 
         this.state = {
-            reviews: data.results,
+            reviews: [],
             tiles: 2
         }
         this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
     }
     // fetch API reviews
-    
+    componentDidMount() {
+        axios.get(`/reviews/${this.props.currentProduct.product_id}`)
+            .then(results => this.setState({ reviews: results.data.results}))
+            .catch(err => console.error('Cannot retrieve reviews for product', err))
+    }
+
     renderReviewsTiles() {
         // eslint-disable-next-line react/no-direct-mutation-state
         this.setState({ tiles: this.state.tiles += 2 })
@@ -29,7 +34,7 @@ class ReviewsList extends React.Component {
             return (
                 <div>
                     <div className="reviewsList" >
-                        <SortBy review={reviews}/>
+                        <SortBy review={reviews.length}/>
                     <div className="reviewTiles" >
                         { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
                     </div>
@@ -54,4 +59,65 @@ class ReviewsList extends React.Component {
     }
 }
 
+ReviewsList.propTypes = {
+    currentProduct: PropTypes.object,
+    reviews: PropTypes.object
+}
+
 export default ReviewsList;
+
+// class ReviewsList extends React.Component {
+//     constructor(props) {
+//         super(props)
+
+//         this.state = {
+//             reviews: [],
+//             tiles: 2
+//         }
+//         this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
+//     }
+//     // fetch API reviews
+//     componentDidMount() {
+//         axios.get(`/reviews/${this.props.currentProduct.product_id}`)
+//             .then(results => this.setState({ reviews: results.data.results}))
+//             .catch(err => console.error('Cannot retrieve reviews for product', err))
+//     }
+
+//     renderReviewsTiles() {
+//         // eslint-disable-next-line react/no-direct-mutation-state
+//         this.setState({ tiles: this.state.tiles += 2 })
+//     }
+//     render() {
+//         const {reviews, tiles} = this.state;
+//         if (reviews.length > 0) {
+//             return (
+//                 <div>
+//                     <div className="reviewsList" >
+//                         <SortBy review={reviews.length}/>
+//                     <div className="reviewTiles" >
+//                         { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+//                     </div>
+//                     </div>
+//                     <div className="reviews-btn">
+//                         <Row xs="auto">
+//                             <Col>
+//                                 { (reviews.length < 2) ? null : (reviews.length < tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+//                             </Col>
+//                             <Col>
+//                                 <ReviewButton />
+//                             </Col>
+//                         </Row>
+//                     </div>
+//                 </div>
+//             )  
+//         } else {
+//             return (
+//                 <div>No reviews for this product</div>
+//             )
+//         }
+//     }
+// }
+
+// ReviewsList.propTypes = {
+//     currentProduct: PropTypes.object,
+//     reviews: PropTypes.object

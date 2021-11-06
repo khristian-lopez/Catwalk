@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const RatingsAndReviews = ({currentProduct, currentProductReviews}) => {
+const RatingsAndReviews = ({currentProduct}) => {
     // TODO: make axios call to retrieve specific product id 
     // TODO: after making axios call, pass down state into each components
     
@@ -19,15 +19,14 @@ const RatingsAndReviews = ({currentProduct, currentProductReviews}) => {
                         <div className="ratings-container">
                             <Ratings 
                              currentProduct={currentProduct}
-                             currentProductReviews={currentProductReviews}
+                             
                             />
                         </div>
                     </Col>
                     <Col>
                         <div className="reviews-container">
                             <ReviewsList 
-                             currentProduct={currentProduct}
-                             currentProductReviews={currentProductReviews}
+                             currentProduct={currentProduct}                        
                             />
                         </div>
                     </Col>
@@ -39,7 +38,62 @@ const RatingsAndReviews = ({currentProduct, currentProductReviews}) => {
 
 RatingsAndReviews.propTypes = {
     currentProduct: PropTypes.object,
-    currentProductReviews: PropTypes.object
 }
 
 export default RatingsAndReviews;
+
+
+// class RatingsAndReviews extends React.Component {
+//     // TODO: make axios call to retrieve specific product id 
+//     // TODO: after making axios call, pass down state into each components
+//     constructor(props) {
+//         super(props)
+
+//         this.state = {
+//             reviews: [],
+//         }
+//         this.getReviews = this.getReviews.bind(this)
+//     }
+//     componentDidMount() {
+//         this.getReviews(this.state.reviews)
+//     }
+//     getReviews() {
+//         axios.get(`reviews/${this.props.currentProduct.product_id}`)
+//             .then(res => res.data)
+//             .then(data => this.setState({ reviews: data }))
+//     }
+    
+//     render() {
+//         console.log(this.state.reviews)
+//         return (
+//             <div>
+//                 <Container className="rr-container" fluid="md">
+//                     <Row>
+//                         <Col xs={4}>
+//                             <h5 id="rr-header">RATINGS & REVIEWS</h5>
+//                             <div className="ratings-container">
+//                                 <Ratings 
+//                                  //currentProduct={this.props.currentProduct}
+//                                 review={this.state.reviews}
+//                                 />
+//                             </div>
+//                         </Col>
+//                         <Col>
+//                             <div className="reviews-container">
+//                                 <ReviewsList 
+//                                  currentProduct={this.props.currentProduct}
+//                                  //reviews={this.props.reviews}
+//                                 />
+//                             </div>
+//                         </Col>
+//                     </Row>
+//                 </Container>
+//             </div>
+//         )    
+//     }
+// }
+
+// RatingsAndReviews.propTypes = {
+//     currentProduct: PropTypes.object,
+//     reviews: PropTypes.object
+// }

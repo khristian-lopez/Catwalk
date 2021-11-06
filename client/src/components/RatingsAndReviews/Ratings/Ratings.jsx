@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import data from '../dummyReviews.js';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
 import RatingsBar from './RatingsBar.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import axios from 'axios';
 
-const Ratings = () => {
+const Ratings = (props) => {
+    
     let results = data.results
-    let ratings = []
+    let ratings = [];
     let recommend = [];
-    let total = 0
+    let total = 0;
+
+
     for (let i = 0; i < results.length; i++) {
         let rating = results[i]['rating']
         let recc = results[i]['recommend']
@@ -21,7 +26,7 @@ const Ratings = () => {
     const avgRecommend = Math.round(recommendCount / recommend.length * 100) 
     
     const avgRating = total / ratings.length
-    // TODO: implement something to make the bar rating
+
     let starCount = {
         5: 0,
         4: 0,
@@ -29,6 +34,7 @@ const Ratings = () => {
         2: 0,
         1: 0
     }
+
     const stars = results.map(review => {
         starCount[review.rating] += 1;
         
@@ -71,6 +77,10 @@ const Ratings = () => {
             </Row>           
         </div>
     )
+}
+
+Ratings.propTypes = {
+    currentProduct: PropTypes.object
 }
 
 export default Ratings;
