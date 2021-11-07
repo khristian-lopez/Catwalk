@@ -63,11 +63,8 @@ class Ratings extends React.Component {
             <br></br>
             <Row>
                 <div className="bar-container">
-                        <Row>
-                            <Col s={1}><div id="stars"></div></Col>
-                            <Col xs={9}><Averagebar reviews={reviews}/></Col>
-                        </Row>   
-                        
+                    <Col s={1}><div id="stars"></div></Col>
+                    <Col xs={9}><Averagebar reviews={reviews}/></Col>         
                 </div>
             </Row>           
         </div>

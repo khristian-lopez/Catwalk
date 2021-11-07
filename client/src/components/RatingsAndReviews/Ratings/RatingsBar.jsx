@@ -1,9 +1,10 @@
 import React from 'react';
 
 // eslint-disable-next-line react/prop-types
-const RatingsBar = ({star}) => {
-    const percentage = Math.round(star * 100)
-    
+const RatingsBar = ({rating, total}) => {
+    // TODO: do something with total to get correct bar rate
+    const percentage = Math.round(rating * 10)
+    //console.log(percentage)
     return (
         <div className="ratingsbar" >
             <div 

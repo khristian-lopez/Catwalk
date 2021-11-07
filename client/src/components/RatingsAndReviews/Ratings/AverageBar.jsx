@@ -12,11 +12,18 @@ const AverageBar = (props) => {
     props.reviews.map((review) => {
         count[review.rating] += 1
     })
+
+    let total = 0;
+    for (let rating in count) {
+        total += count[rating];
+    }
     
     return Object.keys(count).map(star => (
         <div key={star}>
-            <div>{star}</div>
-            <RatingsBar />
+            <div>
+                {star}
+            </div>
+            <RatingsBar rating={count[star]} total={total}/>
         </div>
     ))
 }
