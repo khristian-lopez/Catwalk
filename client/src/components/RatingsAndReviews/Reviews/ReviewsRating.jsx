@@ -2,7 +2,8 @@
 import React from 'react';
 import Ratings from 'react-ratings-declarative';
 
-const ReviewStars = props => {
+const ReviewsRating = props => {
+    
     return (
         <Ratings
             rating={props.rating}
@@ -19,5 +20,5 @@ const ReviewStars = props => {
     )
 }
 
-export default ReviewStars;
+export default ReviewsRating;
 

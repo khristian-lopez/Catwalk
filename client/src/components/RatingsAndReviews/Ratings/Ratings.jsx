@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import ReviewsRating from '../Reviews/ReviewsRating.jsx';
 import AverageRating from './AverageRating.jsx';
 import AverageRec from './AverageRec.jsx';
-import RatingsBar from './RatingsBar.jsx';
+import Averagebar from './AverageBar.jsx';
+// import RatingsBar from './RatingsBar.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
@@ -18,6 +19,14 @@ class Ratings extends React.Component {
         }
         this.getReviews = this.getReviews.bind(this)
         this.getMetadata = this.getMetadata.bind(this)
+        this.getBarRating = this.getBarRating.bind(this)
+        this.count = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0
+        }
     }
     componentDidMount() {
         this.getReviews()
@@ -33,9 +42,11 @@ class Ratings extends React.Component {
             .then(res => this.setState({ metadata: res.data }))
             .catch(err => console.error('Cannot retrieve metadata for product', err))
     }
+    getBarRating() {
+        
+    }
     render() {
         const {reviews, metadata} = this.state;
-        console.log(reviews)
         return (
             <div>
             <Row>
@@ -44,7 +55,7 @@ class Ratings extends React.Component {
                         <AverageRating reviews={reviews} />
                     </div>
                 </Col>
-                <Col xs={4}><ReviewsRating  /></Col>
+                <Col xs={4}><ReviewsRating  reviews={reviews} /></Col>
                 <div id="recommend" style={{ fontSize: "13px" }}>
                     <AverageRec reviews={reviews} />
                 </div> 
@@ -53,25 +64,10 @@ class Ratings extends React.Component {
             <Row>
                 <div className="bar-container">
                         <Row>
-                            <Col s={1}><div id="5-star">5 Stars</div></Col>
-                            <Col xs={9}><RatingsBar /></Col>
+                            <Col s={1}><div id="stars"></div></Col>
+                            <Col xs={9}><Averagebar reviews={reviews}/></Col>
                         </Row>   
-                        <Row>    
-                            <Col s={1}><div id="4-star">4 Stars</div></Col>
-                            <Col xs={9}><RatingsBar /></Col>  
-                        </Row>
-                        <Row>       
-                            <Col s={1}><div id="3-star">3 Stars</div></Col>
-                            <Col xs={9}><RatingsBar /></Col>
-                        </Row>    
-                        <Row>    
-                            <Col s={1}><div id="2-star">2 Stars</div></Col>
-                            <Col xs={9}><RatingsBar /></Col>
-                        </Row>                   
-                        <Row>    
-                            <Col s={1}><div id="1-star">1 Stars</div></Col>
-                            <Col xs={9}><RatingsBar /></Col>
-                        </Row>
+                        
                 </div>
             </Row>           
         </div>
