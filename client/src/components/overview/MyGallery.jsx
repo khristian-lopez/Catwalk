@@ -5,14 +5,16 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Carousel from 'react-bootstrap/Carousel';
 import ImageGallery from 'react-image-gallery';
+// import defaultData from './defaultData.js';
+
 
 const MyGallery = ({ styleInfo }) => {
 
-  console.log('at gallery', styleInfo.photos)
+  // console.log('at gallery', styleInfo.photos)
   // const images = styleInfo.photos
   // if (styleInfo !== undefined) {
-  //   const images = styleInfo.photos
-  // }
+    // }
+  // const images = styleInfo.photos
   const images = [
     {
       original: 'https://picsum.photos/id/1018/1000/600/',

@@ -6,7 +6,7 @@ import RowOne from './RowOne.jsx';
 import RowTwo from './RowTwo.jsx';
 import Col from 'react-bootstrap/Col'
 import axios from 'axios';
-
+import defaultData from './defaultData.js';
 
 const Overview = ({ currentProduct, currentStyle }) => {
   // create a useState that obtains current product info
