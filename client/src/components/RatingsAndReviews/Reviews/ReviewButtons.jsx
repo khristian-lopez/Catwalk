@@ -15,7 +15,7 @@ const ReviewButtons = () => {
                 centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Add your review here:</Modal.Title>
+                    <Modal.Title>Write Your Review</Modal.Title>
                 </Modal.Header>
                 <ModalForm closeModal={setOpenModal}/>
             </Modal>

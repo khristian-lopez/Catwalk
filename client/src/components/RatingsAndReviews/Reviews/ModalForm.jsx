@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import Characteristics from './ModalFiles/characteristics.jsx';
-
+import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
 const ModalForm = ({closeModal}) => {
     const [characterCount, setCharacterCount] = useState(0);
-    const [radioValue, radioInputProps] = useRadioBtns("option")
+    const [rateValue, rateInputProps] = userateBtns("option")
+    const [recValue, recInputProps] = useRecClick(null)
+    const [summary, setSummary] = useState('')
+    const [review, setReview] = useState('')
 
     const min = 50
-    const Minimum = () => (min - characterCount > 0) ? <p>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
+    const Minimum = () => 
+        (min - characterCount > 0) ? <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
 
-    function useRadioBtns(name) {
+    function userateBtns(name) {
         const [value, setState] = useState(null);
         const handleChange = e => { setState(e.target.value) }
         const inputProps = {
@@ -20,38 +24,82 @@ const ModalForm = ({closeModal}) => {
         }
         return [value, inputProps]
     }
-    const handleRecClick = e => {
-        [e.target.name] = e.target.value
+    // (e.target.value === "yes") ? setRecValue(true) : setRecValue(false);
+    function useRecClick(name) {
+        const [value, setState] = useState(null)
+        const handleRecClick = e => { setState(e.target.value) }
+        const inputProps = {
+            name, 
+            type: "radio",
+            onChange: handleRecClick
+        }
+        return [value, inputProps]
     }
+    function handleSummary(e) {
+        setSummary(e.target.value)
+    }
+    function handleReview(e) {
+        setReview(e.target.value)
+        setCharacterCount(e.target.value.length)
+    }
+    
+    // handleFormSubmit
+    const handleFormSubmit = e => {
+        e.preventDefault()
+        const input = {
+            rating: Number(rateValue),
+            recommend: Boolean(recValue),
+            summary: summary,
 
+        }
+    }
+    // create axios post request to add review
+    const addReview = data => {
+        return axios.post(`/reviews`, data, {
+            header: {
+                'Content-type': 'multipart/form-data'
+            }
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error('Cannot add review', err))
+    }
+    console.log('check', rateValue)
+    console.log('rec', recValue)
+    console.log('summary', summary)
     return (
-        <div >
-            <form className="modalContainer" >
+        <div>
+            <form className="modalContainer" onSubmit={handleFormSubmit}>
                 <div className="form-input">
                     <div className="review-overall">Overall rating:
                         <p id="review-choices">
-                            <input value="poor" className="review-rate" {...radioInputProps} checked={radioValue === "poor"} />Poor
-                            <input value="fair" className="review-rate" {...radioInputProps} checked={radioValue === "fair"} />Fair
-                            <input value="average" className="review-rate" {...radioInputProps} checked={radioValue === "average"} />Average
-                            <input value="good" className="review-rate" {...radioInputProps} checked={radioValue === "good"} />Good
-                            <input value="great" className="review-rate" {...radioInputProps} checked={radioValue === "great"} />Great
+                            <input value="1" className="review-rate" {...rateInputProps} checked={rateValue === "1"} />Poor
+                            <input value="2" className="review-rate" {...rateInputProps} checked={rateValue === "2"} />Fair
+                            <input value="3" className="review-rate" {...rateInputProps} checked={rateValue === "3"} />Average
+                            <input value="4" className="review-rate" {...rateInputProps} checked={rateValue === "4"} />Good
+                            <input value="5" className="review-rate" {...rateInputProps} checked={rateValue === "5"} />Great
                         </p>
                     </div>
                     <div className="review-recc" required>Do you recommend this product?
                         <p id="recc-answer">
-                            <input id="recc-yes" name="yes"  type="radio" onClick={handleRecClick}/>Yes
-                            <input id="recc-no" name="no" type="radio" onClick={handleRecClick}/>No
+                            <input id="recc-yes" value="true"  {...recInputProps} checked={recValue === "true"} />Yes
+                            <input id="recc-no" value="false" {...recInputProps} checked={recValue === "false"} />No
                         </p>
                     </div>
                     <Characteristics />
                     <div className="review-summary">Summary:
                         <br></br>
-                        <textarea type="text" cols="50" placeholder="Ex: Best purchase ever!" maxLength="60" />
+                        <textarea 
+                            type="text" 
+                            cols="50" 
+                            placeholder="Ex: Best purchase ever!" 
+                            maxLength="60"
+                            onChange={handleSummary}
+                        />
                     </div>
                     <div className="review-body">Review:
                         <br></br>
                         <textarea
-                            onChange={e => setCharacterCount(e.target.value.length)}
+                            onChange={handleReview}
                             type="text" rows="5" cols="50"
                             placeholder="Why did you like the product or not?"
                             minLength="50" maxLength="1000" required
@@ -66,14 +114,15 @@ const ModalForm = ({closeModal}) => {
                     <div className="reviewer-email">email:
                         <br></br>
                         <input type="email" size="30" placeholder="Ex: jackson11@email.com" maxLength="60" required/>
-                        <p>For authentication reasons, you will not be emailed</p>
+                        <p style={{ fontSize: "10px" }}>For authentication reasons, you will not be emailed</p>
                     </div>
                 </div>
-                <button id="review-submit-btn" type="submit" onClick={e => {
-                    e.preventDefault()
-                    closeModal(false)
-                    }
-                }
+                <button id="review-submit-btn" type="submit" 
+                        onSubmit={e => {
+                            e.preventDefault()
+                            closeModal(false)
+                            }
+                        }
                 >Submit your review!</button>
             </form>
         </div>

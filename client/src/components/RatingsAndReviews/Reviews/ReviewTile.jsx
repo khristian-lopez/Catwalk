@@ -6,8 +6,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const ReviewTile = props => {
-    let date = props.review.date.slice(0, 10).split('-');
-    let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
+    function GetFormattedDate() {
+        let date = props.review.date.slice(0, 10).split('-');
+        let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
+        return formattedDate;
+    }
     
     return (
         <div className="review-Tile" key={props.review.review_id}>
@@ -23,7 +26,10 @@ const ReviewTile = props => {
                     </div>
                 </Col>
                 <Col xs={2}>
-                    <p id="rev-date" style={{fontSize: "15px"}}>{formattedDate}</p>
+                    <p id="rev-date" style={{fontSize: "15px"}}>
+                        <GetFormattedDate />
+                    </p>
+                    
                 </Col>
             </Row>
             <div id="rev-summary" style={{fontWeight: "bold", fontSize: "18px"}}>{props.review.summary}</div>
