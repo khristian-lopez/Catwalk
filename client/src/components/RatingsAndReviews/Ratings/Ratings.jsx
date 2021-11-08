@@ -15,17 +15,14 @@ class Ratings extends React.Component {
 
         this.state = {
             reviews: [],
-            metadata: []
+            metadata: [],
+            // todo
+            avg: 0
         }
         this.getReviews = this.getReviews.bind(this)
         this.getMetadata = this.getMetadata.bind(this)
-        this.count = {
-            1: 0,
-            2: 0,
-            3: 0,
-            4: 0,
-            5: 0
-        }
+        // todo
+        this.getAverageRating = this.getAverageRating.bind(this)
     }
     componentDidMount() {
         this.getReviews()
@@ -41,22 +38,25 @@ class Ratings extends React.Component {
             .then(res => this.setState({ metadata: res.data }))
             .catch(err => console.error('Cannot retrieve metadata for product', err))
     }
+    // todo
+    getAverageRating() {
+    }
 
     render() {
         const {reviews, metadata} = this.state;
-        //console.log(reviews)
+        console.log('reviews: ', reviews)
         return (
             <div>
             <Row>
                 <Col xs={2}>
                     <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>
                         <AverageRating reviews={reviews} />
-                        {/* <AverageReview reviews={reviews}/> */}
                     </div>
                 </Col>
                 <Col xs={4}><ReviewsRating  reviews={reviews} /></Col>
                 <div id="recommend" style={{ fontSize: "13px" }}>
                     <AverageRec reviews={reviews} />
+                    {/* <AverageReview reviews={reviews}/> */}
                 </div> 
             </Row>
             <br></br>
