@@ -10,7 +10,7 @@ import MyGallery from './MyGallery.jsx'
 const RowOne = ({ productInfo, styleInfo }) => (
 
   <Container>
-    <Row className="ov-main-row1">
+    <Row className="ov-main-row1" data-testid="ov-main-row1">
       <MyGallery styleInfo={styleInfo}/>
       <StyleInfo productInfo={productInfo} styleInfo={styleInfo}/>
     </Row>

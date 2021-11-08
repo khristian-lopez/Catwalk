@@ -10,7 +10,7 @@ import SocialLinks from './SocialLinks.jsx';
 const RowTwo = ({ productInfo }) => (
 
   <Container>
-    <Row className="ov-main-row2">
+    <Row className="ov-main-row2" data-testid="ov-main-row2">
       <ProductInfo productInfo={productInfo}/>
       <SocialLinks productInfo={productInfo}/>
     </Row>

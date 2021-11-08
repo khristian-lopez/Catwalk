@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Overview from './overview/overview.jsx';
+import Overview from './overview/Overview.jsx';
 import Qa from './qa/qa.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';

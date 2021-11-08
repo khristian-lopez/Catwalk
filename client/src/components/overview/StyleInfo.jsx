@@ -17,6 +17,7 @@ const StyleInfo = ({ productInfo, styleInfo }) => {
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
   // const [currentStyle, changeStyle] = useState()
+  console.log('current style', styleInfo.style_id)
 
   useEffect(() => {
     axios.get(`/products/${productInfo.id}/styles`)
@@ -46,16 +47,8 @@ const StyleInfo = ({ productInfo, styleInfo }) => {
           <div className="ov-style-thumbnails">
             {styleThumbnails.map((style, index) => {
               // console.log(style.photos[0])
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index}/>
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index} id={style.style_id}/>
             })}
-            {/* <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <br />
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/> */}
-
           </div>
         </div>
         <br />
@@ -66,6 +59,9 @@ const StyleInfo = ({ productInfo, styleInfo }) => {
             {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
+              {/* {styleInfo.skus.map(sku => {
+                return <Dropdown.Item onClick={() => changeSize({sku.size})} key={sku}>{sku.size}</Dropdown.Item>
+              })} */}
               <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('S')}>S</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('M')}>M</Dropdown.Item>

@@ -42,7 +42,7 @@ const Overview = ({ currentProduct, currentStyle }) => {
     //needs to be able to change style when product is changed (to default style) and change when a different product is chosen.
 
     return (
-      <Container fluid="md" className="ov-main">
+      <Container fluid="md" className="ov-main" data-testid="ov-main">
         <Row>
           <h1>Overview</h1>
         </Row>
