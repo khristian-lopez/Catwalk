@@ -44,7 +44,7 @@ class Ratings extends React.Component {
 
     render() {
         const {reviews, metadata} = this.state;
-        console.log('reviews: ', reviews)
+        //console.log('reviews: ', reviews)
         return (
             <div>
             <Row>
@@ -53,10 +53,12 @@ class Ratings extends React.Component {
                         <AverageRating reviews={reviews} />
                     </div>
                 </Col>
-                <Col xs={4}><ReviewsRating  reviews={reviews} /></Col>
+                <Col xs={4}>
+                    <ReviewsRating  reviews={reviews} />
+                    {/* <AverageReview reviews={reviews}/> */}
+                </Col>
                 <div id="recommend" style={{ fontSize: "13px" }}>
                     <AverageRec reviews={reviews} />
-                    {/* <AverageReview reviews={reviews}/> */}
                 </div> 
             </Row>
             <br></br>
