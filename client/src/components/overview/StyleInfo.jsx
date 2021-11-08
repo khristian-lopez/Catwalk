@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -10,11 +10,23 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
+import axios from 'axios';
+const StyleInfo = ({ productInfo, styleInfo }) => {
 
-const StyleInfo = (props) => {
+  const [size, changeSize] = useState(() => { return 'Select a Size'});
+  const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
+  const [styleThumbnails, changeThumbnails] = useState([]);
+  // const [currentStyle, changeStyle] = useState()
+  // console.log('current style', styleInfo.style_id)
 
-  const [size, changeSize] = useState('Select a Size');
-  const [quantity, changeQuantity] = useState('Quantity');
+  useEffect(() => {
+    axios.get(`/products/${productInfo.id}/styles`)
+      .then(results => {
+        changeThumbnails(results.data)
+      })
+      .catch(err => console.error(err))
+  }, [productInfo])
+
   return (
     <Col className="ov-styles">
       <Stack >
@@ -23,9 +35,9 @@ const StyleInfo = (props) => {
           <StarRatings />  <br /> Read all XX reviews
         </div>
         <div>
-          <label>{props.productInfo.category}</label>
-          <h3>{props.productInfo.name}</h3>
-          <label>{props.productInfo.default_price}</label>
+          <label>{productInfo.category}</label>
+          <h3>{productInfo.name}</h3>
+          <label>{productInfo.default_price}</label>
         </div>
       </Stack>
       <Stack>
@@ -33,14 +45,10 @@ const StyleInfo = (props) => {
         <div className="ov-styles-thumbnails">
           Style &gt; Selected Style <br />
           <div className="ov-style-thumbnails">
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <br />
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-            <Image src="assets/product-image-placeholder-300x300.jpeg" thumbnail roundedCircle fluid width="75" height="75"/>
-
+            {styleThumbnails.map((style, index) => {
+              // console.log(style.photos[0])
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index} id={style.style_id}/>
+            })}
           </div>
         </div>
         <br />
@@ -51,6 +59,9 @@ const StyleInfo = (props) => {
             {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
+              {/* {styleInfo.skus.map(sku => {
+                return <Dropdown.Item onClick={() => changeSize({sku.size})} key={sku}>{sku.size}</Dropdown.Item>
+              })} */}
               <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('S')}>S</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('M')}>M</Dropdown.Item>

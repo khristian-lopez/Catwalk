@@ -7,12 +7,12 @@ import ProductInfo from './ProductInfo.jsx';
 import SocialLinks from './SocialLinks.jsx';
 
 
-const RowTwo = (props) => (
+const RowTwo = ({ productInfo }) => (
 
   <Container>
-    <Row className="ov-main-row2">
-      <ProductInfo productInfo={props.productInfo}/>
-      <SocialLinks productInfo={props.productInfo}/>
+    <Row className="ov-main-row2" data-testid="ov-main-row2">
+      <ProductInfo productInfo={productInfo}/>
+      <SocialLinks productInfo={productInfo}/>
     </Row>
   </Container>
 )

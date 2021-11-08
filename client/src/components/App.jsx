@@ -1,15 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import Overview from './overview/overview.jsx';
+import Overview from './overview/Overview.jsx';
 import Qa from './qa/qa.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import RelatedProducts from './RelatedProducts/RelatedProducts.jsx';
+import Container from 'react-bootstrap/Container';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42368 }
+      reviewMetadata: { product_id: 42366 },
+      currentStyle: 253620
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
@@ -22,9 +24,10 @@ class App extends React.Component {
   
   getReviewMetadata(productId) {
     axios.get(`reviews/meta/${productId}`)
-      .then(results => this.setState({ reviewMetadata: results.data }))
+      .then(results => this.setState({ reviewMetadata: results.data, currentStyle: results.data.defaultStyle.style_id }))
       .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
+  //create a get current style id, defaults to default value unless other style is selected
 
   handleChangeProduct(productId) {
     this.getReviewMetadata(productId);
@@ -33,10 +36,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1>Project Catwalk</h1>
-        <div>
-          <Overview currentProduct={this.state.reviewMetadata}/>
-        </div>
+        <Container><h1>Project Catwalk</h1></Container>
+        <Overview currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle}/>
         <RelatedProducts currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa currentProduct={this.state.reviewMetadata}/>
         <RatingsAndReviews currentProduct={this.state.reviewMetadata} />

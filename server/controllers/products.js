@@ -32,7 +32,7 @@ module.exports = {
     //retrieve all product level information for a specific product id
     axios.get(`${API_URL}/products/${productId}`, config)
       .then(results => {
-        console.log('product successfully obtained: ', results.data)
+        console.log('product successfully obtained')
         res.status(200).send(results.data)
       })
       .catch(err => {
