@@ -11,11 +11,20 @@ const YourOutfitList = ({ currentProduct }) => {
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
+    console.log('in useEffect: ', currentProduct);
     let outfitList = JSON.parse(localStorage.getItem('outfit'));
     if (outfitList) {
       setOutfit(outfitList);
     }
-  }, [])
+  }, [currentProduct])
+
+  useEffect(() => {
+    axios.get(`/products/${currentProduct.product_id}`)
+      .then((result) => {
+        Object.assign(currentProduct, result.data)
+        console.log('currentProduct: ', currentProduct);
+      })
+  }, [currentProduct])
 
   const handleAdd = () => {
     if (localStorage.getItem('outfit') === null) {
@@ -27,6 +36,7 @@ const YourOutfitList = ({ currentProduct }) => {
     let checkDupes = outfit.find(product => product.product_id === currentProduct.product_id)
 
     if (!checkDupes) {
+      console.log('in add: ', currentProduct);
       outfitList.push(currentProduct);
       localStorage.setItem('outfit', JSON.stringify(outfitList));
       outfitList = JSON.parse(localStorage.getItem('outfit'));
@@ -49,11 +59,11 @@ const YourOutfitList = ({ currentProduct }) => {
           {outfit.map((product, i) => (
             <Slide key={product.product_id} index={i}>
               <div className="cards rel-prod-card">
-                <img className="preview" src={'assets/product-image-placeholder-300x300.jpeg'} />
+                <img className="preview" src={product.defaultStyle.photos[0].thumbnail_url} />
                 <span>
                   <ActionButton card={ 'outfit' } />
                 </span>
-                {/* <ProductInfo product={product} /> */}
+                <ProductInfo product={product} />
               </div>
             </Slide>
           ))}

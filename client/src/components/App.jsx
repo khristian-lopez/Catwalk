@@ -21,7 +21,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getReviewMetadata(this.state.reviewMetadata.product_id || 42366 );
   }
-  
+
   getReviewMetadata(productId) {
     axios.get(`reviews/meta/${productId}`)
       .then(results => this.setState({ reviewMetadata: results.data, currentStyle: results.data.defaultStyle.style_id }))
