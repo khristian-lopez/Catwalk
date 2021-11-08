@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42369 },
-      currentStyle: 253637
+      reviewMetadata: { product_id: 42366 },
+      currentStyle: 253620
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
@@ -24,7 +24,7 @@ class App extends React.Component {
 
   getReviewMetadata(productId) {
     axios.get(`reviews/meta/${productId}`)
-      .then(results => this.setState({ reviewMetadata: results.data }))
+      .then(results => this.setState({ reviewMetadata: results.data, currentStyle: results.data.defaultStyle.style_id }))
       .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
   //create a get current style id, defaults to default value unless other style is selected

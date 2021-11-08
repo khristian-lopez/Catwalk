@@ -17,7 +17,7 @@ const StyleInfo = ({ productInfo, styleInfo }) => {
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
   // const [currentStyle, changeStyle] = useState()
-  console.log('current style', styleInfo.style_id)
+  // console.log('current style', styleInfo.style_id)
 
   useEffect(() => {
     axios.get(`/products/${productInfo.id}/styles`)

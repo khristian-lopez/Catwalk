@@ -13,6 +13,8 @@ const Overview = ({ currentProduct, currentStyle }) => {
   const [productInfo, changeProductInfo]  = useState([])
   // create a useState that obtains current style info
   const [styleInfo, changeStyleInfo] = useState([])
+  // console.log('style object', currentProduct.defaultStyle.style_id)
+  console.log('style info', styleInfo)
 
   //create a useEffect to retreive the product info for currentProduct
   useEffect(() => {
@@ -38,7 +40,7 @@ const Overview = ({ currentProduct, currentStyle }) => {
       }
     })
     .catch(err => console.error('Not able to obtain style info', err))
-  }, [currentProduct, currentStyle])
+  }, [currentProduct])
     //needs to be able to change style when product is changed (to default style) and change when a different product is chosen.
 
     return (
