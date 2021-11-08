@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { Slide } from 'pure-react-carousel';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { Slide } from 'pure-react-carousel';
+// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import ActionButton from './ActionButton.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import PropTypes from 'prop-types';

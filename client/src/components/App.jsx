@@ -21,7 +21,6 @@ class App extends React.Component {
   }
 
   getReviewMetadata(productId) {
-    console.log('render');
     axios.get(`reviews/meta/${productId}`)
       .then(results =>
         this.setState(state => {
@@ -37,7 +36,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('render');
     return (
       <div>
         <h1>Project Catwalk</h1>
