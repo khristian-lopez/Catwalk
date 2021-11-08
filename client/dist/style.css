@@ -154,6 +154,12 @@ RELATED PRODUCTS
   width: 1320px;
 }
 
+.preview {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
 /*
 ==================================================
 Q&A

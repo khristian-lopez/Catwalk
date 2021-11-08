@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import {FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon,TwitterShareButton, TwitterIcon} from 'react-share';
 
-const SocialLinks = () => (
+const SocialLinks = (props) => (
   <Col >
     <h5>Social Media Links</h5>
     <br />
