@@ -23,4 +23,3 @@ module.exports = (productId) => {
     })
 }
 
-module.exports(42369);
