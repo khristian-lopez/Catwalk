@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42370 },
-      currentStyle: 253646
+      reviewMetadata: { product_id: 42369 },
+      currentStyle: 253637
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);

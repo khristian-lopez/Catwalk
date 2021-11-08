@@ -11,13 +11,21 @@ import ImageGallery from 'react-image-gallery';
 const MyGallery = ({ styleInfo }) => {
 
   // console.log('at gallery', styleInfo.photos)
+  var styleImages = [];
+  if(styleInfo.photos) {
+    styleInfo.photos.forEach(photo => {
+      var photoObj = {}
+      photoObj['original'] = photo.url
+      photoObj['thumbnail'] = photo.thumbnail_url
+      styleImages.push(photoObj)
+    })
+  }
+  // console.log('at gallery styleImages', styleImages)
+
   // const images = styleInfo.photos
-  // if (styleInfo !== undefined) {
-    // }
-  // const images = styleInfo.photos
-  const images = [
+  const defaultImages = [
     {
-      original: 'https://picsum.photos/id/1018/1000/600/',
+      original: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
       thumbnail: 'https://picsum.photos/id/1018/250/150/',
     },
     {
@@ -29,6 +37,9 @@ const MyGallery = ({ styleInfo }) => {
       thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
   ];
+
+  const images = (styleImages || defaultImages);
+
   return (
     <Col className='col1' xs={8}>
       <ImageGallery items={images} thumbnailPosition="left" className="image-gallery-slide"/>
