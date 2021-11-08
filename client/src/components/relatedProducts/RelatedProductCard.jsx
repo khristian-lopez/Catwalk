@@ -12,7 +12,7 @@ const RelatedProductCard = (props) => {
       <div className="cards rel-prod-card">
         <img className="preview" src={props.product.defaultStyle.photos[0].thumbnail_url} />
         <span>
-          <ActionButton card={ 'related' }/>
+          <ActionButton card={props.card}/>
         </span>
         <ProductInfo product={props.product}/>
       </div>
@@ -21,8 +21,9 @@ const RelatedProductCard = (props) => {
 }
 
 RelatedProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  product: PropTypes.object,
+  index: PropTypes.number,
+  card: PropTypes.string
 };
 
 export default RelatedProductCard;
