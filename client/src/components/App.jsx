@@ -21,6 +21,7 @@ class App extends React.Component {
   }
 
   getReviewMetadata(productId) {
+    console.log('render');
     axios.get(`reviews/meta/${productId}`)
       .then(results =>
         this.setState(state => {

@@ -39,7 +39,7 @@ const RelatedProductsList = ({ currentProduct, handleChangeProduct }) => {
     axios.get(`/products/${currentProductId}/related`)
       .then(results => setProducts(results.data))
       .catch(err => console.error(err));
-  }, []);
+  }, [currentProduct]);
 
   return (
     <CarouselProvider
