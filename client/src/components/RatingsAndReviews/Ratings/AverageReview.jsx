@@ -2,11 +2,19 @@
 import React from 'react';
 import Ratings from 'react-ratings-declarative';
 
-const ReviewsRating = props => {
-    //console.log(typeof props.rating)
+const AverageReview = props  => {
+    let ratings = 0;
+    let count = 0;
+    props.reviews.map(review => {
+        ratings += review.rating
+        count++;
+    })
+    // TODO: make ratings show up in stars - check typeError
+    let averageRating = Number(ratings / count).toFixed(2)
+    console.log(averageRating)
     return (
         <Ratings
-            rating={props.rating}
+            rating={averageRating}
             widgetDimensions="15px"
             widgetSpacings="1px"
             widgetRatedColors="yellow"
@@ -20,5 +28,4 @@ const ReviewsRating = props => {
     )
 }
 
-export default ReviewsRating;
-
+export default AverageReview;

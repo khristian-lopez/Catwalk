@@ -2,6 +2,7 @@ import React from 'react';
 import RatingsBar from './RatingsBar.jsx';
 
 const AverageBar = (props) => {
+    let total = 0;
     let count = {
         5: 0,
         4: 0,
@@ -13,7 +14,6 @@ const AverageBar = (props) => {
         count[review.rating] += 1
     })
 
-    let total = 0;
     for (let rating in count) {
         total += count[rating];
     }
@@ -21,7 +21,7 @@ const AverageBar = (props) => {
     return Object.keys(count).map(star => (
         <div key={star}>
             <div>
-                {star}
+                {star} star
             </div>
             <RatingsBar rating={count[star]} total={total}/>
         </div>

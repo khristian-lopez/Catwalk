@@ -9,7 +9,7 @@ const AverageRating = (props) => {
         count++;
     })
     let averageRating = (ratings / count).toString().slice(0, 2)
-
+    
     return (
         <div>{averageRating}</div>
     )
