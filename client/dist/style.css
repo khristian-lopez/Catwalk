@@ -58,6 +58,8 @@ OVERVIEW
   /* border: 3px solid green; */
 }
 
+
+
 /*
 ==================================================
 RELATED PRODUCTS
@@ -237,10 +239,6 @@ RATINGS & REVIEWS
   margin: 4px;
 }
 
-.reviewTiles {
-
-  overflow-y: auto;
-}
 .review-Tile {
   border-bottom: 1px solid #494949;
 }
@@ -288,8 +286,11 @@ RATINGS & REVIEWS
 }
 
 .ratings-container {
-  margin: 10px;
-  padding: 5px;
+  margin: 15px;
+  padding-bottom: 35px;
+}
+.bar-container {
+  padding-bottom: 30px;
 }
 .ratingsbar {
   margin: 4px;

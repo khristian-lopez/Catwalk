@@ -2,6 +2,8 @@
 import React from 'react';
 
 const Helpful = props => {
+    // need to extract onClick options 
+    // const handleClick = e => (e.target.value === "yes") ? props.recommended(true) : props.recommended(false);
 
     return (
         <div>
