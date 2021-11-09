@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProductsList = ({ currentProduct }) => {
+const RelatedProductsList = ({ currentProduct, handleChangeProduct }) => {
   const [products, setProducts] = useState([]);
   const currentProductId = currentProduct.product_id;
   // TODO: add spinner to list
@@ -12,7 +12,7 @@ const RelatedProductsList = ({ currentProduct }) => {
     axios.get(`/products/${currentProductId}/related`)
       .then(results => setProducts(results.data))
       .catch(err => console.error(err));
-  }, []);
+  }, [currentProduct]);
 
   return (
     <CarouselProvider
@@ -25,7 +25,13 @@ const RelatedProductsList = ({ currentProduct }) => {
       <div data-testid='related-prod-list'>
         <Slider>
           {products.map((product, i) => (
-            <RelatedProductCard key={product.id} product={product} index={i} card={'related'}/>
+            <RelatedProductCard
+              key={product.id}
+              product={product}
+              index={i}
+              handleChangeProduct={handleChangeProduct}
+              card={'related'}
+            />
           ))}
         </Slider>
         <ButtonBack>{'<'}</ButtonBack>
@@ -36,7 +42,8 @@ const RelatedProductsList = ({ currentProduct }) => {
 }
 
 RelatedProductsList.propTypes = {
-  currentProduct: PropTypes.object
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
 };
 
 export default RelatedProductsList;

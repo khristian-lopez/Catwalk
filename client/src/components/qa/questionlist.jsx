@@ -13,7 +13,7 @@ const QuestionList = (props) => {
     axios.get(`/qa/questions/${currentProductId}`)
       .then(results => setQuestions(results.data.results.slice(0, maxQuestions)))
       .catch(err => console.error(err));
-  }, []);
+  }, [currentProductId]);
 
   return (
   <div className='qa-QuestionList'>
