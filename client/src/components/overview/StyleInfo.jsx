@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -13,11 +13,12 @@ import Stack from 'react-bootstrap/Stack';
 import axios from 'axios';
 const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
+  const isFirstRef = useRef(true);
   const [size, changeSize] = useState(() => { return 'Select a Size'});
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
-  // const [currentStyle, changeStyle] = useState()
-  // console.log('current style', styleInfo.style_id)
+  //create a skue variable hool that holds an array of all the skus for the style
+  const [skus, currentSkus] = useState([]);
 
   useEffect(() => {
     axios.get(`/products/${productInfo.id}/styles`)
@@ -27,20 +28,31 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       .catch(err => console.error(err))
   }, [productInfo])
 
+  //create a use effect that activates when styleInfo is changed
+    //obtain sku keys for the current style
+  useEffect(() => {
+    if(isFirstRef.current) {
+      isFirstRef.current = false;
+      console.log('not active', styleInfo.skus)
+      return;
+    }
+    currentSkus(Object.keys(styleInfo.skus))
+  }, [styleInfo])
+
   let selectedStyle = { border: 'none' }
   let originalPrice = { fontWeight: 'bold' }
   let salePrice = { fontWeight: 'bold' }
   let saleStatus = styleInfo.sale_price;
 
-  console.log('sale price', styleInfo.sale_price)
+  // console.log('sale price', styleInfo.sale_price)
   if (saleStatus) {
     let originalPrice = {
       textDecoration: 'line-through'
     }
   }
 
-  const skus = styleInfo.skus
-  console.log('sku info', styleInfo.skus)
+
+  console.log('sku array', skus)
 
   return (
     <Col className="ov-styles">
@@ -81,7 +93,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
-              {/* {.map(sku => {
+              {/* map through the sku's array, access each size avaialable for the sku
+              {.map(sku => {
                 return <Dropdown.Item onClick={() => changeSize('test')} key={sku}>{styleInfo.skus.sku.size}</Dropdown.Item>
               })} */}
               {/* <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
