@@ -11,7 +11,6 @@ const YourOutfitList = ({ currentProduct }) => {
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
-    console.log('in useEffect: ', currentProduct);
     let outfitList = JSON.parse(localStorage.getItem('outfit'));
     if (outfitList) {
       setOutfit(outfitList);
@@ -22,7 +21,6 @@ const YourOutfitList = ({ currentProduct }) => {
     axios.get(`/products/${currentProduct.product_id}`)
       .then((result) => {
         Object.assign(currentProduct, result.data)
-        console.log('currentProduct: ', currentProduct);
       })
   }, [currentProduct])
 
@@ -36,7 +34,6 @@ const YourOutfitList = ({ currentProduct }) => {
     let checkDupes = outfit.find(product => product.product_id === currentProduct.product_id)
 
     if (!checkDupes) {
-      console.log('in add: ', currentProduct);
       outfitList.push(currentProduct);
       localStorage.setItem('outfit', JSON.stringify(outfitList));
       if (outfitList) {

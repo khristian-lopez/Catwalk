@@ -5,7 +5,7 @@ const ActionButton = ({ card, productId, handleRemove }) => {
 
   return (
     <span className='action-button' onClick={card === 'outfit' ? () => handleRemove(productId) : () => {}}>
-      { card === 'outfit' ? '\u24e7' : '\u2606'}
+      { card === 'outfit' ? '\u274c' : 	'\u2B50'}
     </span>
   )
 }
