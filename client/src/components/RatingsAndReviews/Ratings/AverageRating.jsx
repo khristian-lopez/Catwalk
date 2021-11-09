@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ReviewsRating from '../Reviews/ReviewsRating.jsx';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const AverageRating = (props) => {
     let ratings = 0;
@@ -13,7 +16,17 @@ const AverageRating = (props) => {
     //console.log(typeof averageRating)
     if (averageRating) {
         return (
-            <div>{averageRating}</div>
+            <div>
+                <Row >
+                <Col xs={1}>
+                    {averageRating}
+                </Col>
+                <Col xs={4}>
+                    <ReviewsRating rating={averageRating}/>
+                </Col>
+                </Row>
+            </div>
+            
         )
     } else {
         return (

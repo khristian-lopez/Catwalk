@@ -7,7 +7,7 @@ const ModalForm = ({closeModal}) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick("true")
-    const [charValue, setChar] = useState("")
+    const [charValue, setChar] = useState({})
     const [summary, setSummary] = useState("")
     const [review, setReview] = useState("")
     const [name, setName] = useState("")
@@ -51,7 +51,7 @@ const ModalForm = ({closeModal}) => {
             name: name,
             email: email,
             photos: [],
-            characteristics: charValue
+            characteristics: email
             //photos, chars
         }
         console.log(input)
