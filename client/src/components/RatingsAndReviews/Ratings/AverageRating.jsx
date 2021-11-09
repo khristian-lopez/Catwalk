@@ -8,7 +8,9 @@ const AverageRating = (props) => {
         ratings += review.rating
         count++;
     })
-    let averageRating = (ratings / count).toString().slice(0, 2)
+    // (ratings / count).toString().slice(0,2)
+    let averageRating = Math.round(ratings / count)
+    //console.log(typeof averageRating)
     if (averageRating) {
         return (
             <div>{averageRating}</div>
