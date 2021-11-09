@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const Characteristics = () => {
-    
+const Characteristics = ({handleChar}) => {
+    //const [characteristic, setCharacteristic] = useState({})
     const options = {
         Size: ['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too wide'],
         Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide'],
@@ -11,6 +11,13 @@ const Characteristics = () => {
         Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
     }
 
+    // const handleClick = e => {
+    //     setCharacteristic(e.target.value)
+    // }
+    const handleClick = e => {
+        handleChar(e.target.value)
+    }
+   
     // TODO: correctly map out values to characteristics
     return Object.keys(options).map(char => (
         
@@ -22,9 +29,10 @@ const Characteristics = () => {
                         id="option-choice"
                         key={`${option}${char}`}
                         name={char}
+                        value={`${option}`}
                         type="radio"
-                        //TODO
-                        
+                        // TODO
+                        onClick={handleClick}
                     />
                     <label key={`${option}${index}`}/>{option}
                 </div>

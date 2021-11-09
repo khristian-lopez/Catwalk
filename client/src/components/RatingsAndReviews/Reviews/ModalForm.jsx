@@ -8,7 +8,7 @@ const ModalForm = ({closeModal}) => {
     const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick("true")
     // TODO
-    //const [char, setChar] = useState("")
+    const [char, setChar] = useState({})
     const [summary, setSummary] = useState("")
     const [review, setReview] = useState("")
     const [name, setName] = useState("")
@@ -42,6 +42,9 @@ const ModalForm = ({closeModal}) => {
         return [value, inputProps]
     }
     // TODO: GRAB CHARS
+    const handleChar = e => {
+        setChar(e)
+    }
     
     const handleSelectImage = e => {
         let url = URL.createObjectURL(e.target.files[0])
@@ -67,7 +70,7 @@ const ModalForm = ({closeModal}) => {
             email: email,
             photos: uploadedImages,
             //chars
-            characteristics: {}
+            characteristics: char
         }
         console.log(input)
     }
@@ -102,7 +105,7 @@ const ModalForm = ({closeModal}) => {
                             <input id="recc-no" value="false" type="radio" {...recInputProps} checked={recValue === "false"} />No
                         </p>
                     </div>
-                    <Characteristics />
+                    <Characteristics handleChar={handleChar}/>
                     <div className="review-summary">Summary:
                         <br></br>
                         <textarea 
