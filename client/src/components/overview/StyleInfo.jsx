@@ -11,7 +11,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
 import axios from 'axios';
-const StyleInfo = ({ productInfo, styleInfo }) => {
+const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
   const [size, changeSize] = useState(() => { return 'Select a Size'});
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
@@ -47,7 +47,7 @@ const StyleInfo = ({ productInfo, styleInfo }) => {
           <div className="ov-style-thumbnails">
             {styleThumbnails.map((style, index) => {
               // console.log(style.photos[0])
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index} id={style.style_id}/>
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event)} />
             })}
           </div>
         </div>
