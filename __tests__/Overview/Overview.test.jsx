@@ -12,7 +12,7 @@ import Overview from '../../client/src/components/overview/Overview.jsx';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
 
-describe('overview module', () => {
+xdescribe('overview module', () => {
   test('renders two rows of information', () => {
     render(<Overview />);
 
