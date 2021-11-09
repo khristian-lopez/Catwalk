@@ -170,6 +170,16 @@ RELATED PRODUCTS
   outline: none !important;
 }
 
+.modal-container,
+.modal-row-1,
+.modal-row-2,
+.modal-col-1,
+.modal-col-2,
+.modal-col-3 {
+  outline-style: solid;
+  outline-color: black;
+}
+
 /*
 ==================================================
 Q&A
