@@ -98,4 +98,9 @@ YourOutfitList.propTypes = {
   currentProduct: PropTypes.object
 };
 
+YourOutfitList.propTypes = {
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
+};
+
 export default YourOutfitList;
