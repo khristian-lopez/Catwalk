@@ -13,8 +13,8 @@ const ModalForm = ({closeModal}) => {
     const [review, setReview] = useState("")
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [image, setImage] = useState("")
-    const [selectedImages, setSelectImages] = useState([])
+    const [image, setImage] = useState(null)
+    const [selectedImages] = useState([])
 
     const min = 50
     const Minimum = () => 
@@ -42,11 +42,6 @@ const ModalForm = ({closeModal}) => {
         return [value, inputProps]
     }
     // TODO: GRAB CHARS
-    // function handleChar(choice) {
-    //     const newChars = JSON.parse(JSON.stringify({}))
-    //     newChars[choice.id] = choice.value;
-    //     setChar({ characteristics: newChars })
-    // }
     
     const handleSelectImage = e => {
         let url = URL.createObjectURL(e.target.files[0])
@@ -71,8 +66,8 @@ const ModalForm = ({closeModal}) => {
             name: name,
             email: email,
             photos: uploadedImages,
+            //chars
             characteristics: {}
-            //photos, chars
         }
         console.log(input)
     }
@@ -87,7 +82,7 @@ const ModalForm = ({closeModal}) => {
         .then(res => console.log(res))
         .catch(err => console.error('Cannot add review', err))
     }
-    // TODO: IMAGE RESIZE, GET CHARS TO FORM SUBMISSION
+    // TODO: GET CHARS TO FORM SUBMISSION
     return (
         <div>
             <form className="modalContainer" onSubmit={handleFormSubmit}>
@@ -131,7 +126,7 @@ const ModalForm = ({closeModal}) => {
                         />
                         <Minimum />
                     </div>
-                    <div className="review-photos">Add photo:
+                    <div className="review-photos">Add photo: (max 5)
                         <br></br>
                         <input
                             type="file"
@@ -141,11 +136,11 @@ const ModalForm = ({closeModal}) => {
                             multiple
                         />
                     <div>
-                        <img src={image} />
-                        <img src={selectedImages[0]} />
-                        <img src={selectedImages[1]} />
-                        <img src={selectedImages[2]} />
-                        <img src={selectedImages[3]} />
+                        <img src={image} style={{ margin: "10px", width: "200px", height: "200px" }}/>
+                        <img src={selectedImages[0]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                        <img src={selectedImages[1]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                        <img src={selectedImages[2]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                        <img src={selectedImages[3]} style={{ margin: "10px", width: "200px", height: "200px" }} />
                     </div>
                     </div>
                     <div className="reviewer-name">username:
@@ -182,13 +177,6 @@ const ModalForm = ({closeModal}) => {
     )
 }
 
-
 export default ModalForm;
 
-//const handleSummary = (e) => setSummary(e.target.value);    
-// const handleReview = (e) => {
-//     setReview(e.target.value)
-//     setCharacterCount(e.target.value.length)
-// }
-// const handleName = (e) => setName(e.target.value);
-// const handleEmail = (e) => setEmail(e.target.value);
+
