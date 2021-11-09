@@ -10,12 +10,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42367 },
+      reviewMetadata: { product_id: 42370 },
       currentStyle: 253620
     };
 
     this.handleChangeProduct = this.handleChangeProduct.bind(this);
     this.getReviewMetadata = this.getReviewMetadata.bind(this);
+    this.handleChangeStyle = this.handleChangeStyle.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +29,11 @@ class App extends React.Component {
       .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
   //create a get current style id, defaults to default value unless other style is selected
+  handleChangeStyle(event) {
+    this.setState({
+      currentStyle: Number(event.target.id)
+    })
+  }
 
   handleChangeProduct(productId) {
     this.getReviewMetadata(productId);
@@ -37,7 +43,7 @@ class App extends React.Component {
     return (
       <div>
         <Container><h1>Project Catwalk</h1></Container>
-        <Overview currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle}/>
+        <Overview currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle} handleChangeStyle={this.handleChangeStyle}/>
         <RelatedProducts currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa currentProduct={this.state.reviewMetadata}/>
         <RatingsAndReviews currentProduct={this.state.reviewMetadata} />
