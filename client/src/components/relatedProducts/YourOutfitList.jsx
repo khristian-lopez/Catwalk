@@ -39,10 +39,26 @@ const YourOutfitList = ({ currentProduct }) => {
       console.log('in add: ', currentProduct);
       outfitList.push(currentProduct);
       localStorage.setItem('outfit', JSON.stringify(outfitList));
-      outfitList = JSON.parse(localStorage.getItem('outfit'));
       if (outfitList) {
         setOutfit(outfitList);
       }
+    }
+  }
+
+  const handleRemove = (productId) => {
+    let outfitList = JSON.parse(localStorage.getItem('outfit'));
+
+    for (var i = 0; i < outfitList.length; i++) {
+      let product = outfitList[i];
+      if (product.id === productId) {
+        outfitList.splice(i, 1);
+        break;
+      }
+    }
+
+    localStorage.setItem('outfit', JSON.stringify(outfitList));
+    if (outfitList) {
+      setOutfit(outfitList);
     }
   }
 
@@ -57,11 +73,11 @@ const YourOutfitList = ({ currentProduct }) => {
       <div data-testid='outfit'>
         <Slider>
           {outfit.map((product, i) => (
-            <Slide key={product.product_id} index={i}>
+            <Slide key={product.id} index={i}>
               <div className="cards rel-prod-card">
                 <img className="preview" src={product.defaultStyle.photos[0].thumbnail_url} />
                 <span>
-                  <ActionButton card={ 'outfit' } />
+                  <ActionButton card={ 'outfit' } productId={product.id} handleRemove={handleRemove}/>
                 </span>
                 <ProductInfo product={product} />
               </div>
