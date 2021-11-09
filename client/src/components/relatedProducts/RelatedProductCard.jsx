@@ -10,7 +10,7 @@ const RelatedProductCard = (props) => {
   return (
     <Slide index={props.index}>
       <div className="cards rel-prod-card" data-testid="rel-prod-card" onClick={(() => props.handleChangeProduct(props.product.id))}>
-        <img className="preview" src={props.product.defaultStyle.photos[0].thumbnail_url} />
+        <img className="preview" data-testid="prod-image" src={props.product.defaultStyle.photos[0].thumbnail_url} />
         <span>
           <ActionButton card={props.card}/>
         </span>

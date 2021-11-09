@@ -12,7 +12,7 @@ import '@testing-library/jest-dom';
 // the component to test
 import RelatedProductsList from '../../client/src/components/RelatedProducts/RelatedProductsList.jsx';
 
-describe('related RelatedProductsList component', () => {
+describe('RelatedProductsList component', () => {
   const route = '/products/42370/related';
 
   const server = setupServer(

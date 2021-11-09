@@ -12,7 +12,7 @@ import '@testing-library/jest-dom';
 // the component to test
 import YourOutfitList from '../../client/src/components/RelatedProducts/YourOutfitList.jsx';
 
-describe('related YourOutfitList component', () => {
+describe('YourOutfitList component', () => {
 
   const sampleProduct = {
     product_id: '42370'
