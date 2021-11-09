@@ -30,6 +30,8 @@ class ReviewsList extends React.Component {
         this.setState({ tiles: this.state.tiles += 2 })
     }
     render() {
+        const {product_id} = this.props.currentProduct
+        //console.log('product: ', product_id)
         const {reviews, tiles} = this.state;
         if (reviews.length > 0) {
             return (
@@ -46,7 +48,7 @@ class ReviewsList extends React.Component {
                                 { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
                             </Col>
                             <Col>
-                                <ReviewButton />
+                                <ReviewButton productId={product_id}/>
                             </Col>
                         </Row>
                     </div>

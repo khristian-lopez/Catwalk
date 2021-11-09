@@ -315,9 +315,14 @@ RATINGS & REVIEWS
   padding: 5px;
 }
 
-#review-submit-btn {
+#review-submit-btn, #review-product-name {
   margin: 10px;
   padding: 10px;
+}
+#review-product-name {
+  margin: 10px;
+  padding: 10px;
+  font-size: "12px"
 }
 
 #rating-options, .char-options, #option-choice, .review-recc, .review-overall {
