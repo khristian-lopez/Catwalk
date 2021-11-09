@@ -27,6 +27,21 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       .catch(err => console.error(err))
   }, [productInfo])
 
+  let selectedStyle = { border: 'none' }
+  let originalPrice = { fontWeight: 'bold' }
+  let salePrice = { fontWeight: 'bold' }
+  let saleStatus = styleInfo.sale_price;
+
+  console.log('sale price', styleInfo.sale_price)
+  if (saleStatus) {
+    let originalPrice = {
+      textDecoration: 'line-through'
+    }
+  }
+
+  const skus = styleInfo.skus
+  console.log('sku info', styleInfo.skus)
+
   return (
     <Col className="ov-styles">
       <Stack >
@@ -37,17 +52,24 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
         <div>
           <label>{productInfo.category}</label>
           <h3>{productInfo.name}</h3>
-          <label>{productInfo.default_price}</label>
+          <label style={originalPrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label>
         </div>
       </Stack>
       <Stack>
         {/* container for styles thumbnails */}
         <div className="ov-styles-thumbnails">
           Style &gt; Selected Style <br />
-          <div className="ov-style-thumbnails">
+          <div >
             {styleThumbnails.map((style, index) => {
               // console.log(style.photos[0])
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event)} />
+              if (style.style_id === styleInfo.style_id) {
+                selectedStyle = {
+                  border: '3px solid cyan'
+                }
+              } else {
+                selectedStyle = { border: 'none'}
+              }
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event) } style={selectedStyle} />
             })}
           </div>
         </div>
@@ -59,14 +81,14 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
-              {/* {styleInfo.skus.map(sku => {
-                return <Dropdown.Item onClick={() => changeSize({sku.size})} key={sku}>{sku.size}</Dropdown.Item>
+              {/* {.map(sku => {
+                return <Dropdown.Item onClick={() => changeSize('test')} key={sku}>{styleInfo.skus.sku.size}</Dropdown.Item>
               })} */}
-              <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
+              {/* <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('S')}>S</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('M')}>M</Dropdown.Item>
               <Dropdown.Item onClick={() => changeSize('L')}>L</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeSize('XL')}>XL</Dropdown.Item>
+              <Dropdown.Item onClick={() => changeSize('XL')}>XL</Dropdown.Item> */}
             </SplitButton>
             {/* select a quatity dropdown */}
             <SplitButton size="sm" variant="secondary" title={quantity}>

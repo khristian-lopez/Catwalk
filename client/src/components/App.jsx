@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewMetadata: { product_id: 42370 },
+      reviewMetadata: { product_id: 42366 },
       currentStyle: 253620
     };
 
