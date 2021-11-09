@@ -31,6 +31,7 @@ const RelatedProductsList = ({ currentProduct, handleChangeProduct }) => {
               index={i}
               handleChangeProduct={handleChangeProduct}
               card={'related'}
+              currentProduct={currentProduct}
             />
           ))}
         </Slider>
