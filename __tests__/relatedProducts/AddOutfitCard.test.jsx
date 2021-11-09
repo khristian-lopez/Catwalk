@@ -10,17 +10,20 @@ import {render, getByText, screen, getByTestId} from '@testing-library/react';
 // add custom jest matchers from jest-dom
 import '@testing-library/jest-dom';
 // the component to test
-import RelatedProducts from '../../client/src/components/RelatedProducts/RelatedProducts.jsx';
+import YourOutfitList from '../../client/src/components/RelatedProducts/YourOutfitList.jsx';
 
-xdescribe('related AddOutfitCard component', () => {
-  test('renders a related products list and an outfit list', () => {
-    render(<RelatedProducts />);
+describe('AddOutfitCard component', () => {
 
-    const ancestor = screen.getByTestId('related-products');
-    const descendant = screen.getByTestId('related-prod-list');
-    const descendant2 = screen.getByTestId('outfit');
+  const sampleProduct = {
+    product_id: '42370'
+  }
+
+  test('renders in YourOutfitList', () => {
+    render(<YourOutfitList currentProduct={sampleProduct}/>);
+
+    const ancestor = screen.getByTestId('outfit');
+    const descendant = screen.getByTestId('add-outfit');
 
     expect(ancestor).toContainElement(descendant);
-    expect(ancestor).toContainElement(descendant2);
   })
 })
