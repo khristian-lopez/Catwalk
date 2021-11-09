@@ -47,7 +47,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           <div className="ov-style-thumbnails">
             {styleThumbnails.map((style, index) => {
               // console.log(style.photos[0])
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={index} id={style.style_id} onClick={() => handleChangeStyle(event)}/>
+              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event)} />
             })}
           </div>
         </div>
