@@ -170,14 +170,35 @@ RELATED PRODUCTS
   outline: none !important;
 }
 
-.modal-container,
-.modal-row-1,
-.modal-row-2,
-.modal-col-1,
-.modal-col-2,
+.modal-col-1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.modal-col-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .modal-col-3 {
-  outline-style: solid;
-  outline-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.modal-prod-2, .modal-prod-1 {
+  font-weight: bold;
+}
+.modal-prod-2 {
+  text-align: right;
+}
+
+.modal-title {
+  font-weight: normal;
+  font-size: smaller;
 }
 
 /*
