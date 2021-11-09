@@ -26,7 +26,6 @@ const AverageRating = (props) => {
                 </Col>
                 </Row>
             </div>
-            
         )
     } else {
         return (

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReviewsRating from '../Reviews/ReviewsRating.jsx';
 import AverageRating from './AverageRating.jsx';
-import AverageReview from './AverageReview.jsx';
 import AverageRec from './AverageRec.jsx';
 import AverageBar from './AverageBar.jsx';
 import Col from 'react-bootstrap/Col';
@@ -44,7 +42,6 @@ class Ratings extends React.Component {
 
     render() {
         const {reviews, metadata} = this.state;
-        //console.log('reviews: ', reviews)
         return (
             <div>
             <Row>
