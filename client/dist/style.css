@@ -166,6 +166,41 @@ RELATED PRODUCTS
   height: 200px;
 }
 
+.focusRing___1airF.carousel__slide-focus-ring {
+  outline: none !important;
+}
+
+.modal-col-1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.modal-col-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-col-3 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.modal-prod-2, .modal-prod-1 {
+  font-weight: bold;
+}
+.modal-prod-2 {
+  text-align: right;
+}
+
+.modal-title {
+  font-weight: normal;
+  font-size: smaller;
+}
+
 /*
 ==================================================
 Q&A
