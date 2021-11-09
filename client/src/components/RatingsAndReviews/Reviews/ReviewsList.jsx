@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ReviewTile from './ReviewTile.jsx';
 import SortBy from './SortBy.jsx';
 import ReviewButton from './ReviewButtons.jsx';
@@ -32,7 +33,7 @@ class ReviewsList extends React.Component {
         const {reviews, tiles} = this.state;
         if (reviews.length > 0) {
             return (
-                <div>
+                <div data-testid="reviewsList">
                     <div className="reviewsList" >
                         <SortBy review={reviews}/>
                     <div className="reviewTiles" >
@@ -59,9 +60,9 @@ class ReviewsList extends React.Component {
     }
 }
 
-ReviewsList.propTypes = {
-    currentProduct: PropTypes.number.isRequired,
-}
+// ReviewsList.propTypes = {
+//     currentProduct: PropTypes.number.isRequired,
+// }
 
 export default ReviewsList;
 

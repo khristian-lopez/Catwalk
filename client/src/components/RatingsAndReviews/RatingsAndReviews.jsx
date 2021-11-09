@@ -10,7 +10,7 @@ const RatingsAndReviews = ({currentProduct}) => {
 
     return (
         <div>
-            <Container className="rr-container" fluid="md">
+            <Container className="rr-container" data-testid="rr-container" fluid="md">
                 <Row>
                     <Col xs={4}>
                         <h5 id="rr-header">RATINGS & REVIEWS</h5>

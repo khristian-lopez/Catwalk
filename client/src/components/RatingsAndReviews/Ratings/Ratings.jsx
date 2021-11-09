@@ -36,7 +36,7 @@ class Ratings extends React.Component {
     render() {
         const {reviews, metadata} = this.state;
         return (
-            <div>
+            <div data-testid="ratingsList">
             <Row>
                 <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>
                     <Col>
