@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ActionButton = ({ card, productId, handleRemove }) => {
+const ActionButton = ({ card, productId, handleRemove, openModal }) => {
 
   return (
-    <span className='action-button' onClick={card === 'outfit' ? () => handleRemove(productId) : () => {}}>
+    <span className='action-button' onClick={card === 'outfit' ? () => handleRemove(productId) : (e) => openModal(e)}>
       { card === 'outfit' ? '\u274c' : 	'\u2B50'}
     </span>
   )
@@ -13,7 +13,8 @@ const ActionButton = ({ card, productId, handleRemove }) => {
 ActionButton.propTypes = {
   card: PropTypes.string,
   handleRemove: PropTypes.func,
-  productId: PropTypes.number
+  productId: PropTypes.number,
+  openModal: PropTypes.func
 };
 
 export default ActionButton;
