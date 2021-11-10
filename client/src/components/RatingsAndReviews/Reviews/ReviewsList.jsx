@@ -15,11 +15,23 @@ class ReviewsList extends React.Component {
             reviews: [],
             tiles: 2
         }
+        this.getReviews = this.getReviews.bind(this)
         this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
         this.handleSort = this.handleSort.bind(this)
     }
-    // fetch API reviews
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentProduct.product_id !== prevProps.currentProduct.product_id) {
+            this.getReviews()
+            this.renderReviewsTiles()
+        }
+    }
+
     componentDidMount() {
+        this.getReviews()
+    }
+
+    getReviews() {
         axios.get(`/reviews/${this.props.currentProduct.product_id}`)
             .then(results => this.setState({ reviews: results.data.results}))
             .catch(err => console.error('Cannot retrieve reviews for product', err))

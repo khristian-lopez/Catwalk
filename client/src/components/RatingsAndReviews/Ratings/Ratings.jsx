@@ -18,15 +18,25 @@ class Ratings extends React.Component {
         this.getReviews = this.getReviews.bind(this)
         this.getMetadata = this.getMetadata.bind(this)
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.currentProduct.product_id !== prevProps.currentProduct.product_id) {
+            this.getReviews()
+            this.getMetadata()
+        }
+    }
+
     componentDidMount() {
         this.getReviews()
         this.getMetadata()
     }
+
     getReviews() {
         axios.get(`/reviews/${this.props.currentProduct.product_id}`)
             .then(res => this.setState({ reviews: res.data.results }))
             .catch(err => console.error('Cannot retrieve reviews for product', err))
     }
+
     getMetadata() {
         axios.get(`/reviews/meta/${this.props.currentProduct.product_id}`)
             .then(res => this.setState({ metadata: res.data }))
@@ -35,7 +45,6 @@ class Ratings extends React.Component {
     
     render() {
         const {reviews, metadata} = this.state;
-        //console.log(metadata)
         return (
             <div data-testid="ratingsList">
             <Row>
