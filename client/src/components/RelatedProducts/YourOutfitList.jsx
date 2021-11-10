@@ -7,7 +7,7 @@ import RelatedProductCard from './RelatedProductCard.jsx';
 import ActionButton from './ActionButton.jsx';
 import ProductInfo from './ProductInfo.jsx';
 
-const YourOutfitList = ({ currentProduct }) => {
+const YourOutfitList = ({ currentProduct, handleChangeProduct }) => {
   const [outfit, setOutfit] = useState([]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const YourOutfitList = ({ currentProduct }) => {
         <Slider>
           {outfit.map((product, i) => (
             <Slide key={product.id} index={i}>
-              <div className="cards rel-prod-card">
+              <div className="cards rel-prod-card" onClick={() => handleChangeProduct(product.id)}>
                 <img className="preview" src={product.defaultStyle.photos[0].thumbnail_url} />
                 <span>
                   <ActionButton card={ 'outfit' } productId={product.id} handleRemove={handleRemove}/>
@@ -92,7 +92,8 @@ const YourOutfitList = ({ currentProduct }) => {
 }
 
 YourOutfitList.propTypes = {
-  currentProduct: PropTypes.object
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
 };
 
 YourOutfitList.propTypes = {
