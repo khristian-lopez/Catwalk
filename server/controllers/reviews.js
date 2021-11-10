@@ -55,7 +55,7 @@ module.exports = {
   addReview: (req, res) => {
     let id = req.params.product_id;
 
-    let body = {
+    let reviewBody = {
       product_id: req.body.product_id,
       rating: req.body.rating, 
       summary: req.body.summary,
@@ -67,7 +67,7 @@ module.exports = {
       characteristics: req.body.characteristics
     }
   
-    axios.post(`${API_URL}/reviews/?product_id=${id}`, body, config)
+    axios.post(`${API_URL}/reviews/?product_id=${id}`, reviewBody, config)
       .then(() => {
         console.log('Successfully added review!')
         res.status(201).send()
@@ -89,6 +89,18 @@ module.exports = {
         console.error('Cannot mark review as helpful...')
         res.status(500).send(err)
       })
-  }
-  // TODO: Updates a review to show it was reported 
+  },
+  // TODO: Updates a review to show it was reported
+  reportReview: (req, res) => {
+    let review_id = req.body.review_id;
+    axios.put(`${API_URL}/reviews/${review_id}/report`, null, config)
+      .then(() => {
+        console.log('Succesfully reported review')
+        res.status(204).send()
+      })
+      .catch(err => {
+        console.error('Cannot report review...')
+        .res.status(500).send(err)
+      })
+  } 
 }

@@ -49,6 +49,7 @@ const Helpful = ({helpfulness, reviewId}) => {
                     onClick={updateHelpful}
                 >Yes
                 </a>({helpful})
+                <span> |</span>
                 <a 
                     href="#" 
                     style={{margin: "2px", padding: "2px"}} 
