@@ -15,7 +15,14 @@ const YourOutfitList = ({ currentProduct }) => {
     if (outfitList) {
       setOutfit(outfitList);
     }
-  }, [])
+  }, [currentProduct])
+
+  useEffect(() => {
+    axios.get(`/products/${currentProduct.product_id}`)
+      .then((result) => {
+        Object.assign(currentProduct, result.data)
+      })
+  }, [currentProduct])
 
   const handleAdd = () => {
     if (localStorage.getItem('outfit') === null) {
@@ -29,10 +36,26 @@ const YourOutfitList = ({ currentProduct }) => {
     if (!checkDupes) {
       outfitList.push(currentProduct);
       localStorage.setItem('outfit', JSON.stringify(outfitList));
-      outfitList = JSON.parse(localStorage.getItem('outfit'));
       if (outfitList) {
         setOutfit(outfitList);
       }
+    }
+  }
+
+  const handleRemove = (productId) => {
+    let outfitList = JSON.parse(localStorage.getItem('outfit'));
+
+    for (var i = 0; i < outfitList.length; i++) {
+      let product = outfitList[i];
+      if (product.id === productId) {
+        outfitList.splice(i, 1);
+        break;
+      }
+    }
+
+    localStorage.setItem('outfit', JSON.stringify(outfitList));
+    if (outfitList) {
+      setOutfit(outfitList);
     }
   }
 
@@ -47,13 +70,13 @@ const YourOutfitList = ({ currentProduct }) => {
       <div data-testid='outfit'>
         <Slider>
           {outfit.map((product, i) => (
-            <Slide key={product.product_id} index={i}>
+            <Slide key={product.id} index={i}>
               <div className="cards rel-prod-card">
-                <img className="preview" src={'assets/product-image-placeholder-300x300.jpeg'} />
+                <img className="preview" src={product.defaultStyle.photos[0].thumbnail_url} />
                 <span>
-                  <ActionButton card={ 'outfit' } />
+                  <ActionButton card={ 'outfit' } productId={product.id} handleRemove={handleRemove}/>
                 </span>
-                {/* <ProductInfo product={product} /> */}
+                <ProductInfo product={product} />
               </div>
             </Slide>
           ))}
@@ -70,6 +93,11 @@ const YourOutfitList = ({ currentProduct }) => {
 
 YourOutfitList.propTypes = {
   currentProduct: PropTypes.object
+};
+
+YourOutfitList.propTypes = {
+  currentProduct: PropTypes.object,
+  handleChangeProduct: PropTypes.func
 };
 
 export default YourOutfitList;

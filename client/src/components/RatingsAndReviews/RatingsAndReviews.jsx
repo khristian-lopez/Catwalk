@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const RatingsAndReviews = ({currentProduct}) => {
-
+    
     return (
         <div>
             <Container className="rr-container" data-testid="rr-container" fluid="md">

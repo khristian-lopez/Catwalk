@@ -2,8 +2,9 @@
 import React from 'react';
 import ReviewsRating from './ReviewsRating.jsx';
 import Helpful from './Helpful.jsx';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import {Image, Row, Col} from 'react-bootstrap';
 
 const ReviewTile = props => {
     function GetFormattedDate() {
@@ -29,7 +30,6 @@ const ReviewTile = props => {
                     <p id="rev-date" style={{fontSize: "15px"}}>
                         <GetFormattedDate />
                     </p>
-                    
                 </Col>
             </Row>
             <div id="rev-summary" style={{fontWeight: "bold", fontSize: "18px"}}>{props.review.summary}</div>
@@ -41,9 +41,49 @@ const ReviewTile = props => {
                     <p id="seller-response" style={{fontSize: "13px"}}>{props.review.response}</p>
                 </div> 
             : null}
-            <Helpful helpfulness={props.review.helpfulness} />
+            {props.review.photo ? props.review.photos.map(photo => {
+                <div style={{ padding: "5px", margin: "5px" }}>
+                    <Image 
+                        key={photo.id} 
+                        photo={photo.url} 
+                        style={{ 
+                            height: "100px", 
+                            width: "100px",
+                        }}
+                    />
+                </div>
+                }) : null}
+            <Helpful helpfulness={props.review.helpfulness} reviewId={props.review.review_id} />
         </div>
     )
 }
 
 export default ReviewTile;
+
+// function attachPhoto() {
+//     props.review.photos.map(photo => {
+//         <div style={{ padding: "5px", margin: "5px" }}>
+//             <Image 
+//                 key={photo.id} 
+//                 photo={photo.url} 
+//                 style={{ 
+//                     height: "100px", 
+//                     width: "100px",
+//                 }}
+//             />
+//         </div>
+//     })   
+// } 
+
+{/* <div id="review-helpful">Helpful?
+                    <a 
+                        style={{margin: "2px", padding: "2px"}} 
+                        href="#" onClick={ () => setHelpful(helpful + 1)}
+                    >Yes
+                    </a>({props.review.helpfulness})
+                    <a 
+                        style={{margin: "2px", padding: "2px"}} 
+                        id="rev-help-no" href="#" onClick={ () => }
+                    >No
+                    </a>
+                </div> */}

@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 // import API mocking utilities from Mock Service Worker
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
-
+// example test skeleton
 describe('ratings and reviews module', () => {
     test('renders ratings and reviews list', () => {
         render(<RatingsAndReviews />)

@@ -2,7 +2,6 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import ReviewTile from './ReviewTile.jsx';
-import SortBy from './SortBy.jsx';
 import ReviewButton from './ReviewButtons.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -58,7 +57,7 @@ class ReviewsList extends React.Component {
     render() {
         const {product_id} = this.props.currentProduct
         const {reviews, tiles} = this.state;
-
+        console.log(reviews)
         if (reviews.length > 0) {
             return (
                 <div data-testid="reviewsList">
@@ -104,34 +103,7 @@ class ReviewsList extends React.Component {
 
 export default ReviewsList;
 
-// render() {
-//     const {product_id} = this.props.currentProduct
-//     //console.log('product: ', product_id)
-//     const {reviews, tiles} = this.state;
-//     if (reviews.length > 0) {
-//         return (
-//             <div data-testid="reviewsList">
-//                 <div className="reviewsList" >
-//                     <SortBy review={reviews}/>
-//                 <div className="reviewTiles" >
-//                     { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
-//                 </div>
-//                 </div>
-//                 <div className="reviews-btn">
-//                     <Row xs="auto">
-//                         <Col>
-//                             { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
-//                         </Col>
-//                         <Col>
-//                             <ReviewButton productId={product_id}/>
-//                         </Col>
-//                     </Row>
-//                 </div>
-//             </div>
-//         )  
-//     } else {
-//         return (
-//             <div>No reviews for this product</div>
-//         )
-//     }
+// if (new Date(a.date) === new Date(b.date)) {
+//     return b.helpfulness - a.helpfulness
 // }
+// return new Date(b.date) === new Date(a.date)

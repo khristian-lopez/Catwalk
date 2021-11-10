@@ -32,8 +32,13 @@ module.exports = {
     //retrieve all product level information for a specific product id
     axios.get(`${API_URL}/products/${productId}`, config)
       .then(results => {
-        console.log('product successfully obtained')
-        res.status(200).send(results.data)
+        let product = results.data
+        return getAverageRating(productId)
+          .then(avgRating => {
+            product['averageRating'] = (avgRating || null)
+            console.log('product successfully obtained')
+            res.status(200).send(product)
+          })
       })
       .catch(err => {
         console.error('unable to obtain desired product')
@@ -73,12 +78,13 @@ module.exports = {
     // retrieve all productIds related to current productId
     axios.get(`${API_URL}/products/${productId}/related`, config)
       .then(results => {
+        let uniqResults =[...new Set(results.data)];
         // Promise.all is taking an array of API calls with axios
         // for each retrieved productId
         Promise.all(
           // map over each retrieved productId and make an API call
           // to retrieve product data
-          results.data.map(id => {
+          uniqResults.map(id => {
             return axios.get(`${API_URL}/products/${id}`, config)
               .then(results => {
                 let product = results.data;

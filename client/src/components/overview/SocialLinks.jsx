@@ -6,8 +6,8 @@ import Row from 'react-bootstrap/Row';
 import {FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon,TwitterShareButton, TwitterIcon} from 'react-share';
 
 const SocialLinks = ({ productInfo }) => (
-  <Col >
-    <h5>Social Media Links</h5>
+  <Col data-testid="social-links">
+    <h5 className="ov-social-header">Social Media Links</h5>
     <br />
     <Container className="ov-social-links">
       <TwitterShareButton

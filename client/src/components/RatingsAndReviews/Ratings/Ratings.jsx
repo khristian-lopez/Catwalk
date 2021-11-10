@@ -35,6 +35,7 @@ class Ratings extends React.Component {
     
     render() {
         const {reviews, metadata} = this.state;
+        //console.log(metadata)
         return (
             <div data-testid="ratingsList">
             <Row>
