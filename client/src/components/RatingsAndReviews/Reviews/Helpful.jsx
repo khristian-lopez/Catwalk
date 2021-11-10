@@ -38,6 +38,15 @@ const Helpful = ({helpfulness, reviewId}) => {
             }
         }
     }
+
+    const reportReview = e => {
+        e.preventDefault()
+        if (!click) {
+            return axios.put(`/reviews/${reviewId}/report`, { review_id: `${reviewId}`})
+                .then(() => setClick(true))
+                .catch(err => console.log('Cannot report review.', err))
+        }
+    }
     
     return (
         <div>
@@ -49,7 +58,7 @@ const Helpful = ({helpfulness, reviewId}) => {
                     onClick={updateHelpful}
                 >Yes
                 </a>({helpful})
-                <span> |</span>
+                <span> | </span>
                 <a 
                     href="#" 
                     style={{margin: "2px", padding: "2px"}} 
@@ -57,6 +66,13 @@ const Helpful = ({helpfulness, reviewId}) => {
                     onClick={updateHelpful}
                 >No
                 </a>({notHelpful})
+                <span> | </span>
+                <a 
+                    href="#"
+                    value="reportReview"
+                    onClick={reportReview}
+                >Report
+                </a>
             </div>
         </div>
     )
