@@ -38,7 +38,7 @@ const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
     return (
       <Container fluid="md" className="ov-main" data-testid="ov-main">
         <Row>
-          <h1>Overview</h1>
+          <h1>Product Overview</h1>
         </Row>
         <Row>
           <RowOne productInfo={productInfo} styleInfo={styleInfo} handleChangeStyle={handleChangeStyle}/>
