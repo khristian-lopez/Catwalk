@@ -10,7 +10,6 @@ import ImageGallery from 'react-image-gallery';
 
 const MyGallery = ({ styleInfo }) => {
 
-  // console.log('at gallery', styleInfo.photos)
   var styleImages = [];
   if(styleInfo.photos) {
     styleInfo.photos.forEach(photo => {
@@ -20,9 +19,6 @@ const MyGallery = ({ styleInfo }) => {
       styleImages.push(photoObj)
     })
   }
-  // console.log('at gallery styleImages', styleImages)
-
-  // const images = styleInfo.photos
   const defaultImages = [
     {
       original: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
@@ -41,7 +37,7 @@ const MyGallery = ({ styleInfo }) => {
   const images = (styleImages || defaultImages);
 
   return (
-    <Col className='col1' xs={8}>
+    <Col className='col1' xs={8} data-testid="image-gallery-col">
       <ImageGallery items={images} thumbnailPosition="left" className="image-gallery-slide"/>
     </Col>
   );

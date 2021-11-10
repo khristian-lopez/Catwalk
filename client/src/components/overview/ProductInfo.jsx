@@ -8,7 +8,7 @@ import Stack from 'react-bootstrap/Stack';
 
 const ProductInfo = ({ productInfo }) => {
   return (
-    <Col className='col2' xs={7}>
+    <Col className='col2' xs={7} data-testid="product-info">
       <Container className="ov-product-info">
         <Form >
             <Form.Group >

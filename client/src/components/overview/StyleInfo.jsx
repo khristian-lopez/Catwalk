@@ -76,7 +76,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   }
 
   return (
-    <Col className="ov-styles">
+    <Col className="ov-styles" data-testid="style-info">
       <Stack >
         {/* specific product info */}
         <div>
