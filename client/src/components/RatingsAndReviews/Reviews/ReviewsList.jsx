@@ -17,6 +17,7 @@ class ReviewsList extends React.Component {
             tiles: 2
         }
         this.renderReviewsTiles = this.renderReviewsTiles.bind(this)
+        this.handleSort = this.handleSort.bind(this)
     }
     // fetch API reviews
     componentDidMount() {
@@ -29,15 +30,50 @@ class ReviewsList extends React.Component {
         // eslint-disable-next-line react/no-direct-mutation-state
         this.setState({ tiles: this.state.tiles += 2 })
     }
+    // TODO: check to see if sorting persists (added: ...this.state)
+    handleSort(e) {
+        var {reviews} = this.state;
+        var sortedReviews;
+        if (e.target.value === "relevance") {
+            sortedReviews = reviews.sort((a, b) => {
+                if (a["helpfulness"] === b["helpfulness"]) {
+                    return new Date(a["date"]) - new Date(b["date"]);
+                }
+                return b["helpfulness"] - a["helpfulness"]
+            })
+            this.setState({ ...this.state, reviews: sortedReviews })
+        } else if (e.target.value === "newest") {
+            sortedReviews = reviews.sort((a, b) => {
+                return new Date(b["date"]) - new Date(a["date"])
+            })
+            this.setState({ ...this.state, reviews: sortedReviews })
+        } else if (e.target.value === "helpful") {
+            sortedReviews = reviews.sort((a, b) => {
+                return b["helpfulness"] - a["helpfulness"]
+            })
+            this.setState({ ...this.state, reviews: sortedReviews })
+        }
+    }
+
     render() {
         const {product_id} = this.props.currentProduct
-        //console.log('product: ', product_id)
         const {reviews, tiles} = this.state;
+
         if (reviews.length > 0) {
             return (
                 <div data-testid="reviewsList">
                     <div className="reviewsList" >
-                        <SortBy review={reviews}/>
+                    <label> {reviews.length} review(s), sorted by 
+                        <select 
+                            name="sort"
+                            value={this.state.sort}
+                            onChange={this.handleSort}
+                        >
+                            <option value="relevance" >Relevance</option>
+                            <option value="newest" >Newest</option>
+                            <option value="helpful" >Helpful</option>
+                        </select>
+                    </label>
                     <div className="reviewTiles" >
                         { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
                     </div>
@@ -68,3 +104,34 @@ class ReviewsList extends React.Component {
 
 export default ReviewsList;
 
+// render() {
+//     const {product_id} = this.props.currentProduct
+//     //console.log('product: ', product_id)
+//     const {reviews, tiles} = this.state;
+//     if (reviews.length > 0) {
+//         return (
+//             <div data-testid="reviewsList">
+//                 <div className="reviewsList" >
+//                     <SortBy review={reviews}/>
+//                 <div className="reviewTiles" >
+//                     { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
+//                 </div>
+//                 </div>
+//                 <div className="reviews-btn">
+//                     <Row xs="auto">
+//                         <Col>
+//                             { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+//                         </Col>
+//                         <Col>
+//                             <ReviewButton productId={product_id}/>
+//                         </Col>
+//                     </Row>
+//                 </div>
+//             </div>
+//         )  
+//     } else {
+//         return (
+//             <div>No reviews for this product</div>
+//         )
+//     }
+// }

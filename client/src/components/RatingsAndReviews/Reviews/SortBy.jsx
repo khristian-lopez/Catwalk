@@ -3,23 +3,17 @@ import React, { useState } from 'react';
 
 
 const SortBy = props => {
-    const [sortList, setSortList] = getSortList("relevance")
+    
     // TODO: check functionality
-    function getSortList() {
-        const [value, setState] = useState(null)
-        const handleChange = e => { setState(e.target.value) }
-        const inputProps = {
-            onChange: handleChange
-        }
-        return [value, inputProps]
-    }
+    
+    console.log(props)
     return (
         <div className="sort-dropdown">
             <label> {props.review.length} review(s), sorted by 
-                <select {...setSortList}>
-                    <option value={sortList === "relevance"}>Relevance</option>
-                    <option value={sortList === "newest"}>Newest</option>
-                    <option value={sortList === "helpful"}>Helpful</option>
+                <select >
+                    <option >Relevance</option>
+                    <option >Newest</option>
+                    <option >Helpful</option>
                 </select>
             </label>
         </div>

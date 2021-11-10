@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Characteristics from './ModalFiles/characteristics.jsx';
+import {Modal, Form, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
@@ -105,7 +106,7 @@ const ModalForm = ({closeModal}) => {
                             <input id="recc-no" value="false" type="radio" {...recInputProps} checked={recValue === "false"} />No
                         </p>
                     </div>
-                    <Characteristics handleChar={handleChar}/>
+                    {/* <Characteristics handleChar={handleChar}/> */}
                     <div className="review-summary">Summary:
                         <br></br>
                         <textarea 
