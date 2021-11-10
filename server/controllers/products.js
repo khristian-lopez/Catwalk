@@ -32,8 +32,13 @@ module.exports = {
     //retrieve all product level information for a specific product id
     axios.get(`${API_URL}/products/${productId}`, config)
       .then(results => {
-        console.log('product successfully obtained')
-        res.status(200).send(results.data)
+        let product = results.data
+        return getAverageRating(productId)
+          .then(avgRating => {
+            product['averageRating'] = (avgRating || null)
+            console.log('product successfully obtained')
+            res.status(200).send(product)
+          })
       })
       .catch(err => {
         console.error('unable to obtain desired product')

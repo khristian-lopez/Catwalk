@@ -19,6 +19,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   const [size, changeSize] = useState(() => { return 'Select a Size'});
   const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
+  const [numberOfReviews, changeNumberOfReviews] = useState([])
   //create a skue variable hool that holds an array of all the skus for the style
   const [currentSku, changeCurrentSku] = useState([])
   const [sizeOptions, changeSizeOptions] = useState([]);
@@ -29,8 +30,20 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       .then(results => {
         changeThumbnails(results.data)
       })
+      .then(axios.get(`/reviews/${productInfo.id}`)
+        .then(results => {
+          changeNumberOfReviews(results.data.results.length)
+        }))
       .catch(err => console.error(err))
   }, [productInfo])
+
+  // useEffect(() => {
+  //   axios.get(`/reviews/${productInfo.id}`)
+  //     .then(results => {
+  //       changeNumberOfReviews(results.data.results.length)
+  //     })
+  //     .catch(err => console.error(err))
+  // }, [productInfo])
 
     useDeepCompareEffect(() => {
     if(isFirstRef.current) {
@@ -45,7 +58,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
   let selectedStyle = { border: 'none' }
   let originalPrice = { fontWeight: 'bold' }
-  let salePrice = { fontWeight: 'bold' }
+  let salePrice = { fontWeight: 'bold', color: 'red' }
   let saleStatus = styleInfo.sale_price;
 
   // console.log('sale price', styleInfo.sale_price)
@@ -63,7 +76,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       <Stack >
         {/* specific product info */}
         <div>
-          <StarRatings />  <br /> Read all XX reviews
+          <StarRatings rating={productInfo.averageRating}/>  <br /> Read all {numberOfReviews} reviews well see
         </div>
         <div>
           <label>{productInfo.category}</label>
