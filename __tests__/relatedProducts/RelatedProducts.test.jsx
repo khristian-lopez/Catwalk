@@ -13,8 +13,12 @@ import '@testing-library/jest-dom';
 import RelatedProducts from '../../client/src/components/RelatedProducts/RelatedProducts.jsx';
 
 describe('related products module', () => {
+  const sampleProduct = {
+    product_id: '42370'
+  }
+
   test('renders a related products list and an outfit list', () => {
-    render(<RelatedProducts />);
+    render(<RelatedProducts currentProduct={sampleProduct}/>);
 
     const ancestor = screen.getByTestId('related-products');
     const descendant = screen.getByTestId('related-prod-list');
