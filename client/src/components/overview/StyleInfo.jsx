@@ -12,18 +12,19 @@ import SplitButton from 'react-bootstrap/SplitButton';
 import Stack from 'react-bootstrap/Stack';
 import axios from 'axios';
 import useDeepCompareEffect from 'use-deep-compare-effect';
+import RatingsAndReviews from '../RatingsAndReviews/RatingsAndReviews.jsx';
 
 const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
   const isFirstRef = useRef(true);
   const [size, changeSize] = useState(() => { return 'Select a Size'});
-  const [quantity, changeQuantity] = useState(() => { return 'Quantity'});
+  const [sizeAndQuantOptions, changeSizeAndQuantOptions] = useState([]);
+  const [storedQuantity, changeStoredQuantity] = useState();
+  const [availableQuantity, changeAvailableQuantity] = useState([]);
+  const [displayQuantity, changeDisplayQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
   const [numberOfReviews, changeNumberOfReviews] = useState([])
-  //create a skue variable hool that holds an array of all the skus for the style
   const [currentSku, changeCurrentSku] = useState([])
-  const [sizeOptions, changeSizeOptions] = useState([]);
-  const skus = styleInfo.skus
 
   useEffect(() => {
     axios.get(`/products/${productInfo.id}/styles`)
@@ -37,13 +38,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       .catch(err => console.error(err))
   }, [productInfo])
 
-  // useEffect(() => {
-  //   axios.get(`/reviews/${productInfo.id}`)
-  //     .then(results => {
-  //       changeNumberOfReviews(results.data.results.length)
-  //     })
-  //     .catch(err => console.error(err))
-  // }, [productInfo])
 
     useDeepCompareEffect(() => {
     if(isFirstRef.current) {
@@ -51,9 +45,23 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       return;
     }
     //when style info changes, different size options obtained
-    const sizeAndQuantOptions = Object.values(skus)
-    changeSizeOptions(sizeAndQuantOptions)
+    const avaialableSizeAndQuant = Object.values(styleInfo.skus)
+    changeSizeAndQuantOptions(avaialableSizeAndQuant)
+
+    return () => {
+      changeSize('Select a Size')
+    }
   }, [styleInfo])
+
+  useEffect(() => {
+    const values = Array.from({length: storedQuantity}, (_, i) => i + 1);
+    changeAvailableQuantity(values);
+
+    return () => {
+      changeAvailableQuantity([])
+      changeDisplayQuantity('Quantity')
+    }
+  }, [storedQuantity, size])
 
 
   let selectedStyle = { border: 'none' }
@@ -61,22 +69,18 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   let salePrice = { fontWeight: 'bold', color: 'red' }
   let saleStatus = styleInfo.sale_price;
 
-  // console.log('sale price', styleInfo.sale_price)
   if (saleStatus) {
     let originalPrice = {
       textDecoration: 'line-through'
     }
   }
 
-  // console.log('size sku', skus)
-
-
   return (
     <Col className="ov-styles">
       <Stack >
         {/* specific product info */}
         <div>
-          <StarRatings rating={productInfo.averageRating}/>  <br /> Read all {numberOfReviews} reviews well see
+          <StarRatings rating={productInfo.averageRating}/>  <br /> Read all {numberOfReviews} reviews
         </div>
         <div>
           <label>{productInfo.category}</label>
@@ -90,7 +94,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           Style &gt; Selected Style <br />
           <div >
             {styleThumbnails.map((style, index) => {
-              // console.log(style.photos[0])
               if (style.style_id === styleInfo.style_id) {
                 selectedStyle = {
                   border: '3px solid cyan'
@@ -110,24 +113,20 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
-              {/* //map through the sku's array, access each size avaialable for the sku */}
-              {sizeOptions.map((skuInfo, index) => {
-                return <Dropdown.Item onClick={() => changeSize(`${skuInfo.size}`)} key={index}>{skuInfo.size}</Dropdown.Item>
+              {sizeAndQuantOptions.map((sku, index) => {
+                return <Dropdown.Item onClick={() => {
+                  changeSize(`${sku.size}`)
+                  changeStoredQuantity(`${sku.quantity}`)
+                  changeCurrentSku(`${sku}`)
+                }} key={index}>{sku.size}</Dropdown.Item>
               })}
-              {/* <Dropdown.Item onClick={() => changeSize('XS')}>XS</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeSize('S')}>S</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeSize('M')}>M</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeSize('L')}>L</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeSize('XL')}>XL</Dropdown.Item> */}
             </SplitButton>
             {/* select a quatity dropdown */}
-            <SplitButton size="sm" variant="secondary" title={quantity}>
+            <SplitButton size="sm" variant="secondary" title={displayQuantity}>
               <Dropdown.Header>Quantity</Dropdown.Header>
-              <Dropdown.Item onClick={() => changeQuantity('1')}>1</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeQuantity('2')}>2</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeQuantity('3')}>3</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeQuantity('4')}>4</Dropdown.Item>
-              <Dropdown.Item onClick={() => changeQuantity('5')}>5</Dropdown.Item>
+              {availableQuantity.slice(0, 15).map((number, index) => {
+                return <Dropdown.Item onClick={() => changeDisplayQuantity(`${number}`)} key={index}>{number}</Dropdown.Item>
+              })}
             </SplitButton>
           </div>
           {/* checkout button */}
