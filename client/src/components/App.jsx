@@ -42,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Container><h1>Project Catwalk</h1></Container>
+        <Container className="header"><h1>Project Catwalk</h1></Container>
         <Overview currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle} handleChangeStyle={this.handleChangeStyle}/>
         <RelatedProducts currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa currentProduct={this.state.reviewMetadata}/>

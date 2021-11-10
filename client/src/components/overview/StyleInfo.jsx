@@ -96,7 +96,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             {styleThumbnails.map((style, index) => {
               if (style.style_id === styleInfo.style_id) {
                 selectedStyle = {
-                  border: '3px solid cyan'
+                  border: '3px solid lightskyblue'
                 }
               } else {
                 selectedStyle = { border: 'none'}

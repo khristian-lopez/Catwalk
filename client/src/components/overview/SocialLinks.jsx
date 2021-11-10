@@ -7,7 +7,7 @@ import {FacebookShareButton, FacebookIcon, PinterestShareButton, PinterestIcon,T
 
 const SocialLinks = ({ productInfo }) => (
   <Col >
-    <h5>Social Media Links</h5>
+    <h5 className="ov-social-header">Social Media Links</h5>
     <br />
     <Container className="ov-social-links">
       <TwitterShareButton
