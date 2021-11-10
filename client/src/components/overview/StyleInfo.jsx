@@ -27,15 +27,18 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   const [currentSku, changeCurrentSku] = useState([])
 
   useEffect(() => {
-    axios.get(`/products/${productInfo.id}/styles`)
-      .then(results => {
-        changeThumbnails(results.data)
-      })
-      .then(axios.get(`/reviews/${productInfo.id}`)
+    if (productInfo.id) {
+      axios.get(`/products/${productInfo.id}/styles`)
         .then(results => {
-          changeNumberOfReviews(results.data.results.length)
-        }))
-      .catch(err => console.error(err))
+          changeThumbnails(results.data)
+        })
+        .then(axios.get(`/reviews/${productInfo.id}`)
+          .then(results => {
+            changeNumberOfReviews(results.data.results.length)
+          }))
+        .catch(err => console.error('unable to obtain style info at styleInfo,jsx', err))
+
+    }
   }, [productInfo])
 
 
@@ -44,7 +47,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       isFirstRef.current = false;
       return;
     }
-    //when style info changes, different size options obtained
     const avaialableSizeAndQuant = Object.values(styleInfo.skus)
     changeSizeAndQuantOptions(avaialableSizeAndQuant)
 
@@ -131,7 +133,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           </div>
           {/* checkout button */}
           <Button variant="primary" size="sm">add to cart</Button>{' '}
-          {/* favorite/star icon?? */}
         </Stack>
     </Col>
   );

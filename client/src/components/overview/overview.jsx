@@ -18,7 +18,7 @@ const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
   useEffect(() => {
     axios.get(`/products/${currentProduct}`)
     .then(results => changeProductInfo(results.data))
-    .catch(err => console.error('Not able to obtain product info', err))
+    .catch(err => console.error('Not able to obtain product info at overview product', err))
   }, [currentProduct])
 
   // create a useEffect to retreive the style info the is selected
@@ -31,7 +31,7 @@ const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
         }
       }
     })
-    .catch(err => console.error('Not able to obtain style info', err))
+    .catch(err => console.error('Not able to obtain style info at overview style', err))
   }, [currentProduct, currentStyle])
     //needs to be able to change style when product is changed (to default style) and change when a different product is chosen.
 
@@ -53,38 +53,3 @@ const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
 
 
 export default Overview;
-    // class Overview extends React.Component {
-    //   constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       productInfo: []
-    //     };
-    //   }
-
-    //   componentDidMount() {
-    //     // console.log(this.props.currentProduct)
-    //     axios.get(`/products/${this.props.currentProduct}`)
-    //       .then(results => {
-    //         this.setState({
-    //           productInfo: results.data
-    //         })
-    //       })
-    //       .catch(err => console.err('was not ablet to get product info', err))
-    //   }
-
-    //   render() {
-    //     return (
-    //       <Container fluid="md" className="ov-main">
-    //         <Row>
-    //           <h1>Overview</h1>
-    //         </Row>
-    //         <Row>
-    //           <RowOne productInfo={this.state.productInfo}/>
-    //         </Row>
-    //         <Row>
-    //           <RowTwo productInfo={this.state.productInfo}/>
-    //         </Row>
-    //       </Container>
-    //     )
-    //   }
-    // }
