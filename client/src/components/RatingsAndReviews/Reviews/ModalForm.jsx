@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Characteristics from './ModalFiles/characteristics.jsx';
-import {Modal, Form, Row, Col} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
@@ -89,7 +89,7 @@ const ModalForm = ({closeModal}) => {
     // TODO: GET CHARS TO FORM SUBMISSION
     return (
         <div>
-            <form className="modalContainer" onSubmit={handleFormSubmit}>
+            <Form className="modalContainer" onSubmit={handleFormSubmit}>
                 <div className="form-input">
                     <div className="review-overall">Overall rating:
                         <p id="review-choices">
@@ -106,30 +106,31 @@ const ModalForm = ({closeModal}) => {
                             <input id="recc-no" value="false" type="radio" {...recInputProps} checked={recValue === "false"} />No
                         </p>
                     </div>
-                    {/* <Characteristics handleChar={handleChar}/> */}
-                    <div className="review-summary">Summary:
-                        <br></br>
-                        <textarea 
-                            type="text" 
-                            cols="50" 
-                            placeholder="Ex: Best purchase ever!" 
-                            maxLength="60"
+                    <Form.Group>
+                        <Form.Label>Summary</Form.Label>
+                        <Form.Control
+                            type="text"
                             onChange={(e) => setSummary(e.target.value)}
+                            placeholder="Ex: Best purchase ever!"
+                            rows={1}
+                            maxLength="60"
                         />
-                    </div>
-                    <div className="review-body">Review:
-                        <br></br>
-                        <textarea
+                    </Form.Group>
+                    <br></br>
+                    <Form.Group>
+                        <Form.Label>Review</Form.Label>
+                        <Form.Control 
+                            type="text"
                             onChange={(e) => {
                                 setReview(e.target.value)
                                 setCharacterCount(e.target.value.length)
                             }}
-                            type="text" rows="5" cols="50"
                             placeholder="Why did you like the product or not?"
+                            as="textarea" rows={3}
                             minLength="50" maxLength="1000" required
                         />
-                        <Minimum />
-                    </div>
+                    </Form.Group>
+                    <Minimum />
                     <div className="review-photos">Add photo: (max 5)
                         <br></br>
                         <input
@@ -176,11 +177,33 @@ const ModalForm = ({closeModal}) => {
                             }
                         }
                 >Submit your review!</button>
-            </form>
+            </Form>
         </div>
     )
 }
 
 export default ModalForm;
 
-
+{/* <Characteristics handleChar={handleChar}/> */}
+                    {/* <div className="review-summary">Summary:
+                        <br></br>
+                        <textarea 
+                            type="text" 
+                            cols="50" 
+                            placeholder="Ex: Best purchase ever!" 
+                            maxLength="60"
+                            onChange={(e) => setSummary(e.target.value)}
+                            
+                        />
+                    </div> */}
+{/* <div className="review-body">Review: */}
+                        {/* <br></br> */}
+ {/* <textarea
+                            onChange={(e) => {
+                                setReview(e.target.value)
+                                setCharacterCount(e.target.value.length)
+                            }}
+                            type="text" rows="5" cols="50"
+                            placeholder="Why did you like the product or not?"
+                            minLength="50" maxLength="1000" required
+                        /> */} {/* </div> */}

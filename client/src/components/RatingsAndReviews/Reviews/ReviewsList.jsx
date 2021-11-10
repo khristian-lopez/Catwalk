@@ -23,7 +23,6 @@ class ReviewsList extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.currentProduct.product_id !== prevProps.currentProduct.product_id) {
             this.getReviews()
-            this.renderReviewsTiles()
         }
     }
 
