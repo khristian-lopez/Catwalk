@@ -24,6 +24,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   const [displayQuantity, changeDisplayQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
   const [numberOfReviews, changeNumberOfReviews] = useState([])
+  const [availabeSkus, changeAvailableSkus] = useState([])
   const [currentSku, changeCurrentSku] = useState([])
 
   useEffect(() => {
@@ -42,16 +43,19 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   }, [productInfo])
 
 
-    useDeepCompareEffect(() => {
+  useDeepCompareEffect(() => {
     if(isFirstRef.current) {
       isFirstRef.current = false;
       return;
     }
-    const avaialableSizeAndQuant = Object.values(styleInfo.skus)
-    changeSizeAndQuantOptions(avaialableSizeAndQuant)
+    const availableSkuValues = Object.values(styleInfo.skus)
+    const availabeSkuKeys = Object.keys(styleInfo.skus)
+    changeAvailableSkus(availabeSkuKeys)
+    changeSizeAndQuantOptions(availableSkuValues)
 
     return () => {
       changeSize('Select a Size')
+      changeCurrentSku([])
     }
   }, [styleInfo])
 
@@ -68,14 +72,15 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
   let selectedStyle = { border: 'none' }
   let originalPrice = { fontWeight: 'bold' }
-  let salePrice = { fontWeight: 'bold', color: 'red' }
+  let originalSalePrice = { textDecoration: 'line-through', color: 'gray' }
+  let salePrice = { fontWeight: 'bold', color: 'red', fontSize: '20px' }
   let saleStatus = styleInfo.sale_price;
 
-  if (saleStatus) {
-    let originalPrice = {
-      textDecoration: 'line-through'
-    }
-  }
+  let priceLabel = saleStatus ?
+    <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
+    : <label style={originalPrice}>{styleInfo.original_price}</label>
+
+
 
   return (
     <Col className="ov-styles" data-testid="style-info">
@@ -87,7 +92,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
         <div>
           <label>{productInfo.category}</label>
           <h3>{productInfo.name}</h3>
-          <label style={originalPrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label>
+          {priceLabel}
         </div>
       </Stack>
       <Stack>
@@ -119,7 +124,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
                 return <Dropdown.Item onClick={() => {
                   changeSize(`${sku.size}`)
                   changeStoredQuantity(`${sku.quantity}`)
-                  changeCurrentSku(`${sku}`)
+                  changeCurrentSku(`${availabeSkus.slice(index, index + 1)}`)
+                  console.log(index)
                 }} key={index}>{sku.size}</Dropdown.Item>
               })}
             </SplitButton>
@@ -132,7 +138,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             </SplitButton>
           </div>
           {/* checkout button */}
-          <Button variant="primary" size="sm">add to cart</Button>{' '}
+          <Button variant="primary" size="sm">Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );
