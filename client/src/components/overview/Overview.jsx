@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import axios from 'axios';
 import defaultData from './defaultData.js';
 
-const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
+const Overview = ({ currentProduct, currentStyle, handleChangeStyle, postUserClick }) => {
   // create a useState that obtains current product info
   const [productInfo, changeProductInfo]  = useState([])
   // create a useState that obtains current style info
@@ -36,7 +36,7 @@ const Overview = ({ currentProduct, currentStyle, handleChangeStyle }) => {
     //needs to be able to change style when product is changed (to default style) and change when a different product is chosen.
 
     return (
-      <Container fluid="md" className="ov-main" data-testid="ov-main">
+      <Container fluid="md" className="ov-main" data-testid="ov-main" onClick={(e) => postUserClick(e, 'Overview')}>
         <Row>
           <h1>Product Overview</h1>
         </Row>
