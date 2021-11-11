@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Characteristics from './ModalFiles/characteristics.jsx';
-import {Form} from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
@@ -197,13 +197,15 @@ const ModalForm = ({closeModal}) => {
                         </Form.Text>
                     </Form.Group>
                 </div>
-                <button id="review-submit-btn" type="submit" 
-                        onSubmit={e => {
-                            e.preventDefault()
-                            closeModal(false)
+                <Button
+                    id="review-submit-btn" type="submit" 
+                            onSubmit={e => {
+                                e.preventDefault()
+                                closeModal(false)
+                                }
                             }
-                        }
-                >Submit your review!</button>
+                    >Submit your review!
+                </Button>
             </Form>
         </div>
     )
@@ -277,3 +279,10 @@ export default ModalForm;
 />
 <p style={{ fontSize: "10px" }}>For privacy reasons, do not use your full name or email address</p>
 </div> */}
+{/* <button id="review-submit-btn" type="submit" 
+        onSubmit={e => {
+            e.preventDefault()
+            closeModal(false)
+            }
+        }
+>Submit your review!</button> */}

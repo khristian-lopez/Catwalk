@@ -3,8 +3,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import ReviewTile from './ReviewTile.jsx';
 import ReviewButton from './ReviewButtons.jsx';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import {Col, Row, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 class ReviewsList extends React.Component {
@@ -91,7 +90,7 @@ class ReviewsList extends React.Component {
                     <div className="reviews-btn">
                         <Row xs="auto">
                             <Col>
-                                { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</button> }
+                                { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <Button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</Button> }
                             </Col>
                             <Col>
                                 <ReviewButton productId={product_id}/>

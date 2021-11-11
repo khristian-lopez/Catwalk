@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, {useState, useEffect} from 'react';
 import ModalForm from './ModalForm.jsx';
-import {Modal} from 'react-bootstrap';
+import {Modal, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 const ReviewButtons = ({productId}) => {
@@ -16,7 +16,7 @@ const ReviewButtons = ({productId}) => {
     }, [productId])
     return (
         <div className="new-review">
-            <button className="openModalBtn" onClick={() => setOpenModal(true)}>ADD A REVIEW +</button>
+            <Button className="openModalBtn" onClick={() => setOpenModal(true)}>ADD A REVIEW +</Button>
             <Modal 
                 show={openModal} 
                 onHide={() => setOpenModal(false)}
