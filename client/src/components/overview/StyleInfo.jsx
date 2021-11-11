@@ -80,6 +80,20 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
     <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
     : <label style={originalPrice}>{styleInfo.original_price}</label>
 
+  const addToCart = (skuId, quantity) => {
+    const product = {
+      sku_id: skuId,
+      count: quantity
+    }
+
+    axios.post(`/cart/`, product)
+      .then(() => {
+        alert('Successfully added item to cart')
+      })
+      .catch(err => {
+        alert('Whoops, unable to add item to cart, please try again')
+      })
+  }
 
 
   return (
@@ -125,7 +139,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
                   changeSize(`${sku.size}`)
                   changeStoredQuantity(`${sku.quantity}`)
                   changeCurrentSku(`${availabeSkus.slice(index, index + 1)}`)
-                  console.log(index)
                 }} key={index}>{sku.size}</Dropdown.Item>
               })}
             </SplitButton>
@@ -138,7 +151,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             </SplitButton>
           </div>
           {/* checkout button */}
-          <Button variant="primary" size="sm">Add To Cart</Button>{' '}
+          <Button variant="primary" size="sm" onClick={() => {
+            addToCart(currentSku, displayQuantity)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );
