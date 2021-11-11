@@ -59,8 +59,7 @@ const ModalForm = ({closeModal}) => {
     }
 
     // handleFormSubmit
-    const handleFormSubmit = e => {
-        e.preventDefault()
+    const handleFormSubmit = () => {
         let uploadedImages = [image, ...selectedImages]
         const input = {
             // product_id: 
@@ -97,7 +96,11 @@ const ModalForm = ({closeModal}) => {
     
     return (
         <div>
-            <Form className="modalContainer" onSubmit={handleFormSubmit}>
+            <Form className="modalContainer" onSubmit={(e) => {
+                e.preventDefault()
+                closeModal(false)
+                handleFormSubmit()
+            }}>
                 <div className="form-input">
                     <Form.Group>
                         <Form.Label>Overall Rating</Form.Label>
@@ -197,7 +200,7 @@ const ModalForm = ({closeModal}) => {
                             type="text"
                             onChange={(e) => setSummary(e.target.value)}
                             placeholder="Ex: Best purchase ever!"
-                            rows={1} maxLength="60"
+                            rows={1} maxLength="60" required
                         />
                     </Form.Group>
                         <br></br>
@@ -259,7 +262,7 @@ const ModalForm = ({closeModal}) => {
                 </div>
                 <Button
                     id="review-submit-btn" type="submit" 
-                            onSubmit={e => {
+                            onSubmit={(e) => {
                                 e.preventDefault()
                                 closeModal(false)
                                 }

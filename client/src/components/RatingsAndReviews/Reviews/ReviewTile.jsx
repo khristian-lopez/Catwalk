@@ -12,7 +12,7 @@ const ReviewTile = props => {
         let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
         return formattedDate;
     }
-    
+    console.log(props.review.photos)
     return (
         <div className="review-Tile" key={props.review.review_id}>
             <Row>
@@ -41,17 +41,18 @@ const ReviewTile = props => {
                     <p id="seller-response" style={{fontSize: "13px"}}>{props.review.response}</p>
                 </div> 
             : null}
-            {props.review.photo ? props.review.photos.map(photo => {
-                <div style={{ padding: "5px", margin: "5px" }}>
-                    <Image 
+            {/* TODO: review photo */}
+            {props.review.photos > 0 ? props.review.photos.map(photo => {
+                // <div style={{ padding: "5px", margin: "5px" }}>
+                    <Image
                         key={photo.id} 
-                        photo={photo.url} 
+                        src={photo.url} 
                         style={{ 
                             height: "100px", 
                             width: "100px",
                         }}
                     />
-                </div>
+                // </div>
                 }) : null}
             <Helpful helpfulness={props.review.helpfulness} reviewId={props.review.review_id} />
         </div>
@@ -74,16 +75,3 @@ export default ReviewTile;
 //         </div>
 //     })   
 // } 
-
-{/* <div id="review-helpful">Helpful?
-                    <a 
-                        style={{margin: "2px", padding: "2px"}} 
-                        href="#" onClick={ () => setHelpful(helpful + 1)}
-                    >Yes
-                    </a>({props.review.helpfulness})
-                    <a 
-                        style={{margin: "2px", padding: "2px"}} 
-                        id="rev-help-no" href="#" onClick={ () => }
-                    >No
-                    </a>
-                </div> */}
