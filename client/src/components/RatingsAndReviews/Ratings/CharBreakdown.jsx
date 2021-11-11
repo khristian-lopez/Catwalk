@@ -9,6 +9,7 @@ const CharBreakdown = (props) => {
         return (
             <div className="charBreakdown" >
                 <h5>Characteristics</h5>
+                    <br></br>
                 <div className="char-bar">
                     {chars.Size ?
                     <Row>
@@ -21,7 +22,7 @@ const CharBreakdown = (props) => {
                         </div>
                     </Row>
                     : null }
-                    <br></br>
+                    {/* <br></br> */}
                     {chars.Width ?
                     <Row >
                         <h6>Width</h6>
@@ -33,7 +34,7 @@ const CharBreakdown = (props) => {
                         </div>
                     </Row>
                     : null }
-                    <br></br>
+                    {/* <br></br> */}
                     {chars.Comfort ?
                     <Row >
                         <h6>Comfort</h6>
@@ -45,7 +46,7 @@ const CharBreakdown = (props) => {
                         </div>
                     </Row>
                     : null }
-                    <br></br>
+                    {/* <br></br> */}
                     {chars.Quality ?
                     <Row >
                         <h6>Quality</h6>
@@ -57,7 +58,7 @@ const CharBreakdown = (props) => {
                         </div>
                     </Row>
                     : null }
-                    <br></br>
+                    {/* <br></br> */}
                     {chars.Length ?
                     <Row >
                         <h6>Length</h6>
@@ -69,7 +70,7 @@ const CharBreakdown = (props) => {
                         </div>
                     </Row>
                     : null }
-                    <br></br>
+                    {/* <br></br> */}
                     {chars.Fit ?
                     <Row >
                         <h6>Fit</h6>

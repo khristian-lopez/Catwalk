@@ -17,11 +17,11 @@ const AverageRating = (props) => {
     if (averageRating) {
         return (
                 <Row >
-                    <Col xs={1}>
+                    <Col xs="auto">
                         {averageRating}
                     </Col>
                     <Col xs={4}>
-                        <ReviewsRating rating={averageRating}/>
+                            <ReviewsRating rating={averageRating} />
                     </Col>
                 </Row>
         )
