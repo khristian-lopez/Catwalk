@@ -12,8 +12,8 @@ const AverageRating = (props) => {
         count++;
     })
     // (ratings / count).toString().slice(0,2)
-    let averageRating = Math.round(ratings / count)
-    //console.log(typeof averageRating)
+    let averageRating = (ratings / count)
+    //console.log(averageRating)
     if (averageRating) {
         return (
                 <Row >
@@ -21,7 +21,9 @@ const AverageRating = (props) => {
                         {averageRating}
                     </Col>
                     <Col xs={4}>
+                        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "start" }} > 
                             <ReviewsRating rating={averageRating} />
+                        </div>    
                     </Col>
                 </Row>
         )

@@ -51,9 +51,7 @@ class Ratings extends React.Component {
             <div data-testid="ratingsList">
             <Row>
                 <div className="average-rating" style={{ fontSize: 70, textAlign: "center" }}>
-                    <Col>
-                        <AverageRating reviews={reviews} />
-                    </Col>
+                    <AverageRating reviews={reviews} />
                 </div>
                 <div id="recommend" style={{ fontSize: "13px" }}>
                     <AverageRec reviews={reviews} />
@@ -62,9 +60,7 @@ class Ratings extends React.Component {
             <br></br>
             <Row>
                 <div className="bar-container">
-                    {/* <Col xs={10} > */}
-                        <AverageBar reviews={reviews}/>
-                    {/* </Col>          */}
+                    <AverageBar reviews={reviews}/>                   
                 </div>
             </Row>
             <br></br>

@@ -275,9 +275,11 @@ RATINGS & REVIEWS
 */
 
 .rr-container {
+  /* height: 100%; */
   padding-bottom: 30px;
 }
 .reviews-container {
+  /* height: 30%; */
   padding: 5px;
   margin: 5px;
 }
@@ -332,17 +334,17 @@ RATINGS & REVIEWS
   padding: 5px;
 }
 
-/* #avgRevStar {
-  display: flex;
-} */
-
+.average-rating {
+  align-items: flex-start;
+}
 .ratings-container, .charBreakdown {
   margin: 10px;
   padding-bottom: 35px;
 }
-/* .bar-container {
-  display:inline-flex
-} */
+
+.ratings-container {
+  height: 30%;
+}
 .ratingsbar {
   margin: 4px;
   padding: 3px;
