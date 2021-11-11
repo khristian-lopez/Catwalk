@@ -9,7 +9,7 @@ import QuestionList from './questionlist.jsx'
 
 
 const Qa = (props) => (
-  <Container fluid="md" className = 'qa-Main'>
+  <Container fluid="md" className = 'qa-Main' onClick={(e) => props.postUserClick(e, 'Q&A')}>
   <Row>
     <Col className='qa-MainTitle'>QUESTIONS AND ANSWERS</Col>
   </Row>
