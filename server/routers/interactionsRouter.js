@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const controller = require('../controllers/interactions.js');
 
-router.post('/');
+router.post('/', controller.post);
 
 module.exports = router;

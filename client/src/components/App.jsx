@@ -42,15 +42,16 @@ class App extends React.Component {
 
   postUserClick(e, widget) {
     const time = new Date().toTimeString();
+
     const data = {
       element: e.target.localName,
       widget,
       time
     }
-    console.log(data);
-    // axios.post(`/interactions`, data)
-    //   .then(results => console.log(results))
-    //   .catch(err => console.error(err));
+
+    axios.post(`/interactions`, data)
+      .then(results => console.log(`Interaction was posted and ${results.data}`))
+      .catch(err => console.error(err));
   }
 
   render() {
