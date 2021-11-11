@@ -15,7 +15,7 @@ const RatingsBar = ({rating, total}) => {
                 className="ratingsbar-gray"
                 style={{     
                     height: "20",
-                    width: "100%",
+                    width: "90%",
                     backgroundColor: "rgb(220,220,220)",
                 }}
             >

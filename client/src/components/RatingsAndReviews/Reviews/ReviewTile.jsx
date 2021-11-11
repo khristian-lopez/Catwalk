@@ -12,7 +12,7 @@ const ReviewTile = props => {
         let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
         return formattedDate;
     }
-    console.log(props.review.photos)
+    
     return (
         <div className="review-Tile" key={props.review.review_id}>
             <Row>

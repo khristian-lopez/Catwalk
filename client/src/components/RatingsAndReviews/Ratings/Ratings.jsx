@@ -46,7 +46,7 @@ class Ratings extends React.Component {
     
     render() {
         const {reviews, metadata} = this.state;
-        console.log(reviews)
+        console.log(metadata)
         return (
             <div data-testid="ratingsList">
             <Row>
@@ -68,9 +68,7 @@ class Ratings extends React.Component {
             </Row>
             <br></br>
             <Row>
-                <div>Characteristics Breakdown Section
-                    {/* <CharBreakdown /> */}
-                </div>
+                <CharBreakdown metadata={metadata}/>
             </Row>
         </div>
         )
