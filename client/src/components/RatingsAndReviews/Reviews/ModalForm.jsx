@@ -91,32 +91,56 @@ const ModalForm = ({closeModal}) => {
         <div>
             <Form className="modalContainer" onSubmit={handleFormSubmit}>
                 <div className="form-input">
-                    <div className="review-overall">Overall rating:
-                        <p id="review-choices">
-                            <input className="review-rate" value="1" {...rateInputProps} checked={rateValue === "1"} />Poor
-                            <input className="review-rate" value="2" {...rateInputProps} checked={rateValue === "2"} />Fair
-                            <input className="review-rate" value="3" {...rateInputProps} checked={rateValue === "3"} />Average
-                            <input className="review-rate" value="4" {...rateInputProps} checked={rateValue === "4"} />Good
-                            <input className="review-rate" value="5" {...rateInputProps} checked={rateValue === "5"} />Great
-                        </p>
-                    </div>
-                    <div className="review-recc" required>Do you recommend this product?
-                        <p id="recc-answer" >
-                            <input id="recc-yes" value="true" type="radio"  {...recInputProps} checked={recValue === "true"} />Yes
-                            <input id="recc-no" value="false" type="radio" {...recInputProps} checked={recValue === "false"} />No
-                        </p>
-                    </div>
+                    <Form.Group>
+                        <Form.Label>Overall Rating</Form.Label>
+                        <br></br>
+                        <Form.Check
+                            inline label="Poor"
+                            value="1" {...rateInputProps} checked={rateValue === "1"}
+                        />
+                        <Form.Check
+                            inline label="Fair"
+                            value="2" {...rateInputProps} checked={rateValue === "2"}
+                        />
+                        <Form.Check
+                            inline label="Average"
+                            value="3" {...rateInputProps} checked={rateValue === "3"}
+                        />
+                        <Form.Check
+                            inline label="Good"
+                            value="4" {...rateInputProps} checked={rateValue === "4"}
+                        />
+                        <Form.Check
+                            inline label="Great"
+                            value="5" {...rateInputProps} checked={rateValue === "5"}
+                        />
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                    <Form.Label>Do you recommend this product?</Form.Label>
+                        <br></br>
+                        <Form.Check
+                            inline label="Yes"
+                            {...recInputProps} checked={recValue === "true"}
+                            value="true"
+                        />
+                        <Form.Check
+                            inline label="No"
+                            {...recInputProps} checked={recValue === "false"}
+                            value="false"
+                        />
+                    </Form.Group>
+                        <br></br>
                     <Form.Group>
                         <Form.Label>Summary</Form.Label>
                         <Form.Control
                             type="text"
                             onChange={(e) => setSummary(e.target.value)}
                             placeholder="Ex: Best purchase ever!"
-                            rows={1}
-                            maxLength="60"
+                            rows={1} maxLength="60"
                         />
                     </Form.Group>
-                    <br></br>
+                        <br></br>
                     <Form.Group>
                         <Form.Label>Review</Form.Label>
                         <Form.Control 
@@ -131,44 +155,47 @@ const ModalForm = ({closeModal}) => {
                         />
                     </Form.Group>
                     <Minimum />
-                    <div className="review-photos">Add photo: (max 5)
                         <br></br>
-                        <input
-                            type="file"
-                            name="image"
-                            accept="image/*"
+                    <Form.Group>
+                        <Form.Label>Add photo: (max 5)</Form.Label>
+                        <Form.Control
+                            type="file" name="image" accept="image/*"
                             onChange={handleSelectImage}
                             multiple
                         />
-                    <div>
-                        <img src={image} style={{ margin: "10px", width: "200px", height: "200px" }}/>
-                        <img src={selectedImages[0]} style={{ margin: "10px", width: "200px", height: "200px" }} />
-                        <img src={selectedImages[1]} style={{ margin: "10px", width: "200px", height: "200px" }} />
-                        <img src={selectedImages[2]} style={{ margin: "10px", width: "200px", height: "200px" }} />
-                        <img src={selectedImages[3]} style={{ margin: "10px", width: "200px", height: "200px" }} />
-                    </div>
-                    </div>
-                    <div className="reviewer-name">username:
+                        <div>
+                            <img src={image} style={{ margin: "10px", width: "200px", height: "200px" }}/>
+                            <img src={selectedImages[0]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                            <img src={selectedImages[1]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                            <img src={selectedImages[2]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                            <img src={selectedImages[3]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+                        </div>
+                    </Form.Group>
                         <br></br>
-                        <input 
+                    <Form.Group>
+                        <Form.Label>Nickname</Form.Label>
+                        <Form.Control
                             onChange={(e) => setName(e.target.value)}
-                            type="text" 
-                            placeholder="Ex: jackson11!" 
+                            type="text" placeholder="Ex: jackson11!" 
                             maxLength="60" required
                         />
-                        <p style={{ fontSize: "10px" }}>For privacy reasons, do not use your full name or email address</p>
-                    </div>
-                    <div className="reviewer-email">email:
+                        <Form.Text className="text-muted">
+                            For privacy reasons, do not use your full name or email address
+                        </Form.Text>
+                    </Form.Group>
                         <br></br>
-                        <input
+                    <Form.Group>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
                             onChange={(e) => setEmail(e.target.value)}
-                            type="email" 
-                            size="30" 
+                            type="email" size="30" 
                             placeholder="Ex: jackson11@email.com" 
                             maxLength="60" required
                         />
-                        <p style={{ fontSize: "10px" }}>For authentication reasons, you will not be emailed</p>
-                    </div>
+                        <Form.Text className="text-muted">
+                            For authentication reasons, you will not be emailed
+                        </Form.Text>
+                    </Form.Group>
                 </div>
                 <button id="review-submit-btn" type="submit" 
                         onSubmit={e => {
@@ -184,26 +211,69 @@ const ModalForm = ({closeModal}) => {
 
 export default ModalForm;
 
+
+{/* <div className="review-overall">Overall rating:
+    <p id="review-choices">
+        <input className="review-rate" value="1" {...rateInputProps} checked={rateValue === "1"} />Poor
+        <input className="review-rate" value="2" {...rateInputProps} checked={rateValue === "2"} />Fair
+        <input className="review-rate" value="3" {...rateInputProps} checked={rateValue === "3"} />Average
+        <input className="review-rate" value="4" {...rateInputProps} checked={rateValue === "4"} />Good
+        <input className="review-rate" value="5" {...rateInputProps} checked={rateValue === "5"} />Great
+    </p>
+</div> */}
+{/* <div className="review-recc" required>Do you recommend this product?
+    <p id="recc-answer" >
+        <input id="recc-yes" value="true" type="radio"  {...recInputProps} checked={recValue === "true"} />Yes
+        <input id="recc-no" value="false" type="radio" {...recInputProps} checked={recValue === "false"} />No
+    </p>
+</div> */}
+{/* <div className="review-photos">Add photo: (max 5)
+    <br></br>
+    <input
+        type="file"
+        name="image"
+        accept="image/*"
+        onChange={handleSelectImage}
+        multiple
+    />
+<div>
+    <img src={image} style={{ margin: "10px", width: "200px", height: "200px" }}/>
+    <img src={selectedImages[0]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+    <img src={selectedImages[1]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+    <img src={selectedImages[2]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+    <img src={selectedImages[3]} style={{ margin: "10px", width: "200px", height: "200px" }} />
+</div>
+</div> */}
 {/* <Characteristics handleChar={handleChar}/> */}
-                    {/* <div className="review-summary">Summary:
-                        <br></br>
-                        <textarea 
-                            type="text" 
-                            cols="50" 
-                            placeholder="Ex: Best purchase ever!" 
-                            maxLength="60"
-                            onChange={(e) => setSummary(e.target.value)}
-                            
-                        />
-                    </div> */}
+{/* <div className="review-summary">Summary:
+    <br></br>
+    <textarea 
+        type="text" 
+        cols="50" 
+        placeholder="Ex: Best purchase ever!" 
+        maxLength="60"
+        onChange={(e) => setSummary(e.target.value)}
+        
+    />
+</div> */}
 {/* <div className="review-body">Review: */}
-                        {/* <br></br> */}
- {/* <textarea
-                            onChange={(e) => {
-                                setReview(e.target.value)
-                                setCharacterCount(e.target.value.length)
-                            }}
-                            type="text" rows="5" cols="50"
-                            placeholder="Why did you like the product or not?"
-                            minLength="50" maxLength="1000" required
-                        /> */} {/* </div> */}
+{/* <br></br> */}
+{/* <textarea
+    onChange={(e) => {
+        setReview(e.target.value)
+        setCharacterCount(e.target.value.length)
+    }}
+    type="text" rows="5" cols="50"
+    placeholder="Why did you like the product or not?"
+    minLength="50" maxLength="1000" required
+/> */} {/* </div> */}
+{/* <div className="reviewer-name">username:
+<br></br>
+<input 
+    onChange={(e) => setName(e.target.value)}
+    type="text" 
+    placeholder="Ex: jackson11!" 
+    maxLength="60" required
+/>
+<p style={{ fontSize: "10px" }}>For privacy reasons, do not use your full name or email address</p>
+</div> */}
