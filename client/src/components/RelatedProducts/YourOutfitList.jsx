@@ -42,7 +42,8 @@ const YourOutfitList = ({ currentProduct, handleChangeProduct }) => {
     }
   }
 
-  const handleRemove = (productId) => {
+  const handleRemove = (e, productId) => {
+    e.stopPropagation();
     let outfitList = JSON.parse(localStorage.getItem('outfit'));
 
     for (var i = 0; i < outfitList.length; i++) {
