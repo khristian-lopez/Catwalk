@@ -46,7 +46,7 @@ class Ratings extends React.Component {
     
     render() {
         const {reviews, metadata} = this.state;
-        console.log(metadata)
+        
         return (
             <div data-testid="ratingsList">
             <Row>
@@ -62,8 +62,9 @@ class Ratings extends React.Component {
             <br></br>
             <Row>
                 <div className="bar-container">
-                    <Col s={1}><div id="stars"></div></Col>
-                    <Col xs={9}><AverageBar reviews={reviews}/></Col>         
+                    {/* <Col xs={10} > */}
+                        <AverageBar reviews={reviews}/>
+                    {/* </Col>          */}
                 </div>
             </Row>
             <br></br>

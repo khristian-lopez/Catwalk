@@ -16,16 +16,14 @@ const AverageRating = (props) => {
     //console.log(typeof averageRating)
     if (averageRating) {
         return (
-            <div>
                 <Row >
-                <Col xs={1}>
-                    {averageRating}
-                </Col>
-                <Col xs={4}>
-                    <ReviewsRating rating={averageRating}/>
-                </Col>
+                    <Col xs={1}>
+                        {averageRating}
+                    </Col>
+                    <Col xs={4}>
+                        <ReviewsRating rating={averageRating}/>
+                    </Col>
                 </Row>
-            </div>
         )
     } else {
         return (
