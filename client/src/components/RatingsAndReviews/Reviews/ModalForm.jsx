@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Characteristics from './ModalFiles/characteristics.jsx';
 import {Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
@@ -8,8 +7,14 @@ const ModalForm = ({closeModal}) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick("true")
-    // TODO
-    const [char, setChar] = useState({})
+    
+    const [size, setSize] = useState(null)
+    const [width, setWidth] = useState(null)
+    const [comfort, setComfort] = useState(null)
+    const [quality, setQuality] = useState(null)
+    const [length, setLength] = useState(null)
+    const [fit, setFit] = useState(null)
+
     const [summary, setSummary] = useState("")
     const [review, setReview] = useState("")
     const [name, setName] = useState("")
@@ -42,10 +47,6 @@ const ModalForm = ({closeModal}) => {
         }
         return [value, inputProps]
     }
-    // TODO: GRAB CHARS
-    const handleChar = e => {
-        setChar(e)
-    }
     
     const handleSelectImage = e => {
         let url = URL.createObjectURL(e.target.files[0])
@@ -70,8 +71,15 @@ const ModalForm = ({closeModal}) => {
             name: name,
             email: email,
             photos: uploadedImages,
-            //chars
-            characteristics: char
+            // TODO:
+            characteristics: {
+                "size": size,
+                "width": width,
+                "comfort": comfort,
+                "quality": quality,
+                "length": length,
+                "fit": fit
+            }
         }
         console.log(input)
     }
@@ -86,49 +94,101 @@ const ModalForm = ({closeModal}) => {
         .then(res => console.log(res))
         .catch(err => console.error('Cannot add review', err))
     }
-    // TODO: GET CHARS TO FORM SUBMISSION
+    
     return (
         <div>
             <Form className="modalContainer" onSubmit={handleFormSubmit}>
                 <div className="form-input">
                     <Form.Group>
                         <Form.Label>Overall Rating</Form.Label>
-                        <br></br>
-                        <Form.Check
-                            inline label="Poor"
-                            value="1" {...rateInputProps} checked={rateValue === "1"}
-                        />
-                        <Form.Check
-                            inline label="Fair"
-                            value="2" {...rateInputProps} checked={rateValue === "2"}
-                        />
-                        <Form.Check
-                            inline label="Average"
-                            value="3" {...rateInputProps} checked={rateValue === "3"}
-                        />
-                        <Form.Check
-                            inline label="Good"
-                            value="4" {...rateInputProps} checked={rateValue === "4"}
-                        />
-                        <Form.Check
-                            inline label="Great"
-                            value="5" {...rateInputProps} checked={rateValue === "5"}
-                        />
+                            <br></br>
+                            <Form.Check
+                                inline label="Poor" value="1" {...rateInputProps} checked={rateValue === "1"}
+                            />
+                            <Form.Check
+                                inline label="Fair" value="2" {...rateInputProps} checked={rateValue === "2"}
+                            />
+                            <Form.Check
+                                inline label="Average" value="3" {...rateInputProps} checked={rateValue === "3"}
+                            />
+                            <Form.Check
+                                inline label="Good" value="4" {...rateInputProps} checked={rateValue === "4"}
+                            />
+                            <Form.Check
+                                inline label="Great" value="5" {...rateInputProps} checked={rateValue === "5"}
+                            />
                     </Form.Group>
                         <br></br>
                     <Form.Group>
-                    <Form.Label>Do you recommend this product?</Form.Label>
+                        <Form.Label>Do you recommend this product?</Form.Label>
+                            <br></br>
+                            <Form.Check
+                                inline label="Yes" {...recInputProps} checked={recValue === "true"} value="true"
+                            />
+                            <Form.Check
+                                inline label="No" {...recInputProps} checked={recValue === "false"} value="false"
+                            />
+                    </Form.Group>
                         <br></br>
-                        <Form.Check
-                            inline label="Yes"
-                            {...recInputProps} checked={recValue === "true"}
-                            value="true"
-                        />
-                        <Form.Check
-                            inline label="No"
-                            {...recInputProps} checked={recValue === "false"}
-                            value="false"
-                        />
+
+                    <Form.Group>
+                        <Form.Label>Size</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="A size too small" value="1" type="radio" checked={size === "1"} onChange={(e) => setSize(e.target.value)}/>
+                        <Form.Check inline label="1/2 size too small" value="2" type="radio" checked={size === "2"} onChange={(e) => setSize(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="3" type="radio" checked={size === "3"} onChange={(e) => setSize(e.target.value)}/>
+                        <Form.Check inline label="1/2 size too big" value="4" type="radio" checked={size === "4"} onChange={(e) => setSize(e.target.value)}/>
+                        <Form.Check inline label="A size too big" value="5" type="radio" checked={size === "5"} onChange={(e) => setSize(e.target.value)}/>
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                        <Form.Label>Width</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="Too narrow" value="1" type="radio" checked={width === "1"} onChange={(e) => setWidth(e.target.value)}/>
+                        <Form.Check inline label="Slightly narrow" value="2" type="radio" checked={width === "2"} onChange={(e) => setWidth(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="3" type="radio" checked={width === "3"} onChange={(e) => setWidth(e.target.value)}/>
+                        <Form.Check inline label="Slightly wide" value="4" type="radio" checked={width === "4"} onChange={(e) => setWidth(e.target.value)}/>
+                        <Form.Check inline label="Too wide" value="5" type="radio" checked={width === "5"} onChange={(e) => setWidth(e.target.value)}/>
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                        <Form.Label>Comfort</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="Uncomfortable" value="1" type="radio" checked={comfort === "1"} onChange={(e) => setComfort(e.target.value)}/>
+                        <Form.Check inline label="Slightly uncomfortable" value="2" type="radio" checked={comfort === "2"} onChange={(e) => setComfort(e.target.value)}/>
+                        <Form.Check inline label="Ok" value="3" type="radio" checked={comfort === "3"} onChange={(e) => setComfort(e.target.value)}/>
+                        <Form.Check inline label="Comfortable" value="4" type="radio" checked={comfort === "4"} onChange={(e) => setComfort(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="5" type="radio" checked={comfort === "5"} onChange={(e) => setComfort(e.target.value)}/>
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                        <Form.Label>Quality</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="Poor" value="1" type="radio" checked={quality === "1"} onChange={(e) => setQuality(e.target.value)}/>
+                        <Form.Check inline label="Below average" value="2" type="radio" checked={quality === "2"} onChange={(e) => setQuality(e.target.value)}/>
+                        <Form.Check inline label="What I expected" value="3" type="radio" checked={quality === "3"} onChange={(e) => setQuality(e.target.value)}/>
+                        <Form.Check inline label="Pretty great" value="4" type="radio" checked={quality === "4"} onChange={(e) => setQuality(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="5" type="radio" checked={quality === "5"} onChange={(e) => setQuality(e.target.value)}/>
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                        <Form.Label>Length</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="Runs short" value="1" type="radio" checked={length === "1"} onChange={(e) => setLength(e.target.value)}/>
+                        <Form.Check inline label="Runs slightly short" value="2" type="radio" checked={length === "2"} onChange={(e) => setLength(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="3" type="radio" checked={length === "3"} onChange={(e) => setLength(e.target.value)}/>
+                        <Form.Check inline label="Runs slightly long" value="4" type="radio" checked={length === "4"} onChange={(e) => setLength(e.target.value)}/>
+                        <Form.Check inline label="Runs long" value="5" type="radio" checked={length === "5"} onChange={(e) => setLength(e.target.value)}/>
+                    </Form.Group>
+                        <br></br>
+                    <Form.Group>
+                        <Form.Label>Fit</Form.Label>
+                        <br></br>
+                        <Form.Check inline label="Runs tight" value="1" type="radio" checked={fit === "1"} onChange={(e) => setFit(e.target.value)}/>
+                        <Form.Check inline label="Runs slightly tight" value="2" type="radio" checked={fit === "2"} onChange={(e) => setFit(e.target.value)}/>
+                        <Form.Check inline label="Perfect" value="3" type="radio" checked={fit === "3"} onChange={(e) => setFit(e.target.value)}/>
+                        <Form.Check inline label="Runs slightly long" value="4" type="radio" checked={fit === "4"} onChange={(e) => setFit(e.target.value)}/>
+                        <Form.Check inline label="Runs long" value="5" type="radio" checked={fit === "5"} onChange={(e) => setFit(e.target.value)}/>
                     </Form.Group>
                         <br></br>
                     <Form.Group>
