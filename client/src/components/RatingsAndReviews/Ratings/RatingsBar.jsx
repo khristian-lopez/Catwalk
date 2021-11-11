@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // eslint-disable-next-line react/prop-types
 const RatingsBar = ({rating, total}) => {
+    const [rate, setRate] = useState(rating)
     // TODO: do something with total to get correct bar rate
-    const percentage = (rating / total) * 100;
-    //console.log('rating: ', rating, 'total: ', total)
+    useEffect( () => {
+        setRate((rating / total) * 100)
+    }, [rating])
+
+    // console.log('rating: ', rate)
     return (
         <div className="ratingsbar" >
             <div 
@@ -20,7 +24,7 @@ const RatingsBar = ({rating, total}) => {
                     style={{
                         padding: "5px",
                         height: "100%",
-                        width: `${percentage}%`,
+                        width: `${rate}%`,
                         backgroundColor: "green",
                     }}
                 >

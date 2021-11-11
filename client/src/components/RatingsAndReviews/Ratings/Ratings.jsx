@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AverageRating from './AverageRating.jsx';
 import AverageRec from './AverageRec.jsx';
 import AverageBar from './AverageBar.jsx';
+import CharBreakdown from './CharBreakdown.jsx';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
@@ -45,6 +46,7 @@ class Ratings extends React.Component {
     
     render() {
         const {reviews, metadata} = this.state;
+        console.log(reviews)
         return (
             <div data-testid="ratingsList">
             <Row>
@@ -63,7 +65,13 @@ class Ratings extends React.Component {
                     <Col s={1}><div id="stars"></div></Col>
                     <Col xs={9}><AverageBar reviews={reviews}/></Col>         
                 </div>
-            </Row>           
+            </Row>
+            <br></br>
+            <Row>
+                <div>Characteristics Breakdown Section
+                    {/* <CharBreakdown /> */}
+                </div>
+            </Row>
         </div>
         )
     }

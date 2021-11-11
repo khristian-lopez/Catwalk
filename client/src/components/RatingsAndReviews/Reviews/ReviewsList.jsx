@@ -67,22 +67,23 @@ class ReviewsList extends React.Component {
     render() {
         const {product_id} = this.props.currentProduct
         const {reviews, tiles} = this.state;
-        console.log(reviews)
+        
         if (reviews.length > 0) {
             return (
                 <div data-testid="reviewsList">
                     <div className="reviewsList" >
-                    <label> {reviews.length} review(s), sorted by 
-                        <select 
-                            name="sort"
-                            value={this.state.sort}
-                            onChange={this.handleSort}
-                        >
-                            <option value="relevance" >Relevance</option>
-                            <option value="newest" >Newest</option>
-                            <option value="helpful" >Helpful</option>
-                        </select>
-                    </label>
+                        <label>{reviews.length} review(s), sorted by 
+                            <select 
+                                name="sort"
+                                value={this.state.sort}
+                                onChange={this.handleSort}
+                                
+                            >
+                                <option value="relevance" >Relevance</option>
+                                <option value="newest" >Newest</option>
+                                <option value="helpful" >Helpful</option>
+                            </select>
+                        </label>
                     <div className="reviewTiles" >
                         { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
                     </div>
