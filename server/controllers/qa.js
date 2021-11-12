@@ -71,7 +71,7 @@ module.exports = {
       email: req.body.email,
       product_id: req.body.product_id
     }
-
+    console.log(question)
     axios.post(`${API_URL}/qa/questions?product_id=${product_id}`, question, config)
     .then(() => {
       console.log('Successfully posted question.')
