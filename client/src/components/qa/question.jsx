@@ -12,6 +12,13 @@ import axios from 'axios'
 
 const Question = (props) => {
 
+  const [answer, setAnswer] = useState({
+    body: '',
+    name: '',
+    email: '',
+    photos: []
+  })
+
   const markQuestionAsHelpful = () => {
     axios.put(`/qa/questions/${props.question.question_id}/helpful`)
     .then(() => console.log('Success'))
@@ -25,7 +32,7 @@ const Question = (props) => {
   }
 
   const addAnswer = () => {
-    axios.post(`/qa/questions/${props.question.question_id}/answers`)
+    axios.post(`/qa/questions/${props.question.question_id}/answers`, answer)
     .then(() => console.log('Success'))
     .catch(err => console.error(err));
   }
@@ -43,7 +50,7 @@ const Question = (props) => {
 
     <Button onClick={markQuestionAsHelpful} variant='link'>Yes ({props.question.question_helpfulness})</Button>
     <Button onClick={reportQuestion} variant='link'>Report</Button>
-    <Button onClick={() => handleShow()} variant='link'>Add Answer</Button>
+    <Button onClick={handleShow} variant='link'>Add Answer</Button>
 
     </Col>
 
@@ -55,20 +62,20 @@ const Question = (props) => {
 
 
     <Modal show={show} onHide={handleClose}>
-        <Modal.Header>Ask a question</Modal.Header>
+        <Modal.Header>Answer a question</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
               <Form.Label>Answer</Form.Label>
-              <Form.Control/>
+              <Form.Control onChange={(event) => setAnswer({...answer, body: event.target.value})}/>
             </Form.Group>
             <Form.Group>
             <Form.Label>Name</Form.Label>
-            <Form.Control/>
+            <Form.Control onChange={(event) => setAnswer({...answer, name: event.target.value})}/>
             </Form.Group>
             <Form.Group>
             <Form.Label>Email</Form.Label>
-            <Form.Control/>
+            <Form.Control onChange={(event) => setAnswer({...answer, email: event.target.value})}/>
             </Form.Group>
             <Form.Group>
               <Form.Label>Photos</Form.Label>
@@ -80,7 +87,7 @@ const Question = (props) => {
         <Button onClick={handleClose}>
             Close
           </Button>
-          <Button onClick={handleClose}>
+          <Button onClick={addAnswer}>
             Submit answer
           </Button>
         </Modal.Footer>

@@ -11,16 +11,19 @@ import Form from 'react-bootstrap/Form'
 import Question from './question.jsx'
 
 const QuestionList = (props) => {
+  const currentProductId = props.currentProductId;
   const [questions, setQuestions] = useState([]);
   const [maxQuestions, setMaxQuestions] = useState(4);
-  const [formQuestion, setFormQuestion] = useState('')
-  const [formUsername, setFormUsername] = useState('')
-  const [formEmail, setFormEmail] = useState('')
-  const [question, setQuestion] = useState({})
+  const [question, setQuestion] = useState({
+    body: '',
+    name: '',
+    email: '',
+    product_id: currentProductId
+  })
   const [show, setShow] = useState(false)
 
 
-  const currentProductId = props.currentProductId;
+
 
   useEffect(() => {
     //Gets questions from server, rerenders if the current product or max questions are changed
@@ -57,33 +60,20 @@ const QuestionList = (props) => {
           <Form>
             <Form.Group>
               <Form.Label >Question</Form.Label>
-              <Form.Control onChange={(event) => setFormQuestion(event.target.value)}/>
+              <Form.Control onChange={(event) => setQuestion({...question, body: event.target.value})}/>
             </Form.Group>
             <Form.Group>
             <Form.Label>Username</Form.Label>
-            <Form.Control onChange={(event) => setFormUsername(event.target.value)}/>
+            <Form.Control onChange={(event) => setQuestion({...question, name: event.target.value})}/>
             </Form.Group>
             <Form.Group>
             <Form.Label>Email</Form.Label>
-            <Form.Control onChange={(event) => setFormEmail(event.target.value)}/>
+            <Form.Control onChange={(event) => setQuestion({...question, email: event.target.value})}/>
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button onClick={handleClose}>
-            Close
-          </Button>
-          <Button onClick={() => {
-            setQuestion({
-                body: formQuestion,
-                name: formUsername,
-                email: formEmail,
-                product_id: Number(props.currentProductId)
-              })
-              addQuestion()
-          }}>
-            Submit question
-          </Button>
+        <Button onClick={addQuestion}>Submit question</Button>
         </Modal.Footer>
       </Modal>
       </Col>

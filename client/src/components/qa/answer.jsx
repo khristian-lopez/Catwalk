@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 
 const Answer = (props) => {
+
 
   const markAnswerAsHelpful = () => {
 
@@ -29,8 +30,11 @@ const Answer = (props) => {
       <div>by {props.answer.answerer_name},</div>
       <div>{props.answer.date } |</div>
       <div>Helpful?</div>
+      <Col>
       <Button onClick={markAnswerAsHelpful} variant='link'>Yes ({props.answer.helpfulness})</Button>
       <Button onClick={reportAnswer} variant='link'>Report</Button>
+      </Col>
+
     </div>
   </div>
   )
