@@ -48,9 +48,11 @@ const Question = (props) => {
 
     <Col className='qa-QuestionHelpful' xs={6} md={4}>
 
-    <Button onClick={markQuestionAsHelpful} variant='link'>Yes ({props.question.question_helpfulness})</Button>
-    <Button onClick={reportQuestion} variant='link'>Report</Button>
-    <Button onClick={handleShow} variant='link'>Add Answer</Button>
+    <div onClick={markQuestionAsHelpful} variant='link'>Yes ({props.question.question_helpfulness})</div>
+    <div> | </div>
+    <div onClick={reportQuestion} variant='link'>Report</div>
+    <div> | </div>
+    <div onClick={handleShow} variant='link'>Add Answer</div>
 
     </Col>
 
