@@ -13,7 +13,7 @@ import Question from './question.jsx'
 const QuestionList = (props) => {
   const currentProductId = props.currentProductId;
   const [questions, setQuestions] = useState([]);
-  const [maxQuestions, setMaxQuestions] = useState(4);
+  const [maxQuestions, setMaxQuestions] = useState(2);
   const [question, setQuestion] = useState({
     body: '',
     name: '',
@@ -50,10 +50,10 @@ const QuestionList = (props) => {
     ))}
     <Row>
       <Col>
-      <Button onClick={() => setMaxQuestions(50)}>Show more questions</Button>
+      <Button onClick={() => setMaxQuestions(maxQuestions + 2)}>Show more questions</Button>
       </Col>
       <Col>
-      <Button onClick={() => handleShow()}>Add a question</Button>
+      <Button onClick={handleShow}>Add a question</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>Ask a question</Modal.Header>
         <Modal.Body>
