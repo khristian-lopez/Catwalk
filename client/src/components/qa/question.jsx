@@ -6,30 +6,42 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 
 import AnswerList from './answerlist.jsx'
+import axios from 'axios'
 
-const Question = (props) => (
-/*   <div className='qa-Questions'>
-  <div className='qa-Question'>
-    <div>Q:</div>
-    <div>{props.question.question_body}</div>
-    <div>Helpful?</div>
-    <div>Yes</div>
-    <div>({props.question.question_helpfulness}) |</div>
-    <div>Add Answer</div>
-   </div>
-   <AnswerList question_id={props.question.question_id}/>
-   </div> */
+const Question = (props) => {
 
+  const markQuestionAsHelpful = () => {
+    axios.put(`/qa/questions/${props.question.question_id}/helpful`)
+    .then(() => console.log('Success'))
+    .catch(err => console.error(err));
+  }
+
+  const reportQuestion = () => {
+    axios.put(`/qa/questions/${props.question.question_id}/report`)
+    .then(() => console.log('Success'))
+    .catch(err => console.error(err));
+  }
+
+  const addAnswer = () => {
+    axios.post(`/qa/questions/${props.question.question_id}/answers`)
+    .then(() => console.log('Success'))
+    .catch(err => console.error(err));
+  }
+
+  return (
   <Container fluid='md'>
     <Row>
     <Col className='qa-Question'>Q: {props.question.question_body}</Col>
     <Col className='qa-QuestionHelpful'>Helpful? Yes ({props.question.question_helpfulness}) | No | Add Answer</Col>
+    <Button onClick={markQuestionAsHelpful}>Yes</Button>
+    <Button onClick={reportQuestion}>Report</Button>
+    <Button onClick={addAnswer}>Add Answer</Button>
     </Row>
     <Row>
       <AnswerList question_id={props.question.question_id}/>
     </Row>
-  </Container>
-)
+  </Container>)
+}
 
 
 export default Question

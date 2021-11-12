@@ -9,11 +9,15 @@ import axios from 'axios'
 
 const Answer = (props) => {
 
-  const markHelpful = () => {
-    console.log('This answer has been marked as helpful')
-    console.log(props.answer.answer_id)
+  const markAnswerAsHelpful = () => {
 
     axios.put(`/qa/answers/${props.answer.answer_id}/helpful`)
+    .then(() => console.log('Success'))
+    .catch(err => console.error(err));
+  }
+
+  const reportAnswer = () => {
+    axios.put(`/qa/answers/${props.answer.answer_id}/report`)
     .then(() => console.log('Success'))
     .catch(err => console.error(err));
   }
@@ -25,10 +29,12 @@ const Answer = (props) => {
       <div>by {props.answer.answerer_name},</div>
       <div>{props.answer.date } |</div>
       <div>Helpful?</div>
-      <div onClick={() => markHelpful()}>Yes</div>
+      <div>Yes</div>
       <div>({props.answer.helpfulness}) |</div>
       <div onClick={() => console.log('Clicked')}>No |</div>
       <div>Report</div>
+      <Button onClick={markAnswerAsHelpful}>Yes</Button>
+      <Button onClick={reportAnswer}>Report</Button>
     </div>
   </div>
   )
