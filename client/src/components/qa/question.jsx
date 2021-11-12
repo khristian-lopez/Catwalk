@@ -37,15 +37,22 @@ const Question = (props) => {
   return (
   <Container fluid='md'>
     <Row>
-    <Col className='qa-Question'>Q: {props.question.question_body}</Col>
-    <Col className='qa-QuestionHelpful'>Helpful? Yes ({props.question.question_helpfulness}) | No | Add Answer</Col>
-    <Button onClick={markQuestionAsHelpful}>Yes</Button>
-    <Button onClick={reportQuestion}>Report</Button>
-    <Button onClick={() => handleShow()}>Add Answer</Button>
+    <Col className='qa-Question' xs={12} md={8}>Q: {props.question.question_body}</Col>
+
+    <Col className='qa-QuestionHelpful' xs={6} md={4}>
+
+    <Button onClick={markQuestionAsHelpful} variant='link'>Yes ({props.question.question_helpfulness})</Button>
+    <Button onClick={reportQuestion} variant='link'>Report</Button>
+    <Button onClick={() => handleShow()} variant='link'>Add Answer</Button>
+
+    </Col>
+
     </Row>
     <Row>
       <AnswerList question_id={props.question.question_id}/>
     </Row>
+
+
 
     <Modal show={show} onHide={handleClose}>
         <Modal.Header>Ask a question</Modal.Header>
@@ -78,6 +85,9 @@ const Question = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+
 
   </Container>)
 }

@@ -29,12 +29,8 @@ const Answer = (props) => {
       <div>by {props.answer.answerer_name},</div>
       <div>{props.answer.date } |</div>
       <div>Helpful?</div>
-      <div>Yes</div>
-      <div>({props.answer.helpfulness}) |</div>
-      <div onClick={() => console.log('Clicked')}>No |</div>
-      <div>Report</div>
-      <Button onClick={markAnswerAsHelpful}>Yes</Button>
-      <Button onClick={reportAnswer}>Report</Button>
+      <Button onClick={markAnswerAsHelpful} variant='link'>Yes ({props.answer.helpfulness})</Button>
+      <Button onClick={reportAnswer} variant='link'>Report</Button>
     </div>
   </div>
   )
