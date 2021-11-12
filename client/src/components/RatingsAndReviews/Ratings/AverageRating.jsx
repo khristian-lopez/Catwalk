@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ReviewsRating from '../Reviews/ReviewsRating.jsx';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const AverageRating = (props) => {
     let ratings = 0;
@@ -8,10 +11,22 @@ const AverageRating = (props) => {
         ratings += review.rating
         count++;
     })
-    let averageRating = (ratings / count).toString().slice(0, 2)
+    // (ratings / count).toString().slice(0,2)
+    let averageRating = (ratings / count)
+    let roundedRating = (ratings / count).toString().slice(0,3)
+    
     if (averageRating) {
         return (
-            <div>{averageRating}</div>
+                <Row >
+                    <Col xs="auto">
+                        {roundedRating}
+                    </Col>
+                    <Col xs={4}>
+                        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "start" }} > 
+                            <ReviewsRating rating={averageRating} />
+                        </div>    
+                    </Col>
+                </Row>
         )
     } else {
         return (

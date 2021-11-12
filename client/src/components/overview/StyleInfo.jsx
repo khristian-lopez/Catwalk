@@ -24,32 +24,38 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   const [displayQuantity, changeDisplayQuantity] = useState(() => { return 'Quantity'});
   const [styleThumbnails, changeThumbnails] = useState([]);
   const [numberOfReviews, changeNumberOfReviews] = useState([])
+  const [availabeSkus, changeAvailableSkus] = useState([])
   const [currentSku, changeCurrentSku] = useState([])
 
   useEffect(() => {
-    axios.get(`/products/${productInfo.id}/styles`)
-      .then(results => {
-        changeThumbnails(results.data)
-      })
-      .then(axios.get(`/reviews/${productInfo.id}`)
+    if (productInfo.id) {
+      axios.get(`/products/${productInfo.id}/styles`)
         .then(results => {
-          changeNumberOfReviews(results.data.results.length)
-        }))
-      .catch(err => console.error(err))
+          changeThumbnails(results.data)
+        })
+        .then(axios.get(`/reviews/${productInfo.id}`)
+          .then(results => {
+            changeNumberOfReviews(results.data.results.length)
+          }))
+        .catch(err => console.error('unable to obtain style info at styleInfo,jsx', err))
+
+    }
   }, [productInfo])
 
 
-    useDeepCompareEffect(() => {
+  useDeepCompareEffect(() => {
     if(isFirstRef.current) {
       isFirstRef.current = false;
       return;
     }
-    //when style info changes, different size options obtained
-    const avaialableSizeAndQuant = Object.values(styleInfo.skus)
-    changeSizeAndQuantOptions(avaialableSizeAndQuant)
+    const availableSkuValues = Object.values(styleInfo.skus)
+    const availabeSkuKeys = Object.keys(styleInfo.skus)
+    changeAvailableSkus(availabeSkuKeys)
+    changeSizeAndQuantOptions(availableSkuValues)
 
     return () => {
       changeSize('Select a Size')
+      changeCurrentSku([])
     }
   }, [styleInfo])
 
@@ -66,13 +72,26 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
 
   let selectedStyle = { border: 'none' }
   let originalPrice = { fontWeight: 'bold' }
-  let salePrice = { fontWeight: 'bold', color: 'red' }
+  let originalSalePrice = { textDecoration: 'line-through', color: 'gray' }
+  let salePrice = { fontWeight: 'bold', color: 'red', fontSize: '20px' }
   let saleStatus = styleInfo.sale_price;
 
-  if (saleStatus) {
-    let originalPrice = {
-      textDecoration: 'line-through'
+  let priceLabel = saleStatus ?
+    <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
+    : <label style={originalPrice}>{styleInfo.original_price}</label>
+
+  const addToCart = (skuId) => {
+    const product = {
+      sku_id: skuId,
     }
+
+    axios.post(`/cart/`, product)
+      .then(() => {
+        alert('Successfully added item to cart')
+      })
+      .catch(err => {
+        alert('Whoops, unable to add item to cart, please try again')
+      })
   }
 
   return (
@@ -85,14 +104,15 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
         <div>
           <label>{productInfo.category}</label>
           <h3>{productInfo.name}</h3>
-          <label style={originalPrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label>
+          {priceLabel}
         </div>
       </Stack>
       <Stack>
         {/* container for styles thumbnails */}
-        <div className="ov-styles-thumbnails">
+        <div >
           Style &gt; Selected Style <br />
-          <div >
+          <label className="ov-style-name">{styleInfo.name}</label>
+          <div className="ov-styles-thumbnail-container">
             {styleThumbnails.map((style, index) => {
               if (style.style_id === styleInfo.style_id) {
                 selectedStyle = {
@@ -101,7 +121,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
               } else {
                 selectedStyle = { border: 'none'}
               }
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event) } style={selectedStyle} />
+              return <img src={style.photos[0].thumbnail_url} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event) } style={selectedStyle} className="ov-styles-thumbnails"/>
             })}
           </div>
         </div>
@@ -117,7 +137,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
                 return <Dropdown.Item onClick={() => {
                   changeSize(`${sku.size}`)
                   changeStoredQuantity(`${sku.quantity}`)
-                  changeCurrentSku(`${sku}`)
+                  changeCurrentSku(`${availabeSkus.slice(index, index + 1)}`)
                 }} key={index}>{sku.size}</Dropdown.Item>
               })}
             </SplitButton>
@@ -130,8 +150,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             </SplitButton>
           </div>
           {/* checkout button */}
-          <Button variant="primary" size="sm">add to cart</Button>{' '}
-          {/* favorite/star icon?? */}
+          <Button variant="primary" size="sm" onClick={() => {
+            addToCart(currentSku)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );

@@ -11,7 +11,7 @@ const RelatedProducts = ({ currentProduct, handleChangeProduct, postUserClick })
       <h3> Related Products </h3>
       <RelatedProductsList currentProduct={currentProduct} handleChangeProduct={handleChangeProduct}/>
       <h3> Your Outfit </h3>
-      <YourOutfitList currentProduct={currentProduct} handleChangeProduct={handleChangeProduct}/>
+      <YourOutfitList currentProduct={currentProduct}/>
     </div>
   )
 }
