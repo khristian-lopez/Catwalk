@@ -80,10 +80,9 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
     <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
     : <label style={originalPrice}>{styleInfo.original_price}</label>
 
-  const addToCart = (skuId, quantity) => {
+  const addToCart = (skuId) => {
     const product = {
       sku_id: skuId,
-      count: quantity
     }
 
     axios.post(`/cart/`, product)
@@ -110,9 +109,10 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       </Stack>
       <Stack>
         {/* container for styles thumbnails */}
-        <div className="ov-styles-thumbnails">
+        <div >
           Style &gt; Selected Style <br />
-          <div >
+          <label className="ov-style-name">{styleInfo.name}</label>
+          <div className="ov-styles-thumbnail-container">
             {styleThumbnails.map((style, index) => {
               if (style.style_id === styleInfo.style_id) {
                 selectedStyle = {
@@ -121,7 +121,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
               } else {
                 selectedStyle = { border: 'none'}
               }
-              return <Image src={style.photos[0].thumbnail_url} thumbnail roundedCircle fluid width={75} height={75} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event) } style={selectedStyle} />
+              return <img src={style.photos[0].thumbnail_url} key={style.style_id} id={style.style_id} onClick={() => handleChangeStyle(event) } style={selectedStyle} className="ov-styles-thumbnails"/>
             })}
           </div>
         </div>
@@ -151,7 +151,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           </div>
           {/* checkout button */}
           <Button variant="primary" size="sm" onClick={() => {
-            addToCart(currentSku, displayQuantity)}}>Add To Cart</Button>{' '}
+            addToCart(currentSku)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );
