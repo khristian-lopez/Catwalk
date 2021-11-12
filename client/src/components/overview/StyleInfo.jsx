@@ -102,7 +102,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           <StarRatings rating={productInfo.averageRating}/>  <br /> Read all {numberOfReviews} reviews
         </div>
         <div>
-          <label>{productInfo.category}</label>
+          <h4>{productInfo.category}</h4>
           <h3>{productInfo.name}</h3>
           {priceLabel}
         </div>
