@@ -5,6 +5,7 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewButton from './ReviewButtons.jsx';
 import {Col, Row, Button} from 'react-bootstrap';
 import axios from 'axios';
+import "regenerator-runtime/runtime.js";
 
 class ReviewsList extends React.Component {
     constructor(props) {
@@ -67,17 +68,17 @@ class ReviewsList extends React.Component {
     render() {
         // const {product_id} = this.props.currentProduct
         const {reviews, tiles} = this.state;
-        
+
         if (reviews.length > 0) {
             return (
                 <div data-testid="reviewsList">
                     <div className="reviewsList" >
-                        <label>{reviews.length} review(s), sorted by 
-                            <select 
+                        <label>{reviews.length} review(s), sorted by
+                            <select
                                 name="sort"
                                 value={this.state.sort}
                                 onChange={this.handleSort}
-                                
+
                             >
                                 <option value="relevance" >Relevance</option>
                                 <option value="newest" >Newest</option>
@@ -99,7 +100,7 @@ class ReviewsList extends React.Component {
                         </Row>
                     </div>
                 </div>
-            )  
+            )
         } else {
             return (
                 <div>No reviews for this product</div>
