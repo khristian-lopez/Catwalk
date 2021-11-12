@@ -17,8 +17,8 @@ const RelatedProductsList = ({ currentProduct, handleChangeProduct }) => {
   return (
     <CarouselProvider
       className="rel-products-list"
-      naturalSlideWidth={200}
-      naturalSlideHeight={300}
+      naturalSlideWidth={300}
+      naturalSlideHeight={450}
       totalSlides={products.length}
       visibleSlides={4}
     >
