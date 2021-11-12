@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import ReviewsRating from './ReviewsRating.jsx';
 import Helpful from './Helpful.jsx';
 // import Row from 'react-bootstrap/Row';
@@ -7,6 +7,8 @@ import Helpful from './Helpful.jsx';
 import {Image, Row, Col} from 'react-bootstrap';
 
 const ReviewTile = props => {
+    const [showMore, setShowMore] = useState(false)
+
     function GetFormattedDate() {
         let date = props.review.date.slice(0, 10).split('-');
         let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
@@ -32,8 +34,18 @@ const ReviewTile = props => {
                     </p>
                 </Col>
             </Row>
-            <div id="rev-summary" style={{fontWeight: "bold", fontSize: "18px"}}>{props.review.summary}</div>
-            <div id="rev-body" style={{fontSize: "13px"}}>{props.review.body}</div>
+            <div id="rev-summary" style={{fontWeight: "bold", fontSize: "18px"}}>
+                {props.review.summary}
+            </div>
+            <div id="rev-body" style={{fontSize: "13px"}}>
+                {showMore ? props.review.body : `${props.review.body.substring(0, 250)}`}
+                {props.review.body.length >= 250 ? 
+                    <span id="show-rev-body" onClick={(e) => {
+                        e.preventDefault()
+                        setShowMore(!showMore)}}>
+                            {showMore ? " show less" : "...show more"}
+                    </span> : null}
+            </div>
             {!props.review.recommend ? null : <p id="rev-rec">I recommend this product<span>&#10003;</span></p>}
             {props.review.response ? 
                 <div 

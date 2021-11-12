@@ -328,6 +328,11 @@ RATINGS & REVIEWS
   padding: 4px;
   margin: 4px;
 }
+#show-rev-body {
+  font-size: 10px;
+  color: black;
+  cursor: pointer;
+}
 #review-helpful {
   padding: 4px;
   margin: 4px;
