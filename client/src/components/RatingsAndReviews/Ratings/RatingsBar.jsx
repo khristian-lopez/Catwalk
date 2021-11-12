@@ -14,7 +14,7 @@ const RatingsBar = ({rating, total}) => {
             <div 
                 className="ratingsbar-gray"
                 style={{     
-                    height: "20",
+                    height: "15",
                     width: "90%",
                     backgroundColor: "rgb(220,220,220)",
                 }}
@@ -22,7 +22,7 @@ const RatingsBar = ({rating, total}) => {
                 <div 
                     className="ratingsbar-green"
                     style={{
-                        padding: "5px",
+                        padding: "3px",
                         height: "100%",
                         width: `${rate}%`,
                         backgroundColor: "green",
