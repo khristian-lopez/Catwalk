@@ -8,10 +8,15 @@ const AverageRec = (props) => {
     })
     let recommendCount = recommend.filter(Boolean).length;
     let averageRecommend = Math.round(recommendCount / recommend.length * 100)
-    
-    return (
-        <div>{averageRecommend}% of reviews recommend this product</div>
-    )
+    if (averageRecommend) {
+        return (
+            <div>{averageRecommend}% of reviews recommend this product</div>
+        )
+    } else {
+        return (
+            <div>No recommendation available</div>
+        )
+    }
 }
 
 export default AverageRec;

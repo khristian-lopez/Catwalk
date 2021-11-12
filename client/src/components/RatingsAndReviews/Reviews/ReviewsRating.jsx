@@ -9,7 +9,7 @@ const ReviewsRating = props => {
             rating={props.rating}
             widgetDimensions="15px"
             widgetSpacings="1px"
-            widgetRatedColors="yellow"
+            widgetRatedColors="#5C5A59"
         >
             <Ratings.Widget />
             <Ratings.Widget />
