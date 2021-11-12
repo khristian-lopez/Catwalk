@@ -65,7 +65,7 @@ const Question = (props) => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Photos</Form.Label>
-              <Form.Control/>
+              <Form.Control type='file' multiple/>
             </Form.Group>
           </Form>
         </Modal.Body>

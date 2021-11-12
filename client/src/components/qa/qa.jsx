@@ -8,7 +8,8 @@ import Search from './questionsearch.jsx'
 import QuestionList from './questionlist.jsx'
 
 
-const Qa = (props) => (
+const Qa = (props) => {
+return (
   <Container fluid="md" className = 'qa-Main' onClick={(e) => props.postUserClick(e, 'Q&A')}>
   <Row>
     <Col className='qa-MainTitle'>QUESTIONS AND ANSWERS</Col>
@@ -20,6 +21,7 @@ const Qa = (props) => (
     <QuestionList currentProductId={props.currentProduct.product_id}/>
   </Row>
 </Container>
-)
+
+)}
 
 export default Qa;

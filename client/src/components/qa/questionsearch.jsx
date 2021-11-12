@@ -8,8 +8,10 @@ const Search = (props) => {
 
   return (
     <InputGroup>
-    <Form.Control placeholder='Have a question? Search for answers...' onChange={(event) => setSearchTerm(event.target.value)}/>
-    <Button>Search</Button>
+    <Form.Control placeholder='Have a question? Search for answers...' onChange={(event) => {
+
+      console.log('E')
+      setSearchTerm(event.target.value)}}/>
     </InputGroup>
   )
 
