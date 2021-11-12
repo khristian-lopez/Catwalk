@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
 
 import AnswerList from './answerlist.jsx'
 import axios from 'axios'
@@ -28,6 +30,10 @@ const Question = (props) => {
     .catch(err => console.error(err));
   }
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+
   return (
   <Container fluid='md'>
     <Row>
@@ -35,11 +41,44 @@ const Question = (props) => {
     <Col className='qa-QuestionHelpful'>Helpful? Yes ({props.question.question_helpfulness}) | No | Add Answer</Col>
     <Button onClick={markQuestionAsHelpful}>Yes</Button>
     <Button onClick={reportQuestion}>Report</Button>
-    <Button onClick={addAnswer}>Add Answer</Button>
+    <Button onClick={() => handleShow()}>Add Answer</Button>
     </Row>
     <Row>
       <AnswerList question_id={props.question.question_id}/>
     </Row>
+
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header>Ask a question</Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Answer</Form.Label>
+              <Form.Control/>
+            </Form.Group>
+            <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control/>
+            </Form.Group>
+            <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control/>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Photos</Form.Label>
+              <Form.Control/>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+        <Button onClick={handleClose}>
+            Close
+          </Button>
+          <Button onClick={handleClose}>
+            Submit answer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
   </Container>)
 }
 
