@@ -14,7 +14,7 @@ const ReviewTile = props => {
     }
     
     return (
-        <div className="review-Tile" key={props.review.review_id}>
+        <div className="review-Tile" data-testid="rev-tile-test" key={props.review.review_id}>
             <Row>
                 <Col>
                     <ReviewsRating rating={props.review.rating}/>

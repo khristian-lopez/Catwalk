@@ -29,10 +29,10 @@ class ReviewsList extends React.Component {
         this.getReviews()
     }
 
-    getReviews() {
-        axios.get(`/reviews/${this.props.currentProduct.product_id}`)
-            .then(results => this.setState({ reviews: results.data.results}))
-            .catch(err => console.error('Cannot retrieve reviews for product', err))
+    async getReviews() {
+        const res = await axios(`/reviews/${this.props.currentProduct.product_id}`)
+        const { data } = await res;
+        this.setState({ reviews: data.results })
     }
 
     renderReviewsTiles() {
@@ -65,7 +65,7 @@ class ReviewsList extends React.Component {
     }
 
     render() {
-        const {product_id} = this.props.currentProduct
+        // const {product_id} = this.props.currentProduct
         const {reviews, tiles} = this.state;
         
         if (reviews.length > 0) {
@@ -84,7 +84,7 @@ class ReviewsList extends React.Component {
                                 <option value="helpful" >Helpful</option>
                             </select>
                         </label>
-                    <div className="reviewTiles" >
+                    <div className="reviewTiles" data-testid="rev-test">
                         { reviews.slice(0, tiles).map((review, i) => <ReviewTile review={review} key={i} /> )}
                     </div>
                     </div>
@@ -94,7 +94,7 @@ class ReviewsList extends React.Component {
                                 { (reviews.length < 2) ? null : (reviews.length <= tiles) ? null : <Button type="button" onClick={this.renderReviewsTiles}>MORE REVIEWS</Button> }
                             </Col>
                             <Col>
-                                <ReviewButton productId={product_id}/>
+                                <ReviewButton productId={this.props.currentProduct.product_id}/>
                             </Col>
                         </Row>
                     </div>
@@ -114,6 +114,12 @@ class ReviewsList extends React.Component {
 
 export default ReviewsList;
 
+
+// getReviews() {
+//     axios.get(`/reviews/${this.props.currentProduct.product_id}`)
+//         .then(results => this.setState({ reviews: results.data.results}))
+//         .catch(err => console.error('Cannot retrieve reviews for product', err))
+// }
 // if (new Date(a.date) === new Date(b.date)) {
 //     return b.helpfulness - a.helpfulness
 // }

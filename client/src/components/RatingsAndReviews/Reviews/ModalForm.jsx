@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
-const ModalForm = ({closeModal}) => {
+const ModalForm = ({closeModal, productId}) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick("true")
@@ -21,6 +21,14 @@ const ModalForm = ({closeModal}) => {
     const [email, setEmail] = useState("")
     const [image, setImage] = useState(null)
     const [selectedImages] = useState([])
+
+    const [product, getProduct] = useState([])
+
+    useEffect(() => {
+        axios.get(`/products/${productId}`)
+            .then(res => getProduct(res.data))
+            .catch(err => console.error('Cannot get current product', err))
+    }, [productId])
 
     const min = 50
     const Minimum = () => 
@@ -62,15 +70,14 @@ const ModalForm = ({closeModal}) => {
     const handleFormSubmit = () => {
         let uploadedImages = [image, ...selectedImages]
         const input = {
-            // product_id: 
+            product_id: product.id,
             rating: Number(rateValue),
-            recommend: (recValue === "true"),
             summary: summary,
             body: review,
+            recommend: (recValue === "true"),
             name: name,
             email: email,
             photos: uploadedImages,
-            // TODO:
             characteristics: {
                 "size": size,
                 "width": width,
@@ -80,18 +87,22 @@ const ModalForm = ({closeModal}) => {
                 "fit": fit
             }
         }
-        console.log(input)
+        addReview(input)
     }
     
-    // create axios post request to add review
+    // TODO: create axios post request to add review
     const addReview = data => {
-        return axios.post(`/reviews`, data, {
+        return axios.post(`/reviews/${product.id}`, data, {
             header: {
                 'Content-type': 'multipart/form-data'
             }
         })
-        .then(res => console.log(res))
-        .catch(err => console.error('Cannot add review', err))
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            console.error('Cannot add review', err)
+        })
     }
     
     return (

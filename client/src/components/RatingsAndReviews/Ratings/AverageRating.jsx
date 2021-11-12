@@ -13,12 +13,13 @@ const AverageRating = (props) => {
     })
     // (ratings / count).toString().slice(0,2)
     let averageRating = (ratings / count)
-    //console.log(averageRating)
+    let roundedRating = (ratings / count).toString().slice(0,3)
+    
     if (averageRating) {
         return (
                 <Row >
                     <Col xs="auto">
-                        {averageRating}
+                        {roundedRating}
                     </Col>
                     <Col xs={4}>
                         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "start" }} > 

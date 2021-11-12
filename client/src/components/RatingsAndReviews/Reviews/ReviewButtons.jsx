@@ -14,6 +14,7 @@ const ReviewButtons = ({productId}) => {
             .then(res => getProduct(res.data))
             .catch(err => console.error('Cannot get current product', err))
     }, [productId])
+    // console.log(product)
     return (
         <div className="new-review">
             <Button className="openModalBtn" onClick={() => setOpenModal(true)}>ADD A REVIEW +</Button>
@@ -30,7 +31,7 @@ const ReviewButtons = ({productId}) => {
                 <Modal.Body id="review-product-name" >
                     <h5>About the {product.name}</h5>
                 </Modal.Body>
-                <ModalForm closeModal={setOpenModal}/>
+                <ModalForm closeModal={setOpenModal} productId={productId}/>
             </Modal>
         </div>
     )
