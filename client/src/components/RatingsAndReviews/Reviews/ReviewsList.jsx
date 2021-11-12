@@ -74,7 +74,7 @@ class ReviewsList extends React.Component {
                 <div data-testid="reviewsList">
                     <div className="reviewsList" >
                         <label>{reviews.length} review(s), sorted by
-                            <select
+                            <select className="reviews-sort"
                                 name="sort"
                                 value={this.state.sort}
                                 onChange={this.handleSort}

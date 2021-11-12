@@ -24,12 +24,12 @@ const ReviewTile = props => {
                 <Col xs={4}>
                     <div id="rev-user">
                         <span>{props.review['reviewer_name']} 
-                        {props.review.verified ? <p style={{fontSize: "10px"}}> Verified Purchaser &#10003;</p> : null}
+                        {props.review.verified ? <p> Verified Purchaser &#10003;</p> : null}
                         </span>
                     </div>
                 </Col>
                 <Col xs={2}>
-                    <p id="rev-date" style={{fontSize: "15px"}}>
+                    <p id="rev-date">
                         <GetFormattedDate />
                     </p>
                 </Col>
