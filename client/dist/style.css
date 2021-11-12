@@ -275,9 +275,11 @@ RATINGS & REVIEWS
 */
 
 .rr-container {
-  padding-bottom: 50px;
+  /* height: 100%; */
+  padding-bottom: 30px;
 }
 .reviews-container {
+  /* height: 30%; */
   padding: 5px;
   margin: 5px;
 }
@@ -320,7 +322,7 @@ RATINGS & REVIEWS
 #rev-rec {
   padding: 4px;
   margin: 4px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .reviews-btn {
   padding: 4px;
@@ -332,12 +334,16 @@ RATINGS & REVIEWS
   padding: 5px;
 }
 
-.ratings-container {
-  margin: 15px;
+.average-rating {
+  align-items: flex-start;
+}
+.ratings-container, .charBreakdown {
+  margin: 10px;
   padding-bottom: 35px;
 }
-.bar-container {
-  padding-bottom: 30px;
+
+.ratings-container {
+  height: 30%;
 }
 .ratingsbar {
   margin: 4px;
@@ -358,9 +364,14 @@ RATINGS & REVIEWS
   padding: 5px;
 }
 
-#review-submit-btn {
+#review-submit-btn, #review-product-name {
   margin: 10px;
   padding: 10px;
+}
+#review-product-name {
+  margin: 10px;
+  padding: 10px;
+  font-size: "12px"
 }
 
 #rating-options, .char-options, #option-choice, .review-recc, .review-overall {
@@ -374,4 +385,23 @@ RATINGS & REVIEWS
 #recc-answer, #recc-yes, #recc-no {
   margin: 5px;
   padding: 5px;
+}
+
+.char-bar {
+  width: 60%;
+}
+#charRange {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #D3D3D3;
+  outline: none;
+  border-radius: 5px;
+  height: 5px;
+}
+.charTicks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  width: 1px;
+  padding-top: 5px;
 }

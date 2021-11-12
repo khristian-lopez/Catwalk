@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 class RatingsAndReviewsCopy extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props)
 
@@ -19,6 +20,7 @@ class RatingsAndReviewsCopy extends React.Component {
         this.getRatings = this.getRatings.bind(this)
     }
     componentDidMount() {
+        this._isMounted = true;
         this.getReviews()
         this.getRatings()
     }
@@ -33,7 +35,9 @@ class RatingsAndReviewsCopy extends React.Component {
             .then(({data}) => this.setState({ metadata: data }))
             .catch(err => console.error(err))
     }
-    // TODO: after making axios call, pass down state into each components
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     render() {
         

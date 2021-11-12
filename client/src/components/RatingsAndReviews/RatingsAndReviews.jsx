@@ -13,7 +13,7 @@ const RatingsAndReviews = ({currentProduct, postUserClick}) => {
             <Container className="rr-container" fluid="md">
                 <Row>
                     <Col xs={4}>
-                        <h5 id="rr-header">RATINGS & REVIEWS</h5>
+                        <h4 id="rr-header">RATINGS & REVIEWS</h4>
                         <div className="ratings-container">
                             <Ratings
                                 currentProduct={currentProduct}

@@ -62,6 +62,7 @@ class App extends React.Component {
         <RelatedProducts postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata}/>
         <RatingsAndReviews postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata} />
+
       </div>
     )
   }
