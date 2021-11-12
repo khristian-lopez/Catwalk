@@ -48,7 +48,7 @@ const Question = (props) => {
 
     <Col className='qa-QuestionHelpful' xs={6} md={4}>
 
-    <div onClick={markQuestionAsHelpful} variant='link'>Yes ({props.question.question_helpfulness})</div>
+    <div onClick={markQuestionAsHelpful} variant='link'>Helpful? Yes ({props.question.question_helpfulness})</div>
     <div> | </div>
     <div onClick={reportQuestion} variant='link'>Report</div>
     <div> | </div>
