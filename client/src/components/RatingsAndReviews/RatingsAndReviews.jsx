@@ -6,11 +6,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const RatingsAndReviews = ({currentProduct}) => {
-    
+const RatingsAndReviews = ({currentProduct, postUserClick}) => {
+
     return (
-        <div>
-            <Container className="rr-container" data-testid="rr-container" fluid="md">
+        <div onClick={(e) => postUserClick(e, 'Ratings and Reviews')}>
+            <Container className="rr-container" fluid="md">
                 <Row>
                     <Col xs={4}>
                         <h4 id="rr-header">RATINGS & REVIEWS</h4>
@@ -22,8 +22,8 @@ const RatingsAndReviews = ({currentProduct}) => {
                     </Col>
                     <Col>
                         <div className="reviews-container">
-                            <ReviewsList 
-                                currentProduct={currentProduct}                                                       
+                            <ReviewsList
+                                currentProduct={currentProduct}
                             />
                         </div>
                     </Col>
@@ -45,7 +45,7 @@ export default RatingsAndReviews;
     //     grabData();
     //     grabMetadata();
     // }, [id])
-    
+
     // const grabData = () => {
     //     axios.get(`/reviews/${id}`)
     //         .then(res => setData(res.data.results))
