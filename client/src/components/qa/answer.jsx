@@ -30,11 +30,9 @@ const Answer = (props) => {
       <div>by {props.answer.answerer_name},</div>
       <div>{props.answer.date } |</div>
       <div>Helpful?</div>
-      <Col>
-      <Button onClick={markAnswerAsHelpful} variant='link'>Yes ({props.answer.helpfulness})</Button>
-      <Button onClick={reportAnswer} variant='link'>Report</Button>
-      </Col>
-
+      <div onClick={markAnswerAsHelpful}>Yes ({props.answer.helpfulness})</div>
+      <div>|</div>
+      <div onClick={reportAnswer}>Report</div>
     </div>
   </div>
   )
