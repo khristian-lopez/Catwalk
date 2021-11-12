@@ -11,7 +11,8 @@ const ReviewTile = props => {
 
     function GetFormattedDate() {
         let date = props.review.date.slice(0, 10).split('-');
-        let formattedDate = `${date[1]}/${date[2]}/${date[0]}`;
+        let months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let formattedDate = ` ${months[parseInt(date[1], 10)]} ${date[2]}, ${date[0]}`;
         return formattedDate;
     }
     
@@ -23,16 +24,20 @@ const ReviewTile = props => {
                 </Col>
                 <Col xs={4}>
                     <div id="rev-user">
-                        <span>{props.review['reviewer_name']} 
-                        {props.review.verified ? <p> Verified Purchaser &#10003;</p> : null}
+                        {props.review.verified ? <span>&#10003; </span> : null}
+                        <span>
+                            {props.review['reviewer_name']}, 
+                        </span>
+                        <span id="rev-date">
+                            <GetFormattedDate />
                         </span>
                     </div>
                 </Col>
-                <Col xs={2}>
+                {/* <Col xs={2}>
                     <p id="rev-date">
                         <GetFormattedDate />
                     </p>
-                </Col>
+                </Col> */}
             </Row>
             <div id="rev-summary" style={{fontWeight: "bold", fontSize: "18px"}}>
                 {props.review.summary}
