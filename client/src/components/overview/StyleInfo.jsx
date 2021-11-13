@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import StarRatings from '../StarRatings.jsx';
-import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -77,12 +74,17 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   let saleStatus = styleInfo.sale_price;
 
   let priceLabel = saleStatus ?
-    <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
-    : <label style={originalPrice}>{styleInfo.original_price}</label>
+    <div><label style={originalSalePrice}>${styleInfo.original_price}</label> <label style={salePrice}>${styleInfo.sale_price}</label> </div>
+    : <label style={originalPrice}>${styleInfo.original_price}</label>
 
-  const addToCart = (skuId) => {
+  const addToCart = (skuId, quantity) => {
+    if(quantity.length > 2) {
+      alert('Whoops, unable to add item to cart, please try again')
+      return
+    }
     const product = {
       sku_id: skuId,
+      quantity: quantity
     }
 
     axios.post(`/cart/`, product)
@@ -97,7 +99,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   return (
     <Col className="ov-styles" data-testid="style-info">
       <Stack >
-        {/* specific product info */}
         <div>
           <StarRatings rating={productInfo.averageRating}/>  <br /> Read all {numberOfReviews} reviews
         </div>
@@ -108,9 +109,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
         </div>
       </Stack>
       <Stack>
-        {/* container for styles thumbnails */}
         <div >
-          Style &gt; Selected Style <br />
+          Selected Style &gt; <br />
           <label className="ov-style-name">{styleInfo.name}</label>
           <div className="ov-styles-thumbnail-container">
             {styleThumbnails.map((style, index) => {
@@ -125,12 +125,9 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
             })}
           </div>
         </div>
-        <br />
         </Stack>
-        {/* add to cart/checkout component */}
         <Stack className="ov-add-to-cart">
           <div>
-            {/* select a size dropdown */}
             <SplitButton size="sm" variant="secondary" title={size}>
               <Dropdown.Header>Please select a size</Dropdown.Header>
               {sizeAndQuantOptions.map((sku, index) => {
@@ -141,7 +138,6 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
                 }} key={index}>{sku.size}</Dropdown.Item>
               })}
             </SplitButton>
-            {/* select a quatity dropdown */}
             <SplitButton size="sm" variant="secondary" title={displayQuantity}>
               <Dropdown.Header>Quantity</Dropdown.Header>
               {availableQuantity.slice(0, 15).map((number, index) => {
@@ -149,9 +145,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
               })}
             </SplitButton>
           </div>
-          {/* checkout button */}
           <Button variant="primary" size="sm" onClick={() => {
-            addToCart(currentSku)}}>Add To Cart</Button>{' '}
+            addToCart(currentSku, displayQuantity)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );

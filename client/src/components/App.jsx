@@ -29,7 +29,6 @@ class App extends React.Component {
       .then(results => this.setState({ reviewMetadata: results.data, currentStyle: results.data.defaultStyle.style_id }))
       .catch(err => console.error('failed to retrieve review metadata: ', err))
   }
-  //create a get current style id, defaults to default value unless other style is selected
   handleChangeStyle(event) {
     this.setState({
       currentStyle: Number(event.target.id)

@@ -2,9 +2,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import Stack from 'react-bootstrap/Stack';
 
 const ProductInfo = ({ productInfo }) => {
   return (
