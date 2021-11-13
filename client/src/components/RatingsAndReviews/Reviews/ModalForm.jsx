@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {Form, Button} from 'react-bootstrap';
+import Ratings from 'react-ratings-declarative';
 import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
 const ModalForm = ({closeModal, productId}) => {
     const [characterCount, setCharacterCount] = useState(0);
-    const [rateValue, rateInputProps] = userateBtns("option")
+    // const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick("true")
+    // TODO:
+    const [rate, setRate] = useState(0)
     
     const [size, setSize] = useState(null)
     const [width, setWidth] = useState(null)
@@ -34,16 +37,16 @@ const ModalForm = ({closeModal, productId}) => {
     const Minimum = () => 
         (min - characterCount > 0) ? <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
 
-    function userateBtns(name) {
-        const [value, setState] = useState(null);
-        const handleChange = e => { setState(e.target.value) }
-        const inputProps = {
-            name, 
-            type: "radio",
-            onChange: handleChange
-        }
-        return [value, inputProps]
-    }
+    // function userateBtns(name) {
+    //     const [value, setState] = useState(null);
+    //     const handleChange = e => { setState(e.target.value) }
+    //     const inputProps = {
+    //         name, 
+    //         type: "radio",
+    //         onChange: handleChange
+    //     }
+    //     return [value, inputProps]
+    // }
     
     function useRecClick(name) {
         const [value, setState] = useState(null)
@@ -71,7 +74,8 @@ const ModalForm = ({closeModal, productId}) => {
         let uploadedImages = [image, ...selectedImages]
         const input = {
             "product_id": product.id,
-            "rating": Number(rateValue),
+            // "rating": Number(rateValue),
+            "rating": Number(rate),
             "summary": summary,
             "body": review,
             "recommend": (recValue === "true"),
@@ -104,6 +108,9 @@ const ModalForm = ({closeModal, productId}) => {
             console.error('Cannot add review', err)
         })
     }
+
+    const ratings = ["Poor", "Fair", "Average", "Good", "Great"]
+    const stars = Array(5).fill(0);
     
     return (
         <div>
@@ -116,7 +123,21 @@ const ModalForm = ({closeModal, productId}) => {
                     <Form.Group>
                         <Form.Label>Overall Rating</Form.Label>
                             <br></br>
-                            <Form.Check id="rev-overall-rate"
+                            {stars.map((rating, index) => {
+                                return <Ratings
+                                    key={index}
+                                    value={`${rating}`}
+                                    changeRating={() => setRate(`${rating}`)}
+                                    rating={rate}
+                                    widgetDimensions="25px"
+                                    widgetSpacings="2px"
+                                    widgetRatedColors="#5C5A59"
+                                >
+                                    <Ratings.Widget widgetHoverColors="yellow"
+                                    />
+                                </Ratings>
+                            })}
+                            {/* <Form.Check id="rev-overall-rate"
                                 inline label="Poor" value="1" {...rateInputProps} checked={rateValue === "1"}
                             />
                             <Form.Check id="rev-overall-rate"
@@ -130,7 +151,7 @@ const ModalForm = ({closeModal, productId}) => {
                             />
                             <Form.Check id="rev-overall-rate"
                                 inline label="Great" value="5" {...rateInputProps} checked={rateValue === "5"}
-                            />
+                            /> */}
                     </Form.Group>
                         <br></br>
                     <Form.Group>
