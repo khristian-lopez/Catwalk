@@ -441,6 +441,6 @@ RATINGS & REVIEWS
   padding-top: 5px;
 }
 
-/* #rev-overall-rate {
-  
+/* #rev-overall-rate input[type=radio] {
+  display: none;
 } */
