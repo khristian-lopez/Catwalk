@@ -80,9 +80,14 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
     <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
     : <label style={originalPrice}>{styleInfo.original_price}</label>
 
-  const addToCart = (skuId) => {
+  const addToCart = (skuId, quantity) => {
+    if(quantity.length > 2) {
+      alert('Whoops, unable to add item to cart, please try again')
+      return
+    }
     const product = {
       sku_id: skuId,
+      quantity: quantity
     }
 
     axios.post(`/cart/`, product)
@@ -151,7 +156,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
           </div>
           {/* checkout button */}
           <Button variant="primary" size="sm" onClick={() => {
-            addToCart(currentSku)}}>Add To Cart</Button>{' '}
+            addToCart(currentSku, displayQuantity)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>
   );
