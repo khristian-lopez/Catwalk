@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Carousel from 'react-bootstrap/Carousel';
 import ImageGallery from 'react-image-gallery';
-// import defaultData from './defaultData.js';
-
 
 const MyGallery = ({ styleInfo }) => {
 
