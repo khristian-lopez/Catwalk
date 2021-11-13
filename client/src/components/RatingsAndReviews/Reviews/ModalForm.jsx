@@ -7,7 +7,7 @@ import axios from 'axios';
 const ModalForm = ({closeModal, productId}) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [rateValue, rateInputProps] = userateBtns("option")
-    const [recValue, recInputProps] = useRecClick("true")
+    const [recValue, recInputProps] = useRecClick(null)
     // TODO:
     // const [rate, setRate] = useState(0)
     
@@ -68,54 +68,48 @@ const ModalForm = ({closeModal, productId}) => {
             setImage(url);
         }
     }
-    //console.log(typeof product.id)
+    
     // handleFormSubmit
     const handleFormSubmit = () => {
-        let uploadedImages = [image, ...selectedImages]
+        //let uploadedImages = [image, ...selectedImages] (recValue === "true")
+        let recommend = (recValue === "true")
         const input = {
-            "product_id": product.id,
-            "rating": Number(rateValue),
-            // "rating": Number(rate),
-            "summary": summary,
-            "body": review,
-            "recommend": (recValue === "true"),
-            "name": name,
-            "email": email,
-            "photos": uploadedImages,
-            "characteristics": {
-                "size": size,
-                "width": width,
-                "comfort": comfort,
-                "quality": quality,
-                "length": length,
-                "fit": fit
+            product_id: product.id,
+            rating: Number(rateValue),
+            summary: summary,
+            body: review,
+            recommend: recommend,
+            name: name,
+            email: email,
+            photos: [],
+            characteristics: {
+                // size: size,
+                // width: width,
+                // comfort: comfort,
+                // quality: quality,
+                // length: length,
+                // fit: fit
             }
         }
-        addReview(input)
-    }
-    // 'multipart/form-data'
-    // TODO: create axios post request to add review
-    const addReview = data => {
-        return axios.post(`/reviews/${product.id}`, data, {
-            header: {
-                'Content-type': 'application/json'
-            }
-        })
-        .then(res => {
-            return res.data;
-        })
-        .catch(err => {
-            console.error('Cannot add review', err)
-        })
+        // TODO: create axios post request to add review ${product.id}
+        axios.post(`/reviews`, input)
+            .then(() => {
+                console.log('Review added!')
+            })
+            .catch(err => {
+                console.error(`Error: ${err}`)
+            })
     }
 
     return (
         <div>
-            <Form className="modalContainer" onSubmit={(e) => {
+            <Form className="modalContainer" 
+            onSubmit={(e) => {
                 e.preventDefault()
                 handleFormSubmit()
                 closeModal(false)
-            }}>
+                }
+            }>
                 <div className="form-input">
                     <Form.Group>
                         <Form.Label>Overall Rating</Form.Label>
@@ -277,12 +271,13 @@ const ModalForm = ({closeModal, productId}) => {
                 </div>
                 <Button
                     id="review-submit-btn" type="submit" 
-                            onSubmit={(e) => {
-                                e.preventDefault()
-                                closeModal(false)
-                                }
-                            }
-                    >Submit your review!
+                    onClick={(e) => {
+                        e.preventDefault()
+                        handleFormSubmit()
+                        closeModal(false)
+                        }
+                    }
+                >Submit your review!
                 </Button>
             </Form>
         </div>
