@@ -77,8 +77,8 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
   let saleStatus = styleInfo.sale_price;
 
   let priceLabel = saleStatus ?
-    <div><label style={originalSalePrice}>{styleInfo.original_price}</label> <label style={salePrice}>{styleInfo.sale_price}</label> </div>
-    : <label style={originalPrice}>{styleInfo.original_price}</label>
+    <div><label style={originalSalePrice}>${styleInfo.original_price}</label> <label style={salePrice}>${styleInfo.sale_price}</label> </div>
+    : <label style={originalPrice}>${styleInfo.original_price}</label>
 
   const addToCart = (skuId, quantity) => {
     if(quantity.length > 2) {
@@ -115,7 +115,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
       <Stack>
         {/* container for styles thumbnails */}
         <div >
-          Style &gt; Selected Style <br />
+          Selected Style &gt; <br />
           <label className="ov-style-name">{styleInfo.name}</label>
           <div className="ov-styles-thumbnail-container">
             {styleThumbnails.map((style, index) => {

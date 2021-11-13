@@ -16,27 +16,24 @@ OVERVIEW
 */
 
 .ov-main {
-  /* outline-style:groove; */
   outline-color: black;
 }
-/* .ov-main-row1 {
-  outline-style: solid;
-} */
-/* .ov-main-row2 {
-  outline-style: solid;
-} */
 .col1 {
-  /* outline-style: solid; */
-  min-height: 600px;
+  min-height: 750px;
 }
 .col2 {
-  /* outline-style: solid; */
   min-height: 100px;
 }
 .ov-styles {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+}
+.ov-gallery-original {
+  background-color: rgba(246, 244, 244, 0.774);
+}
+.ov-gallery-thumbnail:hover {
+  opacity: 0.50;
 }
 .ov-styles-thumbnail-container {
   display: flex;
@@ -76,7 +73,6 @@ OVERVIEW
   justify-content: center;
   align-items: center;
   min-height: 100px;
-  /* border: 3px solid green; */
 }
 .ov-social-header {
   display: flex;
