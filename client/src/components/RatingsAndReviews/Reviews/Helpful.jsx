@@ -42,15 +42,14 @@ const Helpful = ({helpfulness, reviewId}) => {
     return (
         <div>
             <div id="review-helpful">Helpful?
-                <a 
+                <a  id="review-answer"
                     href="#" 
-                    style={{margin: "2px", padding: "2px"}}  
                     value="yes" 
                     onClick={updateHelpful}
                 >Yes
                 </a>({helpful})
                 <span> | </span>
-                <a 
+                <a  id="review-answer"
                     href="#"
                     value="reportReview"
                     onClick={reportReview}
