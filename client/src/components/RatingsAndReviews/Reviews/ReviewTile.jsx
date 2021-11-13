@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import ReviewsRating from './ReviewsRating.jsx';
 import Helpful from './Helpful.jsx';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import {Image, Row, Col} from 'react-bootstrap';
 
 const ReviewTile = props => {

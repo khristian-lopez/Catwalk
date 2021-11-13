@@ -78,7 +78,6 @@ class ReviewsList extends React.Component {
                                 name="sort"
                                 value={this.state.sort}
                                 onChange={this.handleSort}
-
                             >
                                 <option value="relevance" >Relevance</option>
                                 <option value="newest" >Newest</option>

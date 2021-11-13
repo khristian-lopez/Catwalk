@@ -98,7 +98,7 @@ const ModalForm = ({closeModal, productId}) => {
             }
         })
         .then(res => {
-            return res;
+            return res.data;
         })
         .catch(err => {
             console.error('Cannot add review', err)
