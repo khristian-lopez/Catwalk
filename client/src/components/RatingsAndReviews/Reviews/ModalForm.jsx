@@ -8,8 +8,6 @@ const ModalForm = ({closeModal, productId}) => {
     const [characterCount, setCharacterCount] = useState(0);
     const [rateValue, rateInputProps] = userateBtns("option")
     const [recValue, recInputProps] = useRecClick(null)
-    // TODO:
-    // const [rate, setRate] = useState(0)
     
     const [size, setSize] = useState(null)
     const [width, setWidth] = useState(null)
@@ -26,6 +24,7 @@ const ModalForm = ({closeModal, productId}) => {
     const [selectedImages] = useState([])
 
     const [product, getProduct] = useState([])
+    const [metadata, getMetadata] = useState([])
 
     useEffect(() => {
         axios.get(`/products/${productId}`)
@@ -33,9 +32,26 @@ const ModalForm = ({closeModal, productId}) => {
             .catch(err => console.error('Cannot get current product', err))
     }, [productId])
 
+    useEffect(() => {
+        axios.get(`/reviews/meta/${productId}`)
+            .then(res => {
+                let data = res.data
+                let results = []
+                for (let key in data.characteristics) {
+                    let chars = data.characteristics[key]
+                    let id = chars.id
+                    results.push(id)
+                    getMetadata(id)
+                    //console.log('chars: ', chars, 'id: ', id)
+                }
+            })
+            .catch(err => console.error('Cannot get current metadata', err))
+    }, [])
+
     const min = 50
-    const Minimum = () => 
-        (min - characterCount > 0) ? <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> : <p>Minimum reached</p>
+    const Minimum = () => (min - characterCount > 0) ? 
+                          <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> 
+                          : <p>Minimum reached</p>;
 
     function userateBtns(name) {
         const [value, setState] = useState(null);
@@ -71,7 +87,7 @@ const ModalForm = ({closeModal, productId}) => {
     
     // handleFormSubmit
     const handleFormSubmit = () => {
-        //let uploadedImages = [image, ...selectedImages] (recValue === "true")
+        //let uploadedImages = [image, ...selectedImages] 
         let recommend = (recValue === "true")
         const input = {
             product_id: product.id,
@@ -91,14 +107,9 @@ const ModalForm = ({closeModal, productId}) => {
                 // fit: fit
             }
         }
-        // TODO: create axios post request to add review ${product.id}
         axios.post(`/reviews`, input)
-            .then(() => {
-                console.log('Review added!')
-            })
-            .catch(err => {
-                console.error(`Error: ${err}`)
-            })
+            .then(() => console.log('Review added!'))
+            .catch(err => console.error(`Error: ${err}`))
     }
 
     return (
