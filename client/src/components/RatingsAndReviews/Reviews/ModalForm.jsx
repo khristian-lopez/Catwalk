@@ -47,7 +47,7 @@ const ModalForm = ({closeModal, productId}) => {
             })
             .catch(err => console.error('Cannot get current metadata', err))
     }, [])
-    console.log('metadata here: ', metadata)
+    //console.log('metadata here: ', metadata)
     const min = 50
     const Minimum = () => (min - characterCount > 0) ? 
                           <p style={{ fontSize: "15px" }}>Minimum required characters left: {min - characterCount}</p> 
