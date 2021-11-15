@@ -31,7 +31,7 @@ const ModalForm = ({closeModal, productId}) => {
             .then(res => getProduct(res.data))
             .catch(err => console.error('Cannot get current product', err))
     }, [productId])
-
+    // get metadata for reviews
     useEffect(() => {
         axios.get(`/reviews/meta/${productId}`)
             .then(res => {
