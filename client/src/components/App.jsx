@@ -56,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Container className="header"><h1>Project Catwalk</h1></Container>
+        <Container className="header"><h1>Catwalk</h1></Container>
         <Overview postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata.product_id} currentStyle={this.state.currentStyle} handleChangeStyle={this.handleChangeStyle}/>
         <RelatedProducts postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata} handleChangeProduct={this.handleChangeProduct}/>
         <Qa postUserClick={this.postUserClick} currentProduct={this.state.reviewMetadata}/>

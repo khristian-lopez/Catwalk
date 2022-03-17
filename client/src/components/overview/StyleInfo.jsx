@@ -145,7 +145,7 @@ const StyleInfo = ({ productInfo, styleInfo, handleChangeStyle }) => {
               })}
             </SplitButton>
           </div>
-          <Button variant="primary" size="sm" onClick={() => {
+          <Button  variant="dark" size="sm" onClick={() => {
             addToCart(currentSku, displayQuantity)}}>Add To Cart</Button>{' '}
         </Stack>
     </Col>

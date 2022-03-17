@@ -50,10 +50,10 @@ const QuestionList = (props) => {
     ))}
     <Row>
       <Col>
-      <Button onClick={() => setMaxQuestions(maxQuestions + 2)}>Show more questions</Button>
+      <Button variant="dark" onClick={() => setMaxQuestions(maxQuestions + 2)}>Show more questions</Button>
       </Col>
       <Col>
-      <Button onClick={handleShow}>Add a question</Button>
+      <Button variant="dark" onClick={handleShow}>Add a question</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>Ask a question</Modal.Header>
         <Modal.Body>
@@ -73,7 +73,7 @@ const QuestionList = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button onClick={addQuestion}>Submit question</Button>
+        <Button variant="dark" onClick={addQuestion}>Submit question</Button>
         </Modal.Footer>
       </Modal>
       </Col>

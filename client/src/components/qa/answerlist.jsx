@@ -25,7 +25,7 @@ useEffect(() => {
   {answers.map((answer) => (
     <Answer answer={answer} key={answer.answer_id}/>
   ))}
-  <Button onClick={() => setMaxAnswers(50)}>Show more answers</Button>
+  <Button variant="dark" onClick={() => setMaxAnswers(50)}>Show more answers</Button>
 
 </div>
 </div>)

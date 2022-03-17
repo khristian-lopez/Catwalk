@@ -11,21 +11,21 @@ const RatingsBar = ({rating, total}) => {
     // console.log('rating: ', rate)
     return (
         <div className="ratingsbar" >
-            <div 
+            <div
                 className="ratingsbar-gray"
-                style={{     
+                style={{
                     height: "15",
                     width: "90%",
                     backgroundColor: "rgb(220,220,220)",
                 }}
             >
-                <div 
+                <div
                     className="ratingsbar-green"
                     style={{
                         padding: "3px",
                         height: "100%",
                         width: `${rate}%`,
-                        backgroundColor: "green",
+                        backgroundColor: "black",
                     }}
                 >
                 </div>

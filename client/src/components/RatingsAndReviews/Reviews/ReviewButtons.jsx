@@ -17,9 +17,9 @@ const ReviewButtons = ({productId}) => {
     // console.log(product)
     return (
         <div className="new-review">
-            <Button className="openModalBtn" onClick={() => setOpenModal(true)}>ADD A REVIEW +</Button>
-            <Modal 
-                show={openModal} 
+            <Button variant="dark" className="openModalBtn" onClick={() => setOpenModal(true)}>Add a review +</Button>
+            <Modal
+                show={openModal}
                 onHide={() => setOpenModal(false)}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -52,8 +52,8 @@ export default ReviewButtons;
 //     return (
 //         <div className="new-review">
 //             <button className="openModalBtn" onClick={() => setOpenModal(true)}>ADD A REVIEW +</button>
-//             <Modal 
-//                 show={openModal} 
+//             <Modal
+//                 show={openModal}
 //                 onHide={() => setOpenModal(false)}
 //                 size="lg"
 //                 aria-labelledby="contained-modal-title-vcenter"
