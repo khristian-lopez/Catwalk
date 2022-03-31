@@ -1,7 +1,7 @@
 # Catwalk
 
 ## Overview:
-Catwalk is a complete redesign of an outdated retail portal. The project plans to use the following frameworks: ReactJS, Bootstrap, NodeJS/Express, NPM, and React Testing Library.
+Catwalk is an ecommerce application for a fashion-savvy retailer made with React and Express/Node.js. 
 
 ## Initialization:
 To initialize project install dependencies by running `npm install `
