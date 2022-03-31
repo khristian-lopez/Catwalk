@@ -17,4 +17,5 @@ To initialize project install dependencies by running `npm install `
 ### Related Items
 - Select from a carousel of related items to change the product overview
 - Add and remove current items from your outfit queue
+
 ![App Screenshot](https://github.com/khristian-lopez/readme-gifs/blob/main/Catwalk/relateditems.gif)
