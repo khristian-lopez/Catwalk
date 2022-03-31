@@ -5,3 +5,6 @@ Catwalk is a complete redesign of an outdated retail portal. The project plans t
 
 ## Initialization:
 To initialize project install dependencies by running `npm install `
+
+## Demonstration:
+![App Screenshot](https://github.com/khristian-lopez/testrepo/blob/main/test.gif)
