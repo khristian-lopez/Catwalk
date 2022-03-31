@@ -7,7 +7,7 @@ Catwalk is an ecommerce application for a fashion-savvy retailer made with React
 To initialize project install dependencies by running `npm install `
 
 ## Features:
-### Produce Overview
+### Product Overview
 - Navigate through a carousel of product images
 - Browse different styles for a product
 - Select a size and quantity to add to cart
