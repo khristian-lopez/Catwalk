@@ -1,7 +1,7 @@
 # Catwalk
 
 ## Overview:
-Catwalk is an ecommerce application for a fashion-savvy retailer made with React and Express/Node.js. 
+Catwalk is an ecommerce storefront for a fashion-savvy retailer made with React and Express/Node.js. 
 
 ## Initialization:
 To initialize project install dependencies by running `npm install `
